@@ -1,0 +1,155 @@
+{
+   "ActionArray" : [
+      {
+         "ActionType" : 0,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            }
+         ],
+         "LogicFrameNum" : 4,
+         "PhysicFrameNum" : 1
+      },
+      {
+         "ActionType" : 1,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -50,
+                     "Right" : 40,
+                     "Top" : 270,
+                     "Type" : 1
+                  }
+               ]
+            }
+         ],
+         "LogicFrameNum" : 4,
+         "PhysicFrameNum" : 1
+      },
+      {
+         "ActionType" : 11,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            },
+            {
+               "LogicFrame" : 2,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            },
+            {
+               "LogicFrame" : 5,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            },
+            {
+               "LogicFrame" : 9,
+               "PhysicFrame" : 3,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            }
+         ],
+         "LogicFrameNum" : 13,
+         "PhysicFrameNum" : 4
+      },
+      {
+         "ActionType" : 12,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : -49,
+                     "Right" : 40,
+                     "Top" : 268,
+                     "Type" : 1
+                  }
+               ]
+            }
+         ],
+         "LogicFrameNum" : 4,
+         "PhysicFrameNum" : 1
+      },
+      {
+         "ActionType" : 13,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0
+            },
+            {
+               "LogicFrame" : 4,
+               "PhysicFrame" : 1
+            },
+            {
+               "LogicFrame" : 8,
+               "PhysicFrame" : 2
+            },
+            {
+               "LogicFrame" : 12,
+               "PhysicFrame" : 3
+            }
+         ],
+         "LogicFrameNum" : 16,
+         "PhysicFrameNum" : 4
+      }
+   ],
+   "ActionNum" : 5,
+   "AnchorX" : 450,
+   "AnchorY" : 560,
+   "Version" : 6
+}

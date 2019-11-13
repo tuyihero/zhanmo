@@ -1,0 +1,2090 @@
+{
+   "ActionArray" : [
+      {
+         "ActionType" : 0,
+         "AddMode" : 0,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -17,
+                     "Left" : -57,
+                     "Right" : 74,
+                     "Top" : 133,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 10,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : -15,
+                     "Left" : -62,
+                     "Right" : 76,
+                     "Top" : 121,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 20,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : 0,
+                     "Left" : -57,
+                     "Right" : 80,
+                     "Top" : 126,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 28,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 30,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : 0,
+                     "Left" : -89,
+                     "Right" : 107,
+                     "Top" : 229,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 33,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 34,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "shootAngle" : 0
+      },
+      {
+         "ActionType" : 1,
+         "AddMode" : 0,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -15,
+                     "Left" : -46,
+                     "Right" : 88,
+                     "Top" : 130,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 7,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : -23,
+                     "Left" : -46,
+                     "Right" : 89,
+                     "Top" : 142,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 14,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : -25,
+                     "Left" : -37,
+                     "Right" : 86,
+                     "Top" : 142,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 21,
+               "PhysicFrame" : 3,
+               "RectArray" : [
+                  {
+                     "Bottom" : -25,
+                     "Left" : -26,
+                     "Right" : 84,
+                     "Top" : 141,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 28,
+               "PhysicFrame" : 4,
+               "RectArray" : [
+                  {
+                     "Bottom" : -15,
+                     "Left" : -29,
+                     "Right" : 89,
+                     "Top" : 144,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 35,
+               "PhysicFrame" : 5,
+               "RectArray" : [
+                  {
+                     "Bottom" : -17,
+                     "Left" : -44,
+                     "Right" : 88,
+                     "Top" : 149,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 42,
+               "PhysicFrame" : 6,
+               "RectArray" : [
+                  {
+                     "Bottom" : 3,
+                     "Left" : -47,
+                     "Right" : 85,
+                     "Top" : 126,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 49,
+               "PhysicFrame" : 7,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -61,
+                     "Right" : 93,
+                     "Top" : 137,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 56,
+               "PhysicFrame" : 8,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -60,
+                     "Right" : 93,
+                     "Top" : 127,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 63,
+               "PhysicFrame" : 9,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -51,
+                     "Right" : 90,
+                     "Top" : 123,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 67,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "shootAngle" : 0
+      },
+      {
+         "ActionType" : 5,
+         "AddMode" : 0,
+         "DisturbIdx" : 3,
+         "FrameArray" : [
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -36,
+                     "Right" : 106,
+                     "Top" : 131,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 1,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 2,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 3,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 4,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 0,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 5,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 6,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -32,
+                     "Right" : 109,
+                     "Top" : 125,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 7,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 8,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 9,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 10,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 1,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 11,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 3,
+               "LogicFrame" : 12,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : -8,
+                     "Left" : -16,
+                     "Right" : 98,
+                     "Top" : 122,
+                     "Type" : 1
+                  },
+                  {
+                     "Bottom" : -11,
+                     "Left" : -18,
+                     "Right" : 187,
+                     "Top" : 148,
+                     "Type" : 0
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 13,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 14,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 15,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 16,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 2,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 17,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 18,
+               "PhysicFrame" : 3,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -24,
+                     "Right" : 104,
+                     "Top" : 119,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 19,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 20,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 21,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 22,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 3,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 23,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 24,
+               "PhysicFrame" : 4,
+               "RectArray" : [
+                  {
+                     "Bottom" : -6,
+                     "Left" : -38,
+                     "Right" : 95,
+                     "Top" : 120,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 25,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 26,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 27,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 28,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 4,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 29,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 5,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 3,
+               "LogicFrame" : 30,
+               "PhysicFrame" : 5,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -39,
+                     "Right" : 188,
+                     "Top" : 146,
+                     "Type" : 0
+                  },
+                  {
+                     "Bottom" : -3,
+                     "Left" : -43,
+                     "Right" : 103,
+                     "Top" : 131,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 5,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 31,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 5,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 32,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 5,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 33,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 5,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 34,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 6,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 35,
+               "PhysicFrame" : 6,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : -55,
+                     "Right" : 102,
+                     "Top" : 120,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 6,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 36,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 7,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 37,
+               "PhysicFrame" : 7,
+               "RectArray" : [
+                  {
+                     "Bottom" : 0,
+                     "Left" : -45,
+                     "Right" : 109,
+                     "Top" : 125,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 7,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 38,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 7,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 39,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 8,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 3,
+               "LogicFrame" : 40,
+               "PhysicFrame" : 8,
+               "RectArray" : [
+                  {
+                     "Bottom" : -2,
+                     "Left" : -1,
+                     "Right" : 130,
+                     "Top" : 117,
+                     "Type" : 1
+                  },
+                  {
+                     "Bottom" : -1,
+                     "Left" : -31,
+                     "Right" : 184,
+                     "Top" : 141,
+                     "Type" : 0
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 8,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 41,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 8,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 42,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 9,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 43,
+               "PhysicFrame" : 9,
+               "RectArray" : [
+                  {
+                     "Bottom" : 1,
+                     "Left" : 18,
+                     "Right" : 126,
+                     "Top" : 127,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 9,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 44,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 9,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 45,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 10,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 46,
+               "PhysicFrame" : 10,
+               "RectArray" : [
+                  {
+                     "Bottom" : -16,
+                     "Left" : 9,
+                     "Right" : 141,
+                     "Top" : 116,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 10,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 47,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 10,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 48,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 10,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 49,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 10,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 50,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 11,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 51,
+               "PhysicFrame" : 11,
+               "RectArray" : [
+                  {
+                     "Bottom" : -13,
+                     "Left" : 17,
+                     "Right" : 156,
+                     "Top" : 119,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 11,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 52,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 11,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 53,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 11,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 54,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 11,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 55,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 12,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 56,
+               "PhysicFrame" : 12,
+               "RectArray" : [
+                  {
+                     "Bottom" : -12,
+                     "Left" : 18,
+                     "Right" : 165,
+                     "Top" : 127,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 12,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 57,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 12,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 58,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "EffectArray" : [
+                  {
+                     "EffectAnchorX" : 500,
+                     "EffectAnchorY" : 450,
+                     "EffectIndex" : 12,
+                     "EffectScaleX" : 2,
+                     "EffectScaleY" : 2,
+                     "EffectType" : 1,
+                     "EffectZorder" : 0
+                  }
+               ],
+               "HitID" : 0,
+               "LogicFrame" : 59,
+               "PhysicFrame" : -1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 60,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "SoundArray" : [
+            {
+               "HasPlay" : false,
+               "SoundFrom" : 40,
+               "SoundName" : "c_mugunjidi"
+            }
+         ],
+         "shootAngle" : 0
+      },
+      {
+         "ActionType" : 11,
+         "AddMode" : 0,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -11,
+                     "Left" : -57,
+                     "Right" : 81,
+                     "Top" : 109,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 3,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "SoundArray" : [
+            {
+               "HasPlay" : false,
+               "SoundFrom" : 0,
+               "SoundName" : "b_hdwbeiji"
+            }
+         ],
+         "shootAngle" : 0
+      },
+      {
+         "ActionType" : 12,
+         "AddMode" : 0,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -18,
+                     "Left" : -49,
+                     "Right" : 87,
+                     "Top" : 100,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 10,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : -10,
+                     "Left" : -64,
+                     "Right" : 93,
+                     "Top" : 116,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 14,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "shootAngle" : 0
+      },
+      {
+         "ActionType" : 13,
+         "AddMode" : 0,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : 4,
+                     "Left" : -59,
+                     "Right" : 94,
+                     "Top" : 124,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 3,
+               "PhysicFrame" : 1,
+               "RectArray" : [
+                  {
+                     "Bottom" : -47,
+                     "Left" : -83,
+                     "Right" : 149,
+                     "Top" : 37,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 9,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : -57,
+                     "Left" : -59,
+                     "Right" : 138,
+                     "Top" : 34,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 15,
+               "PhysicFrame" : 3,
+               "RectArray" : [
+                  {
+                     "Bottom" : -55,
+                     "Left" : -69,
+                     "Right" : 151,
+                     "Top" : 26,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 21,
+               "PhysicFrame" : 4,
+               "RectArray" : [
+                  {
+                     "Bottom" : -43,
+                     "Left" : -72,
+                     "Right" : 144,
+                     "Top" : 33,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 27,
+               "PhysicFrame" : 5,
+               "RectArray" : [
+                  {
+                     "Bottom" : -62,
+                     "Left" : -50,
+                     "Right" : 132,
+                     "Top" : 29,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 32,
+               "PhysicFrame" : 6,
+               "RectArray" : [
+                  {
+                     "Bottom" : -49,
+                     "Left" : -57,
+                     "Right" : 138,
+                     "Top" : 27,
+                     "Type" : 1
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 36,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "SoundArray" : [
+            {
+               "HasPlay" : false,
+               "SoundFrom" : 0,
+               "SoundName" : "b_hdwsi"
+            }
+         ],
+         "shootAngle" : 0
+      }
+   ],
+   "ActionNum" : 6,
+   "AnchorX" : 500,
+   "AnchorY" : 450
+}

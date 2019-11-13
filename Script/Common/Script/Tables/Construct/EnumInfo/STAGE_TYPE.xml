@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>NORMAL</enumName>
+    <enumCode>NORMAL</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>枚举必须保留0值</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>BOSS</enumName>
+    <enumCode>BOSS</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>BOSS</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>DOUBLE_BOSS</enumName>
+    <enumCode>DOUBLE_BOSS</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>DOUBLE_BOSS</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>ACT_GOLD</enumName>
+    <enumCode>ACT_GOLD</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>ACT_GOLD</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>ACT_GEM</enumName>
+    <enumCode>ACT_GEM</enumCode>
+    <enumValue>4</enumValue>
+    <enumDesc>ACT_GEM</enumDesc>
+  </enumColumn>
+</root>

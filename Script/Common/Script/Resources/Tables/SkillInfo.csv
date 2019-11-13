@@ -1,0 +1,40 @@
+"""ID""","""Name""","""Desc""","""NameStrDict""","""DescStrDict""","""Icon""","""Profession""","""SkillInput""","""SkillType""","""SkillAttr""","""StartRoleLevel""","""StartPreSkill""","""StartPreSkillLv""","""NextLvInterval""","""MaxLevel""","""EffectValue1""","""EffectValue2""","""EffectValue3""","""CostStep1""","""CostStep2""","""CostStep3""","""Pos"""
+10001,NA.Damage,Add Normal Attack Damage,60001,60101,Skill/2201,5,j,61000,1100000,0,0,0,5,10,10000,1000,0,0,15000,5000,0
+10002,S.Damage,Add Ex Skill Damage,60002,60102,Skill/2202,5,1,61000,1100001,0,0,0,5,10,10000,1000,0,0,15000,5000,0
+10003,S.Damage,Add Ex Skill Damage,60003,60103,Skill/2207,5,2,61000,1100002,0,0,0,5,10,13000,1300,0,0,15000,5000,0
+10004,S.Damage,Add Ex Skill Damage,60004,60104,Skill/2210,5,3,61000,1100003,0,0,0,5,10,18000,1800,0,0,15000,5000,0
+10005,NA.Damage,Add Normal Attack Damage,60005,60105,Skill/2102,10,j,61000,1100004,0,0,0,5,10,10000,1000,0,0,15000,5000,0
+10006,S.Damage,Add Ex Skill Damage,60006,60106,Skill/2106,10,1,61000,1100005,0,0,0,5,10,10000,1000,0,0,15000,5000,0
+10007,S.Damage,Add Ex Skill Damage,60007,60107,Skill/2112,10,2,61000,1100006,0,0,0,5,10,13000,1300,0,0,15000,5000,0
+10008,S.Damage,Add Ex Skill Damage,60008,60108,Skill/2104,10,3,61000,1100007,0,0,0,5,10,18000,1800,0,0,15000,5000,0
+10009,S.BuffRate,Add buff effect,60009,60109,Skill/2605,15,5,61000,1100008,0,0,0,10,5,200,200,0,0,50000,25000,0
+10010,S.BuffRate,Add buff effect,60010,60110,Skill/3606,15,6,61000,1100009,0,0,0,10,5,-200,-200,0,0,50000,25000,0
+10011,NA.NormalRange,Add Normal Attack Damage,60011,60111,Skill/3206,15,j,61001,1100010,0,0,0,0,1,500,0,0,1,100,100,0
+10012,NA.NormalSpeed,Add Normal Attack Damage,60012,60112,Skill/3108,15,j,61001,1100011,0,0,0,0,1,500,0,0,1,100,100,0
+10013,S.SpSkill,Ex skill back range,60013,60113,Skill/2106,2,1,61001,1100012,0,10006,0,0,1,100,0,0,1,100,100,5
+10014,S.SpSkill,Ex skill back range,60014,60114,Skill/2112,2,2,61001,1100013,0,10007,0,0,1,100,0,0,1,100,100,5
+10015,S.SpSkill,Ex skill back range,60015,60115,Skill/2104,2,3,61001,1100014,0,10008,0,0,1,100,0,0,1,100,100,5
+10016,S.SpSkill,Ex skill back range,60016,60116,Skill/2106,8,1,61001,1100015,0,10006,0,0,1,100,0,0,1,100,100,5
+10017,S.SpSkill,Ex skill back range,60017,60117,Skill/2112,8,2,61001,1100016,0,10007,0,0,1,100,0,0,1,100,100,5
+10018,S.SpSkill,Ex skill back range,60018,60118,Skill/2104,8,3,61001,1100017,0,10008,0,0,1,100,0,0,1,100,100,5
+10019,S.SpSkill,Ex skill back range,60019,60119,Skill/2202,1,1,61001,1100018,0,10002,0,0,1,100,0,0,1,100,100,5
+10020,S.SpSkill,Ex skill back range,60020,60120,Skill/2207,1,2,61001,1100019,0,10003,0,0,1,100,0,0,1,100,100,5
+10021,S.SpSkill,Ex skill back range,60021,60121,Skill/2210,1,3,61001,1100020,0,10004,0,0,1,100,0,0,1,100,100,5
+10022,S.SpSkill,Ex skill back range,60022,60122,Skill/2202,4,1,61001,1100021,0,10002,0,0,1,100,0,0,1,100,100,5
+10023,S.SpSkill,Ex skill back range,60023,60123,Skill/2207,4,2,61001,1100022,0,10003,0,0,1,100,0,0,1,100,100,5
+10024,S.SpSkill,Ex skill back range,60024,60124,Skill/2210,4,3,61001,1100023,0,10004,0,0,1,100,0,0,1,100,100,5
+10025,S.ExAttack,After Skill ex Attack,60025,60125,Skill/3505,6,-1,61001,1100024,0,0,0,0,2,6000,1,2,1,100,100,3
+10026,S.Accumulate,Accumulate skill,60026,60126,Skill/2203,9,-1,61001,1100025,0,0,0,0,2,1500,4000,2000,1,100,100,3
+10027,S.ActBuff,can act skill after buff,60027,60127,Skill/3509,15,6,61001,1100026,0,0,0,0,1,1,0,0,1,100,100,4
+10028,S.AnotherUse,Ex Skill Can Accululate by Hold the button,60028,60128,Skill/3604,15,-1,61001,1100027,0,0,0,0,1,2000,0,0,1,100,100,3
+10029,D.ActHitted,explore when being hit,60029,60129,Skill/3203,15,-1,61001,1100028,0,0,0,0,1,2500,0,0,1,100,100,5
+10030,D.ActingSkillSuperArmor,super armor when acting skill,60030,60130,Skill/3205,15,-1,61001,1100029,0,0,0,0,1,2500,0,0,1,100,100,5
+10031,S.BuffEx,buff add 10% attack speed,60031,60131,Skill/2606,2,5,61001,1100030,0,0,0,0,1,1000,2000,0,1,100,100,5
+10032,S.BuffEx,buff add 10% attack speed,60032,60132,Skill/2606,8,5,61001,1100031,0,0,0,0,1,1000,2000,0,1,100,100,5
+10033,S.BuffEx,buff add 10% attack speed,60033,60133,Skill/2606,1,5,61001,1100032,0,0,0,0,1,1000,2000,0,1,100,100,5
+10034,S.BuffEx,buff add 10% attack speed,60034,60134,Skill/2606,4,5,61001,1100033,0,0,0,0,1,1000,2000,0,1,100,100,5
+10035,S.BuffHit,add buff hit range and damage,60035,60135,Skill/3607,15,-1,61001,1100034,0,0,0,0,1,10000,0,0,1,100,100,5
+10036,D.NoDamage,NoDamage When using dodge,60036,60136,Skill/2209,6,4,61001,1100035,0,0,0,0,1,20000,0,0,1,100,100,3
+10037,D.DodgeCD,decrease dodge cd,60037,60137,Skill/2212,6,4,61001,1100036,0,0,0,0,1,12000,2,2,1,100,100,3
+10038,D.DefenceSuper,reduse damage when defence,60038,60138,Skill/3609,9,7,61001,1100037,0,0,0,0,1,1,9000,0,1,100,100,5
+10039,D.DefenceCD,decrease defence cd,60039,60139,Skill/2604,9,7,61001,1100038,0,0,0,0,1,5000,9999,0,1,100,100,5

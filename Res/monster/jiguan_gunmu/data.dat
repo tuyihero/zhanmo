@@ -1,0 +1,97 @@
+{
+   "ActionArray" : [
+      {
+         "ActionType" : 5,
+         "AddMode" : 1,
+         "DisturbIdx" : 0,
+         "FrameArray" : [
+            {
+               "HitID" : 0,
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0,
+               "RectArray" : [
+                  {
+                     "Bottom" : -1,
+                     "Left" : -21,
+                     "Right" : 48,
+                     "Top" : 69,
+                     "Type" : 0
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 6,
+               "PhysicFrame" : 1,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 12,
+               "PhysicFrame" : 2,
+               "RectArray" : [
+                  {
+                     "Bottom" : -8,
+                     "Left" : -21,
+                     "Right" : 50,
+                     "Top" : 68,
+                     "Type" : 0
+                  }
+               ],
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 18,
+               "PhysicFrame" : 3,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            },
+            {
+               "HitID" : 0,
+               "LogicFrame" : 24,
+               "PhysicFrame" : 4,
+               "ShakeCount" : 0,
+               "ShakeDelay" : 0,
+               "ShakeDirection" : 0,
+               "ShakeOffset" : 0,
+               "ShakeTime" : 0,
+               "SynActionID" : 0
+            }
+         ],
+         "LogicFrameNum" : 28,
+         "RepeatFrom" : 0,
+         "RepeatTimes" : 0,
+         "RepeatTo" : 0,
+         "ShootCrashName" : "",
+         "ShootDistance" : 0,
+         "ShootEffectName" : "",
+         "ShootFrom" : 0,
+         "ShootSpeed" : 0,
+         "shootAngle" : 0
+      }
+   ],
+   "ActionNum" : 1,
+   "AnchorX" : 450,
+   "AnchorY" : 560
+}

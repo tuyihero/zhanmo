@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>role_fs_weapon_2_hurt_00.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{128,92}}</string>
+                <key>offset</key>
+                <string>{32,-61}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{480,399},{128,92}}</string>
+                <key>sourceSize</key>
+                <string>{1024,768}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>hurt_0.pvr</string>
+            <key>size</key>
+            <string>{132,96}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:7d05a6d9ce8e63e944f925cae2c90677:1/1$</string>
+            <key>textureFileName</key>
+            <string>hurt_0.pvr</string>
+        </dict>
+    </dict>
+</plist>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>WEAPON</enumName>
+    <enumCode>WEAPON</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>武器</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>TORSO</enumName>
+    <enumCode>TORSO</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>装甲</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>LEGS</enumName>
+    <enumCode>LEGS</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>护腿</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>AMULET</enumName>
+    <enumCode>AMULET</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>项链</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>RING</enumName>
+    <enumCode>RING</enumCode>
+    <enumValue>4</enumValue>
+    <enumDesc>戒指</enumDesc>
+  </enumColumn>
+</root>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>METAL</enumName>
+    <enumCode>METAL</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>枚举必须保留0值</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>WOOD</enumName>
+    <enumCode>WOOD</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>WOOD</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>WATER</enumName>
+    <enumCode>WATER</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>WATER</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>FIRE</enumName>
+    <enumCode>FIRE</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>FIRE</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>EARTH</enumName>
+    <enumCode>EARTH</enumCode>
+    <enumValue>4</enumValue>
+    <enumDesc>EARTH</enumDesc>
+  </enumColumn>
+</root>

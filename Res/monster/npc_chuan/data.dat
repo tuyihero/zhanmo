@@ -1,0 +1,48 @@
+{
+   "ActionArray" : [
+      {
+         "ActionType" : 0,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0
+            },
+            {
+               "LogicFrame" : 8,
+               "PhysicFrame" : 1
+            },
+            {
+               "LogicFrame" : 16,
+               "PhysicFrame" : 2
+            },
+            {
+               "LogicFrame" : 24,
+               "PhysicFrame" : 3
+            },
+            {
+               "LogicFrame" : 32,
+               "PhysicFrame" : 4
+            },
+            {
+               "LogicFrame" : 40,
+               "PhysicFrame" : 5
+            },
+            {
+               "LogicFrame" : 48,
+               "PhysicFrame" : 6
+            },
+            {
+               "LogicFrame" : 56,
+               "PhysicFrame" : 7
+            }
+         ],
+         "LogicFrameNum" : 64,
+         "PhysicFrameNum" : 8
+      }
+   ],
+   "ActionNum" : 1,
+   "AnchorX" : 100,
+   "AnchorY" : 100,
+   "Version" : 5
+}

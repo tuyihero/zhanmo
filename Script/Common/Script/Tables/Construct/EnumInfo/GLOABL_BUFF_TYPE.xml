@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>None</enumName>
+    <enumCode>None</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>枚举必须保留0值</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Talent</enumName>
+    <enumCode>Talent</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>Talent</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>ExTalent</enumName>
+    <enumCode>ExTalent</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>ExTalent</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>ExAttr</enumName>
+    <enumCode>ExAttr</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>ExAttr</enumDesc>
+  </enumColumn>
+</root>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>None</enumName>
+    <enumCode>None</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>枚举必须保留0值</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Item</enumName>
+    <enumCode>Item</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>Item</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Diamond</enumName>
+    <enumCode>Diamond</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>Diamond</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Gold</enumName>
+    <enumCode>Gold</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>Gold</enumDesc>
+  </enumColumn>
+</root>

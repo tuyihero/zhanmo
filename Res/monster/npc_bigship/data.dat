@@ -1,0 +1,32 @@
+{
+   "ActionArray" : [
+      {
+         "ActionType" : 0,
+         "AddMode" : 1,
+         "FrameArray" : [
+            {
+               "LogicFrame" : 0,
+               "PhysicFrame" : 0
+            },
+            {
+               "LogicFrame" : 15,
+               "PhysicFrame" : 1
+            },
+            {
+               "LogicFrame" : 29,
+               "PhysicFrame" : 2
+            },
+            {
+               "LogicFrame" : 45,
+               "PhysicFrame" : 3
+            }
+         ],
+         "LogicFrameNum" : 60,
+         "PhysicFrameNum" : 4
+      }
+   ],
+   "ActionNum" : 1,
+   "AnchorX" : 250,
+   "AnchorY" : 200,
+   "Version" : 6
+}

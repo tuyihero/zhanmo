@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>WARRIOR</enumName>
+    <enumCode>WARRIOR</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>WARRIOR</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>ASSASSIN</enumName>
+    <enumCode>ASSASSIN</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>ASSASSIN</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>MAGE</enumName>
+    <enumCode>MAGE</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>MAGE</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>MAX</enumName>
+    <enumCode>MAX</enumCode>
+    <enumValue>3</enumValue>
+    <enumDesc>MAX</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>NONE</enumName>
+    <enumCode>NONE</enumCode>
+    <enumValue>-1</enumValue>
+    <enumDesc>NONE</enumDesc>
+  </enumColumn>
+</root>

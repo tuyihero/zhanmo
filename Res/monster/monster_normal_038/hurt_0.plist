@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>monster_normal_038_hurt_00.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{256,132}}</string>
+                <key>offset</key>
+                <string>{40,-39}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{424,357},{256,132}}</string>
+                <key>sourceSize</key>
+                <string>{1024,768}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>hurt_0.pvr</string>
+            <key>size</key>
+            <string>{260,136}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:5e3e5e5bfcca9295b6e9e654b338928f:1/1$</string>
+            <key>textureFileName</key>
+            <string>hurt_0.pvr</string>
+        </dict>
+    </dict>
+</plist>

@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 4d16a6570a18b0f499e76ac69ca4e5d9
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fnpc003_idle1_07.png
+    21300002: Fnpc003_idle1_08.png
+    21300004: Fnpc003_idle1_09.png
+    21300006: Fnpc003_idle1_10.png
+    21300008: Fnpc003_idle1_11.png
+    21300010: Fnpc003_idle1_12.png
+    21300012: Fnpc003_idle1_13.png
+    21300014: Fnpc003_idle1_14.png
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fnpc003_idle1_07.png
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 164
+        width: 408
+        height: 274
+      alignment: 9
+      pivot: {x: 0.6666667, y: 0.6131387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b1c12ae53ce844aa3b8b9bcac5b99b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_08.png
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 2
+        width: 274
+        height: 428
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615e6dded27092243ac7849f5cce0612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_09.png
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 440
+        width: 434
+        height: 272
+      alignment: 9
+      pivot: {x: 0.6543779, y: 0.61764705}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 492fbb643271b6c45aaf3e8579f67774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_10.png
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 714
+        width: 416
+        height: 270
+      alignment: 9
+      pivot: {x: 0.64903843, y: 0.62222224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee199160567a790439d4df4878fa3ddc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_11.png
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 432
+        width: 296
+        height: 280
+      alignment: 9
+      pivot: {x: -0.037162162, y: 0.51785713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1527542ae9d60442bb3e966250bf842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_12.png
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 714
+        width: 324
+        height: 270
+      alignment: 9
+      pivot: {x: 0.7623457, y: 0.62222224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77f0e6717a44984085e0c7f8b7dd7ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_13.png
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 624
+        width: 270
+        height: 360
+      alignment: 9
+      pivot: {x: 0.0074074073, y: 0.3638889}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a2883a059d02e84dab8f71f60ee7505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fnpc003_idle1_14.png
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 262
+        width: 272
+        height: 360
+      alignment: 9
+      pivot: {x: 0.0036764706, y: 0.325}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee837afa9b84f6d409fcd730e274099f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 83a2a3593d67ee34eb231f16f69b4775
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

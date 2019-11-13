@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>npc_body_idle_00.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{88,122}}</string>
+                <key>offset</key>
+                <string>{4,-34}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{472,357},{88,122}}</string>
+                <key>sourceSize</key>
+                <string>{1024,768}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>idle_0.pvr</string>
+            <key>size</key>
+            <string>{92,126}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:46647b4713a17e979494a205165638f9:1/1$</string>
+            <key>textureFileName</key>
+            <string>idle_0.pvr</string>
+        </dict>
+    </dict>
+</plist>

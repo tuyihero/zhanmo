@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <enumColumn>
+    <enumName>None</enumName>
+    <enumCode>None</enumCode>
+    <enumValue>0</enumValue>
+    <enumDesc>枚举必须保留0值</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Normal</enumName>
+    <enumCode>Normal</enumCode>
+    <enumValue>1</enumValue>
+    <enumDesc>Normal</enumDesc>
+  </enumColumn>
+  <enumColumn>
+    <enumName>Legendary</enumName>
+    <enumCode>Legendary</enumCode>
+    <enumValue>2</enumValue>
+    <enumDesc>Legendary</enumDesc>
+  </enumColumn>
+</root>
