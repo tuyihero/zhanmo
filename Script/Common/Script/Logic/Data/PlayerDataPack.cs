@@ -127,11 +127,11 @@ public class PlayerDataPack : DataPackBase
         {
             if (i == (int)PROFESSION.WARRIOR)
             {
-                _RoleList[i].MainBaseName = "CharAssasinBase";
-                _RoleList[i].MotionFold = "CharAssasin";
-                _RoleList[i].ModelName = "CharAssasin";
+                _RoleList[i].MainBaseName = "CharWarriorBase";
+                _RoleList[i].MotionFold = "CharWarrior";
+                _RoleList[i].ModelName = "CharWarrior";
                 _RoleList[i].Profession = PROFESSION.WARRIOR;
-                _RoleList[i].DefaultWeaponModel = "WeaponAssasin1";
+                _RoleList[i].DefaultWeaponModel = "WeaponWarrior1";
                 _RoleList[i].IconName = "hero/hero_p_shuangshoufu";
             }
             else if (i == (int)PROFESSION.ASSASSIN)

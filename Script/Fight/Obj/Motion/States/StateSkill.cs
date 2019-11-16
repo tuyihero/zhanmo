@@ -76,7 +76,18 @@ public class StateSkill : StateBase
                 }
                 break;
             case MotionOpt.Stop_Skill:
-                _MotionManager.TryEnterState(_MotionManager._StateIdle, args);
+                if (_MotionManager.IsInAir())
+                {
+                    _MotionManager.TryEnterState(_MotionManager._StateJumpIdle, args);
+                    if (_MotionManager.JumpStay)
+                    {
+                        _MotionManager.JumpFall();
+                    }
+                }
+                else
+                {
+                    _MotionManager.TryEnterState(_MotionManager._StateIdle, args);
+                }
                 break;
             case MotionOpt.Anim_Event:
                 _ActingSkill.AnimEvent(args[0] as string, args[1]);

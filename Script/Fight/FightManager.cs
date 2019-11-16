@@ -169,7 +169,8 @@ public class FightManager : InstanceBase<FightManager>
         //subUICamera.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
         _ActingRegion = 0;
-        _CameraFollow = cameraRoot.AddComponent<CameraFollow>();
+        _CameraFollow = cameraRoot.GetComponent<CameraFollow>();
+        _CameraFollow.SetSceneAnim(GameObject.FindObjectOfType<SceneAnimController>());
         //_CameraFollow._FollowObj = _MainChatMotion.gameObject;
         //_CameraFollow._Distance = LogicManager.Instance.EnterStageInfo.CameraOffset[_ActingRegion];
 
@@ -308,7 +309,7 @@ public class FightManager : InstanceBase<FightManager>
             }
         }
         MainChatMotion.InitMotion();
-        MainChatMotion.SetPosition(new Vector3(2, 0, 0));
+        MainChatMotion.SetPosition(new Vector3(2, -1, 0));
         FightLayerCommon.SetPlayerLayer(MainChatMotion);
         //UIHPPanel.ShowHPItem(_MainChatMotion);
 
@@ -472,6 +473,7 @@ public class FightManager : InstanceBase<FightManager>
         {
             yield return ResourceManager.Instance.LoadPrefab("Scene/" + needLoadScene[i], (resName, resGO, hash) =>
             {
+
                 resGO.SetActive(true);
                 //actGroup = GameObject.Find(needLoadScene[i] + "_RandomAreas").GetComponent<AreaGroup>();
                 //actGroup._LightGO.SetActive(false);

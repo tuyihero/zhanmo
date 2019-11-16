@@ -59,6 +59,9 @@ public class StateMove : StateBase
             case MotionOpt.Stop_Move:
                 _MotionManager.TryEnterState(_MotionManager._StateIdle, args);
                 break;
+            case MotionOpt.Jump:
+                _MotionManager.TryEnterState(_MotionManager._StateJump, args);
+                break;
             case MotionOpt.Pause_State:
                 _MotionManager.PauseAnimation(_Animation, (float)args[0]);
                 break;

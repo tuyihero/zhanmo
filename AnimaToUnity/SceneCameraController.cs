@@ -43,11 +43,19 @@ public class SceneCameraController : MonoBehaviour
 
     void Update()
     {
+        if (_SceneAnimController == null)
+            return;
+
         var axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         float posX = transform.position.x + axis.x * _Speed;
         posX = Mathf.Clamp(posX, MinPosX, MaxPosX);
         _ControlCamera.transform.position = new Vector3(posX, _ControlCamera.transform.position.y, _ControlCamera.transform.position.z);
 
         _SceneAnimController.UpdateFarPos((posX - MinPosX)/ (MaxPosX - MinPosX));
+    }
+
+    public void SetSceneAnim(SceneAnimController sceneAnimController)
+    {
+        _SceneAnimController = sceneAnimController;
     }
 }

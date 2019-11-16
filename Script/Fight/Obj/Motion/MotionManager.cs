@@ -14,6 +14,7 @@ public class MotionManager : MonoBehaviour
 
         InitRoleAttr();
 
+        _JumpBody = transform.Find("Body");
         var bodyGO = transform.Find("Body/Body");
         _Animaton = bodyGO.GetComponent<Animator>();
         var bodyEffect = transform.Find("Body/Body/Effect");
@@ -22,6 +23,7 @@ public class MotionManager : MonoBehaviour
         _WeaponAnimator = weapon.GetComponent<Animator>();
         var weaponEffect = transform.Find("Body/Weapon/Weapon/Effect");
         _WeaponEffectAnimator = weaponEffect.GetComponent<Animator>();
+        InitEffectAnimator();
 
         _AnimationEvent = _Animaton.gameObject.GetComponent<AnimEventManager>();
         if (_AnimationEvent != null)
@@ -45,7 +47,7 @@ public class MotionManager : MonoBehaviour
     void FixedUpdate()
     {
         UpdateMove();
-
+        UpdateJump();
         if (_ActionState != null)
         {
             _ActionState.StateUpdate();
@@ -110,6 +112,26 @@ public class MotionManager : MonoBehaviour
     public Animator _EffectAnimator;
     public Animator _WeaponAnimator;
     public Animator _WeaponEffectAnimator;
+    List<string> _BodyEffects;
+    List<string> _WeaponEffects;
+
+    private void InitEffectAnimator()
+    {
+        if (_BodyEffects != null)
+            return;
+
+        _BodyEffects = new List<string>();
+        _WeaponEffects = new List<string>();
+        foreach (var anim in _EffectAnimator.runtimeAnimatorController.animationClips)
+        {
+            _BodyEffects.Add(anim.name);
+        }
+
+        foreach (var anim in _WeaponEffectAnimator.runtimeAnimatorController.animationClips)
+        {
+            _WeaponEffects.Add(anim.name);
+        }
+    }
 
     private AnimEventManager _AnimationEvent;
     public AnimEventManager AnimationEvent
@@ -143,19 +165,33 @@ public class MotionManager : MonoBehaviour
     {
         RemoveBuff(typeof(ImpactBlock));
         _Animaton.speed = RoleAttrManager.AttackSpeed;
-        Debug.Log("PlayAnimation:" + animClip.name);
-        _Animaton.Play(animClip.name);
+        _Animaton.Play(animClip.name, 0, 0);
         if (_EffectAnimator != null)
         {
-            _EffectAnimator.Play(animClip.name);
+            if (_BodyEffects.Contains(animClip.name))
+            {
+                _EffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _EffectAnimator.Play("None", 0, 0);
+            }
+            
         }
         if (_WeaponAnimator != null)
         {
-            _WeaponAnimator.Play(animClip.name);
+            _WeaponAnimator.Play(animClip.name, 0, 0);
         }
         if (_WeaponEffectAnimator != null)
         {
-            _WeaponEffectAnimator.Play(animClip.name);
+            if (_WeaponEffects.Contains(animClip.name))
+            {
+                _WeaponEffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _WeaponEffectAnimator.Play("None", 0, 0);
+            }
         }
     }
 
@@ -163,22 +199,36 @@ public class MotionManager : MonoBehaviour
     {
         RemoveBuff(typeof(ImpactBlock));
         _Animaton.speed = speed;
-        _Animaton.Play(animClip.name);
+        _Animaton.Play(animClip.name, 0, 0);
 
         if (_EffectAnimator != null)
         {
             _EffectAnimator.speed = speed;
-            _EffectAnimator.Play(animClip.name);
+            if (_BodyEffects.Contains(animClip.name))
+            {
+                _EffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _EffectAnimator.Play("None", 0, 0);
+            }
         }
         if (_WeaponAnimator != null)
         {
             _WeaponAnimator.speed = speed;
-            _WeaponAnimator.Play(animClip.name);
+            _WeaponAnimator.Play(animClip.name, 0, 0);
         }
         if (_WeaponEffectAnimator != null)
         {
             _WeaponEffectAnimator.speed = speed;
-            _WeaponEffectAnimator.Play(animClip.name);
+            if (_WeaponEffects.Contains(animClip.name))
+            {
+                _WeaponEffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _WeaponEffectAnimator.Play("None", 0, 0);
+            }
         }
     }
 
@@ -187,22 +237,36 @@ public class MotionManager : MonoBehaviour
         RemoveBuff(typeof(ImpactBlock));
         _Animaton.speed = speed;
         //_Animaton.Stop();
-        _Animaton.Play(animClip.name);
+        _Animaton.Play(animClip.name, 0, 0);
 
         if (_EffectAnimator != null)
         {
             _EffectAnimator.speed = speed;
-            _EffectAnimator.Play(animClip.name);
+            if (_BodyEffects.Contains(animClip.name))
+            {
+                _EffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _EffectAnimator.Play("None", 0, 0);
+            }
         }
         if (_WeaponAnimator != null)
         {
             _WeaponAnimator.speed = speed;
-            _WeaponAnimator.Play(animClip.name);
+            _WeaponAnimator.Play(animClip.name, 0, 0);
         }
         if (_WeaponEffectAnimator != null)
         {
             _WeaponEffectAnimator.speed = speed;
-            _WeaponEffectAnimator.Play(animClip.name);
+            if (_WeaponEffects.Contains(animClip.name))
+            {
+                _WeaponEffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _WeaponEffectAnimator.Play("None", 0, 0);
+            }
         }
     }
 
@@ -210,22 +274,36 @@ public class MotionManager : MonoBehaviour
     {
         RemoveBuff(typeof(ImpactBlock));
         _Animaton.speed = RoleAttrManager.AttackSpeed;
-        _Animaton.Play(animClip.name);
+        _Animaton.Play(animClip.name, 0, 0);
 
         if (_EffectAnimator != null)
         {
             _EffectAnimator.speed = _Animaton.speed;
-            _EffectAnimator.Play(animClip.name);
+            if (_BodyEffects.Contains(animClip.name))
+            {
+                _EffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _EffectAnimator.Play("None", 0, 0);
+            }
         }
         if (_WeaponAnimator != null)
         {
             _WeaponAnimator.speed = _Animaton.speed;
-            _WeaponAnimator.Play(animClip.name);
+            _WeaponAnimator.Play(animClip.name, 0, 0);
         }
         if (_WeaponEffectAnimator != null)
         {
             _WeaponEffectAnimator.speed = _Animaton.speed;
-            _WeaponEffectAnimator.Play(animClip.name);
+            if (_WeaponEffects.Contains(animClip.name))
+            {
+                _WeaponEffectAnimator.Play(animClip.name, 0, 0);
+            }
+            else
+            {
+                _WeaponEffectAnimator.Play("None", 0, 0);
+            }
         }
     }
 
@@ -1155,6 +1233,94 @@ public class MotionManager : MonoBehaviour
 
     #endregion
 
+    #region jump
+
+    private float _JumpSpeed = 5f;
+
+    private float _JumpHeight;
+    private Transform _JumpBody;
+    public Transform JumpBody
+    {
+        get
+        {
+            return _JumpBody;
+        }
+    }
+    private float _CurJumpSpeed = 3f;
+    private float _Gravity = -10f;
+    private float _JumpMoveSpeedRate = 0.6f;
+    private Vector2 _JumpMoveDirect = Vector2.zero;
+    private bool _JumpStay = false;
+    public bool JumpStay
+    {
+        get
+        {
+            return _JumpStay;
+        }
+    }
+
+    public void UpdateJump()
+    {
+        if (_JumpStay)
+            return;
+
+        if (_JumpHeight > 0)
+        {
+            _CurJumpSpeed += _Gravity * Time.fixedDeltaTime;
+            float jumpstep = _CurJumpSpeed * Time.fixedDeltaTime;
+            float jumpMove = _JumpMoveDirect.normalized.x * RoleAttrManager.MoveSpeed * _JumpMoveSpeedRate* Time.fixedDeltaTime;
+            _JumpBody.localPosition += new Vector3(0, jumpstep, 0);
+
+            SetPosition(transform.position + new Vector3(jumpMove,0,0));
+            if (jumpMove > 0)
+            {
+                SetRotate(Vector3.zero);
+            }
+            else if (jumpMove < 0)
+            {
+                SetRotate(new Vector3(0, 180, 0));
+            }
+
+            if (_JumpBody.localPosition.y <= 0)
+            {
+                _JumpBody.localPosition = Vector3.zero;
+                _JumpHeight = 0;
+
+                TryEnterState(_StateIdle, null);
+            }
+        }
+    }
+
+    public void Jump(float height)
+    {
+        _JumpHeight = height;
+        _CurJumpSpeed = _JumpSpeed;
+        _JumpStay = false;
+    }
+
+    public void SetJumpStay()
+    {
+        _JumpStay = true;
+    }
+
+    public void JumpFall()
+    {
+        _JumpStay = false;
+        _CurJumpSpeed = 0;
+    }
+
+    public void JumpMove(Vector2 direct)
+    {
+        _JumpMoveDirect = direct;
+    }
+
+    public bool IsInAir()
+    {
+        return _JumpHeight > 0;
+    }
+
+    #endregion
+
     #region motion pause
 
     //public void SkillPause()
@@ -1310,6 +1476,8 @@ public class MotionManager : MonoBehaviour
     public StateLie _StateLie;
     public StateDie _StateDie;
     public StateSkill _StateSkill;
+    public StateJump _StateJump;
+    public StateJumpIdle _StateJumpIdle;
 
     public StateBase _ActionState;
 
@@ -1322,6 +1490,12 @@ public class MotionManager : MonoBehaviour
 
         _StateMove = new StateMove();
         _StateMove.InitAnimation(this);
+
+        _StateJump = new StateJump();
+        _StateJump.InitAnimation(this);
+
+        _StateJumpIdle = new StateJumpIdle();
+        _StateJumpIdle.InitAnimation(this);
 
         _StateHit = new StateHit();
         _StateHit.InitAnimation(this);
@@ -1495,6 +1669,11 @@ public class MotionManager : MonoBehaviour
     public void StopMoveState()
     {
         StateOpt(StateBase.MotionOpt.Stop_Move);
+    }
+
+    public void JumpState()
+    {
+        StateOpt(StateBase.MotionOpt.Jump);
     }
 
     #endregion

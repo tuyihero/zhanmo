@@ -30,6 +30,7 @@ public class RoleAttrImpactBuffRate : RoleAttrImpactBase
         var skillMotion = roleMotion._StateSkill._SkillMotions[_SkillInput];
         var impactBuff = skillMotion.GetComponentInChildren<ImpactBuffAttrAdd>(true);
         //for (int i = 0; i < impactBuffs.Length; ++i)
+        if(impactBuff != null)
         {
             impactBuff._AddValue = _ValueModify;
         }

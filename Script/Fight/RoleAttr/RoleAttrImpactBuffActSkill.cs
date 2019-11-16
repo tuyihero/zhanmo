@@ -26,7 +26,11 @@ public class RoleAttrImpactBuffActSkill : RoleAttrImpactBase
             return;
 
         var skillMotion = roleMotion._StateSkill._SkillMotions[_SkillInput];
-        (skillMotion as ObjMotionSkillBuff).IsCanActAfterBuff = true;
+        var skillBuff = skillMotion as ObjMotionSkillBuff;
+        if (skillBuff != null)
+        {
+            skillBuff.IsCanActAfterBuff = true;
+        }
     }
 
     public static string GetAttrDesc(List<int> attrParams)

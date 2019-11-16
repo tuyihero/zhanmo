@@ -47,6 +47,8 @@ public class ObjMotionSkillBase : MonoBehaviour
     public int _SkillMotionPrior = 100;
     public bool _SkillMotionPriorSelf = false;
     public int _SuperArmorColliderID = -1;
+    public bool _ActSkillInJump = false;
+    public bool _ActStayInJump = true;
 
     public float _SkillBaseSpeed = 1;
     public float SkillSpeed
@@ -90,6 +92,15 @@ public class ObjMotionSkillBase : MonoBehaviour
 
         if (_MotionManager._ActionState == _MotionManager._StateMove)
             return true;
+
+        if ((_MotionManager._ActionState == _MotionManager._StateJump || _MotionManager._ActionState == _MotionManager._StateJumpIdle) && _ActSkillInJump)
+        {
+            if (_ActStayInJump)
+            {
+                _MotionManager.SetJumpStay();
+            }
+            return true;
+        }
 
         if (_MotionManager._ActionState == _MotionManager._StateSkill)
         {

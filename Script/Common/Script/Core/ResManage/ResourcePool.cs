@@ -519,6 +519,16 @@ public class ResourcePool : InstanceBase<ResourcePool>
         Debug.Log("LoadCharModel");
         string resPath = "Model/" + weaponName;
         GameObject weaponGO = null;
+        if (_ShaowPanel == null)
+        {
+            yield return ResourceManager.Instance.LoadPrefab("Common/ShadowPlane", (resName, resGO, loadHash) =>
+            {
+                _ShaowPanel = resGO;
+                _ShaowPanel.SetActive(false);
+                _ShaowPanel.transform.SetParent(transform);
+            });
+        }
+
         yield return ResourceManager.Instance.LoadPrefab(resPath, (subResName, subResGO, subCallBack) =>
         {
             weaponGO = subResGO;
@@ -548,6 +558,16 @@ public class ResourcePool : InstanceBase<ResourcePool>
 
     public IEnumerator LoadCharModel(string mainBase, string modelName, string weaponName, LoadBundleAssetCallback<MotionManager> callBack, Hashtable hash)
     {
+        if (_ShaowPanel == null)
+        {
+            yield return ResourceManager.Instance.LoadPrefab("Common/ShadowPlane", (resName, resGO, loadHash) =>
+            {
+                _ShaowPanel = resGO;
+                _ShaowPanel.SetActive(false);
+                _ShaowPanel.transform.SetParent(transform);
+            });
+        }
+
         string resPath = "Model/" + weaponName;
         GameObject weaponGO = null;
         yield return ResourceManager.Instance.LoadPrefab(resPath, (subResName, subResGO, subCallBack) =>
@@ -592,6 +612,16 @@ public class ResourcePool : InstanceBase<ResourcePool>
             weaponGO.transform.SetParent(modelGO.transform.Find("Weapon"));
             weaponGO.transform.localPosition = Vector3.zero;
             weaponGO.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            weaponGO.transform.localScale = Vector3.one;
+
+            if (_ShaowPanel != null)
+            {
+                var shadow = GameObject.Instantiate(_ShaowPanel);
+                shadow.transform.SetParent(motion.transform);
+                shadow.transform.localPosition = Vector3.zero;
+                shadow.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                shadow.gameObject.SetActive(true);
+            }
             callBack.Invoke(modelName, mainCharMotion, hash);
             Debug.Log("motion child count 3:" + mainCharMotion.transform.childCount);
         });

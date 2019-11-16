@@ -140,7 +140,7 @@ public class ObjMotionSkillAttack : ObjMotionSkillBase
                 PlayAudio(_NextAudio[_CurStep]);
             }
 
-            if (_CurStep - 1 >= 0 && _NextEffect[_CurStep - 1] != null)
+            if (_CurStep - 1 >= 0 && _NextEffect.Count > _CurStep  && _NextEffect[_CurStep - 1] != null)
             {
                 StopSkillEffect(_NextEffect[_CurStep - 1]);
             }

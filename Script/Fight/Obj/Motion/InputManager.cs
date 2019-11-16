@@ -40,7 +40,12 @@ public class InputManager : InstanceBase<InputManager>
         {
             InputMotion.InputDirect(CameraAxis);
         }
-        return;
+
+        if (IsKeyHold("l"))
+        {
+            InputMotion.JumpState();
+        }
+
         //if (_InputMotion.ActingSkill == null)
         {
             foreach (var skill in InputMotion._StateSkill._SkillMotions)
@@ -212,7 +217,15 @@ public class InputManager : InstanceBase<InputManager>
 
         if (IsKeyHold("j"))
         {
-            InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["j"]);
+            if (InputMotion._ActionState == InputMotion._StateJump
+                || InputMotion._ActionState == InputMotion._StateJumpIdle)
+            {
+                InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["7"]);
+            }
+            else
+            {
+                InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["j"]);
+            }
         }
 
         if (IsKeyHold("k"))
@@ -276,36 +289,36 @@ public class InputManager : InstanceBase<InputManager>
             }
         }
 
-        if (IsKeyHold("l"))
-        {
-            if (InputMotion._ActionState == InputMotion._StateHit
-                || InputMotion._ActionState == InputMotion._StateFly
-                || InputMotion._ActionState == InputMotion._StateLie
-                || InputMotion._ActionState == InputMotion._StateRise)
-            {
-                string inputKey = "8";
-                if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
-                {
-                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
-                }
-            }
-            else
-            {
-                string inputKey = "4";
-                if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
-                {
-                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
-                }
-                else
-                {
-                    inputKey = "7";
-                    if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
-                    {
-                        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
-                    }
-                }
-            }
-        }
+        //if (IsKeyHold("l"))
+        //{
+        //    if (InputMotion._ActionState == InputMotion._StateHit
+        //        || InputMotion._ActionState == InputMotion._StateFly
+        //        || InputMotion._ActionState == InputMotion._StateLie
+        //        || InputMotion._ActionState == InputMotion._StateRise)
+        //    {
+        //        string inputKey = "8";
+        //        if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
+        //        {
+        //            InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        string inputKey = "4";
+        //        if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
+        //        {
+        //            InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
+        //        }
+        //        else
+        //        {
+        //            inputKey = "7";
+        //            if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
+        //            {
+        //                InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     public void SetRotate()
@@ -321,7 +334,15 @@ public class InputManager : InstanceBase<InputManager>
         {
             if (CameraAxis != Vector2.zero)
             {
-                InputMotion.SetLookRotate(new Vector3(CameraAxis.x, 0, CameraAxis.y));
+                //InputMotion.SetLookRotate(new Vector3(0, 0, 0));
+                if (CameraAxis.x > 0)
+                {
+                    InputMotion.SetRotate(Vector3.zero);
+                }
+                else
+                {
+                    InputMotion.SetRotate(new Vector3(0,180,0));
+                }
             }
         }
     }

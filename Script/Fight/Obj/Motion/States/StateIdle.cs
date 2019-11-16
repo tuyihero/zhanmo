@@ -29,6 +29,9 @@ public class StateIdle : StateBase
             case MotionOpt.Act_Skill:
                 _MotionManager.TryEnterState(_MotionManager._StateSkill, args);
                 break;
+            case MotionOpt.Jump:
+                _MotionManager.TryEnterState(_MotionManager._StateJump, args);
+                break;
             case MotionOpt.Input_Skill:
                 _MotionManager.TryEnterState(_MotionManager._StateSkill, args);
                 break;

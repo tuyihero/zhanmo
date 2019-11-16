@@ -109,8 +109,8 @@ public class SkillData : SaveItemBase
 
     public List<string> GetRoleSkills()
     {
-        return new List<string>();
-        List<string> skillMotions = new List<string>() { "Attack" };
+        List<string> skillMotions = new List<string>() { "Attack","Skill1", "Skill2", "Skill3", "Skill4", "Skill5", "Skill6", "JumpAtk" };
+        return skillMotions;
         //if (RoleData.SelectRole.Profession == PROFESSION.BOY_DEFENCE || RoleData.SelectRole.Profession == PROFESSION.GIRL_DEFENCE)
         //{
         //    skillMotions.Add("Defence");

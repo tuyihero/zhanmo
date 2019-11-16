@@ -30,6 +30,7 @@ public class StateBase
         Stop_Catch,
         Hit,
         Fly,
+        Jump,
     }
 
     #region 
