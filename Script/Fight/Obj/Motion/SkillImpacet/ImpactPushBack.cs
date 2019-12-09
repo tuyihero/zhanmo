@@ -10,7 +10,7 @@ public class ImpactPushBack : ImpactBase
     {
         base.ActImpact(senderManager, reciverManager);
 
-        Vector3 destMove = -senderManager.transform.forward.normalized * _Speed * _Time;
+        Vector3 destMove = -senderManager.GetMotionForward().normalized * _Speed * _Time;
         reciverManager.SetMove(destMove, _Time / senderManager.RoleAttrManager.AttackSpeed);
 
     }

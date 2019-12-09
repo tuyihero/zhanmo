@@ -54,7 +54,14 @@ public class StateLie : StateBase
         float deltaTime = Time.time - _LieStartTime;
         if (deltaTime >= _RealLieTime)
         {
-            _MotionManager.TryEnterState(_MotionManager._StateRise);
+            if (_MotionManager._HasRiseState)
+            {
+                _MotionManager.TryEnterState(_MotionManager._StateRise);
+            }
+            else
+            {
+                _MotionManager.TryEnterState(_MotionManager._StateIdle);
+            }
         }
     }
 

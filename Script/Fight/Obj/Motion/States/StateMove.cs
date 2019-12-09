@@ -30,7 +30,8 @@ public class StateMove : StateBase
         }
         else if(args[0] is Vector3)
         {
-            _MotionManager.MoveTarget((Vector3)args[0]);
+            _MotionManager.MoveTarget((Vector3)args[0], (float)args[1]);
+            PlayAnim((Vector3)args[0], (float)args[1], (Transform)args[2]);
         }
     }
 
@@ -54,7 +55,8 @@ public class StateMove : StateBase
                 }
                 break;
             case MotionOpt.Move_Target:
-                _MotionManager.MoveTarget((Vector3)args[0]);
+                _MotionManager.MoveTarget((Vector3)args[0], (float)args[1]);
+                PlayAnim((Vector3)args[0], (float)args[1], (Transform)args[2]);
                 break;
             case MotionOpt.Stop_Move:
                 _MotionManager.TryEnterState(_MotionManager._StateIdle, args);
@@ -95,7 +97,74 @@ public class StateMove : StateBase
         _MotionManager.StopMove();
     }
 
+    public override void StateUpdate()
+    {
+        base.StateUpdate();
+
+        UpdateLookAtTrans();
+    }
+
     #region 
+
+    private Vector3 _TargetPos;
+    private Transform _LookTransform;
+    private float _MoveSpeedRate;
+
+    private Vector3 _LastRote = Vector3.zero;
+
+    private void UpdateLookAtTrans()
+    {
+        if (_LookTransform == null)
+        {
+            return;
+        }
+
+        if (_LookTransform.position.x > _MotionManager.transform.position.x)
+        {
+            if (_LastRote != Vector3.zero)
+            {
+                _LastRote = Vector3.zero;
+                RefreshAnim();
+                _MotionManager.SetRotate(Vector3.zero);
+            }
+            
+        }
+        else if (_LookTransform.position.x < _MotionManager.transform.position.x)
+        {
+            if (_LastRote.y != 180)
+            {
+                _LastRote = new Vector3(0, 180, 0);
+                RefreshAnim();
+                _MotionManager.SetRotate(_LastRote);
+            }
+            
+        }
+    }
+
+    private void RefreshAnim()
+    {
+        //if (_LookTransform != null &&
+        //    ((_TargetPos.x > _MotionManager.transform.position.x && _LookTransform.position.x < _MotionManager.transform.position.x)
+        //    || (_TargetPos.x < _MotionManager.transform.position.x && _LookTransform.position.x > _MotionManager.transform.position.x)))
+        //{
+        //    _MotionManager.RePlayAnimation(_Animation, -_MoveSpeedRate);
+        //}
+        //else
+        {
+            _MotionManager.RePlayAnimation(_Animation, _MoveSpeedRate);
+        }
+    }
+
+    private void PlayAnim(Vector3 target, float speed, Transform lookAtTrans)
+    {
+        _TargetPos = target;
+        if (_LookTransform != lookAtTrans || _MoveSpeedRate != speed)
+        {
+            _LookTransform = lookAtTrans;
+            _MoveSpeedRate = speed;
+            RefreshAnim();
+        }
+    }
 
     #endregion
 }

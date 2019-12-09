@@ -41,9 +41,22 @@ public class InputManager : InstanceBase<InputManager>
             InputMotion.InputDirect(CameraAxis);
         }
 
-        if (IsKeyHold("l"))
+        if (IsDoubleClick("l"))
         {
-            InputMotion.JumpState();
+            Debug.Log("Double click l");
+            InputMotion.JumpSwitchZ();
+        }
+        else
+        {
+            if (IsKeyHold("l"))
+            {
+                InputMotion.JumpState();
+            }
+        }
+
+        if (IsKeyHold("t"))
+        {
+            TestHit();
         }
 
         //if (_InputMotion.ActingSkill == null)
@@ -177,6 +190,49 @@ public class InputManager : InstanceBase<InputManager>
 #endif
     }
 
+    public static float _DoubleClickTime = 0.3f;
+    public class KeyPressInfo
+    {
+        public bool IsKeyDown;
+        public float KeyDownTime;
+    }
+    private Dictionary<string, KeyPressInfo> _LastClickTime = new Dictionary<string, KeyPressInfo>();
+    public bool IsDoubleClick(string key)
+    {
+        if (!IsKeyDown(key))
+        {
+            if (_LastClickTime.ContainsKey(key))
+            {
+                _LastClickTime[key].IsKeyDown = false;
+                if (Time.time - _LastClickTime[key].KeyDownTime > _DoubleClickTime)
+                {
+                    _LastClickTime.Remove(key);
+                }
+            }
+            return false;
+        }
+        else
+        {
+            if (!_LastClickTime.ContainsKey(key))
+            {
+                _LastClickTime.Add(key, new KeyPressInfo() { IsKeyDown = true, KeyDownTime = Time.time });
+            }
+            else
+            {
+                if (!_LastClickTime[key].IsKeyDown)
+                {
+                    if (Time.time - _LastClickTime[key].KeyDownTime < _DoubleClickTime)
+                    {
+                        Debug.Log("DoubleClick Time:" + (Time.time - _LastClickTime[key].KeyDownTime).ToString());
+                        return true;
+                    }
+                    _LastClickTime.Remove(key);
+                }
+            }
+        }
+        return false;
+    }
+
     #endregion
 
     #region emulate key
@@ -224,45 +280,73 @@ public class InputManager : InstanceBase<InputManager>
             }
             else
             {
-                InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["j"]);
+                if (Axis.y > 0 && (Mathf.Abs(Axis.y) + Mathf.Abs(Axis.x) >= 0.99f)
+                    && Mathf.Abs(Axis.y) >= Mathf.Abs(Axis.x))
+                {
+                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["8"]);
+                }
+                else if (Axis.y < 0 && (Mathf.Abs(Axis.y) + Mathf.Abs(Axis.x) >= 0.99f)
+                    && Mathf.Abs(Axis.y) >= Mathf.Abs(Axis.x))
+                {
+                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["9"]);
+                }
+                else
+                {
+                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["j"]);
+                }
             }
         }
 
         if (IsKeyHold("k"))
         {
-            if (InputMotion.ActingSkill == _NormalAttack && _NormalAttack.CurStep > 0 && _NormalAttack.CurStep < 4 && _NormalAttack.CanNextInput)
+            if (InputMotion.ActingSkill == null || !(InputMotion.ActingSkill is ObjMotionSkillPre))
             {
-                string inputKey = (_NormalAttack.CurStep).ToString();
-                if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey))
-                {
-                    SetRotate();
-                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
-                }
-            }
-            else
-            {
-                if (FightSkillManager.Instance.CanReuseSkill() && FightSkillManager.Instance.ReuseSkillBase.IsCanActSkill())
-                {
-                    SetRotate();
-                    InputMotion.ActSkill(FightSkillManager.Instance.ReuseSkillBase);
-                    FightSkillManager.Instance.ResetReuseSkill();
-                    return;
-                }
-
-                //if (!string.IsNullOrEmpty(_BuffSkillInput) && _InputMotion._StateSkill._SkillMotions[_BuffSkillInput].IsCanActSkill())
+                //if (Axis.y > 0)
                 //{
-                //    SetRotate();
-                //    _InputMotion.ActSkill(_InputMotion._StateSkill._SkillMotions[_BuffSkillInput]);
-                //    _BuffSkillInput = null;
+                //    if (InputMotion.IsInAir()&& InputMotion._StateSkill._SkillMotions.ContainsKey("p"))
+                //    {
+                //        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["p"]);
+                //    }
+                //    else
+                //    {
+                //        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["1"]);
+                //    }
                 //}
-
-                string inputKey = "k";
-                if (InputMotion._StateSkill._SkillMotions.ContainsKey(inputKey) && InputMotion._StateSkill._SkillMotions[inputKey].IsCanActSkill())
+                //else if (Axis.y < 0)
+                //{
+                //    if (InputMotion.IsInAir() && InputMotion._StateSkill._SkillMotions.ContainsKey("n"))
+                //    {
+                //        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["n"]);
+                //    }
+                //    else
+                //    {
+                //        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["2"]);
+                //    }
+                //}
+                //else if (Axis.x != 0)
+                //{
+                //    if (Axis.x > 0)
+                //    {
+                //        InputMotion.SetRotate(Vector3.zero);
+                //    }
+                //    else if (Axis.x < 0)
+                //    {
+                //        InputMotion.SetRotate(new Vector3(0, 180, 0));
+                //    }
+                //    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["3"]);
+                //}
+                //else
+                if (InputMotion.IsInAir())
                 {
-                    SetRotate();
-                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions[inputKey]);
+                    if (InputMotion._StateSkill._SkillMotions.ContainsKey("p") || InputMotion._StateSkill._SkillMotions.ContainsKey("n"))
+                    {
+                        InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["0"]);
+                    }
                 }
-
+                else
+                {
+                    InputMotion.ActSkill(InputMotion._StateSkill._SkillMotions["0"]);
+                }
             }
         }
 
@@ -339,7 +423,7 @@ public class InputManager : InstanceBase<InputManager>
                 {
                     InputMotion.SetRotate(Vector3.zero);
                 }
-                else
+                else if(CameraAxis.x < 0)
                 {
                     InputMotion.SetRotate(new Vector3(0,180,0));
                 }
@@ -439,6 +523,14 @@ public class InputManager : InstanceBase<InputManager>
         }
 
         return null;
+    }
+
+    public void OnDoubleClick(string input)
+    {
+        if (input.Equals("l"))
+        {
+
+        }
     }
 
     #endregion
@@ -557,6 +649,21 @@ public class InputManager : InstanceBase<InputManager>
             SummonSkill.Instance.UseSummonSkill();
             UISkillBar.RefreshSummonIcon();
         }
+    }
+
+    #endregion
+
+    #region test hit
+
+    public void TestHit()
+    {
+        ImpactHit impactHit = new ImpactHit();
+        impactHit._HitTime = 0.5f;
+
+        //ImpactFly impactHit = new ImpactFly();
+        //impactHit._FlyHeight = 1;
+        impactHit._DamageRate = 0;
+        impactHit.ActImpact(_InputMotion, _InputMotion);
     }
 
     #endregion

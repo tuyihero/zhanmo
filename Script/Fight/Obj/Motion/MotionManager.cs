@@ -14,15 +14,25 @@ public class MotionManager : MonoBehaviour
 
         InitRoleAttr();
 
-        _JumpBody = transform.Find("Body");
-        var bodyGO = transform.Find("Body/Body");
+        _JumpBody = transform.Find("AnimTrans");
+        _ShadowTrans = transform.Find("Shadow");
+        var bodyGO = transform.Find("AnimTrans/Body/Body");
         _Animaton = bodyGO.GetComponent<Animator>();
-        var bodyEffect = transform.Find("Body/Body/Effect");
-        _EffectAnimator = bodyEffect.GetComponent<Animator>();
-        var weapon = transform.Find("Body/Weapon/Weapon");
-        _WeaponAnimator = weapon.GetComponent<Animator>();
-        var weaponEffect = transform.Find("Body/Weapon/Weapon/Effect");
-        _WeaponEffectAnimator = weaponEffect.GetComponent<Animator>();
+        var bodyEffect = transform.Find("AnimTrans/Body/Body/Effect/Effect");
+        if (bodyEffect != null)
+        {
+            _EffectAnimator = bodyEffect.GetComponent<Animator>();
+        }
+        var weapon = transform.Find("AnimTrans/Body/Body/Weapon/Weapon");
+        if (weapon != null)
+        {
+            _WeaponAnimator = weapon.GetComponent<Animator>();
+            var weaponEffect = transform.Find("AnimTrans/Body/Weapon/Weapon/Effect");
+            if (weaponEffect != null)
+            {
+                _WeaponEffectAnimator = weaponEffect.GetComponent<Animator>();
+            }
+        }
         InitEffectAnimator();
 
         _AnimationEvent = _Animaton.gameObject.GetComponent<AnimEventManager>();
@@ -46,6 +56,18 @@ public class MotionManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_ActionPause)
+        {
+            if (_ActionPauseTime > 0)
+            {
+                if (Time.time - _ActionPauseStart > _ActionPauseTime)
+                {
+                    ActionResume();
+                }
+            }
+            return;
+        }
+
         UpdateMove();
         UpdateJump();
         if (_ActionState != null)
@@ -122,14 +144,20 @@ public class MotionManager : MonoBehaviour
 
         _BodyEffects = new List<string>();
         _WeaponEffects = new List<string>();
-        foreach (var anim in _EffectAnimator.runtimeAnimatorController.animationClips)
+        if (_EffectAnimator != null && _EffectAnimator.runtimeAnimatorController != null)
         {
-            _BodyEffects.Add(anim.name);
+            foreach (var anim in _EffectAnimator.runtimeAnimatorController.animationClips)
+            {
+                _BodyEffects.Add(anim.name);
+            }
         }
 
-        foreach (var anim in _WeaponEffectAnimator.runtimeAnimatorController.animationClips)
+        if (_WeaponEffectAnimator != null)
         {
-            _WeaponEffects.Add(anim.name);
+            foreach (var anim in _WeaponEffectAnimator.runtimeAnimatorController.animationClips)
+            {
+                _WeaponEffects.Add(anim.name);
+            }
         }
     }
 
@@ -142,23 +170,35 @@ public class MotionManager : MonoBehaviour
         }
     }
 
-    public void InitAnimation(AnimationClip animClip)
+    public void InitAnimation(AnimationClip animClipTemp)
     {
-        //List<AnimationEvent> eveneList = new List<UnityEngine.AnimationEvent>();
-        //foreach (var animEvent in animClip.events)
-        //{
-        //    if (animEvent.functionName == "ColliderStart" && animEvent.intParameter >= 1000 && animEvent.intParameter < 10000)
-        //    { }
-        //    else if (animEvent.functionName == "CollidertEnd" && animEvent.intParameter >= 1000 && animEvent.intParameter < 10000)
-        //    { }
-        //    else
-        //    {
-        //        eveneList.Add(animEvent);
-        //    }
-        //}
-        //animClip.events = eveneList.ToArray();
+        var animClip = GetAnimClip(animClipTemp.name);
+        List<AnimationEvent> eveneList = new List<UnityEngine.AnimationEvent>();
+        foreach (var animEvent in animClip.events)
+        {
+            if (animEvent.functionName == "ColliderStart" && animEvent.intParameter >= 1000 && animEvent.intParameter < 10000)
+            { }
+            else if (animEvent.functionName == "CollidertEnd" && animEvent.intParameter >= 1000 && animEvent.intParameter < 10000)
+            { }
+            else
+            {
+                eveneList.Add(animEvent);
+            }
+        }
+        animClip.events = eveneList.ToArray();
 
         //_Animaton.AddClip(animClip, animClip.name);
+    }
+
+    public AnimationClip GetAnimClip(string animName)
+    {
+        foreach (var anim in Animation.runtimeAnimatorController.animationClips)
+        {
+            if (anim.name == animName)
+                return anim;
+        }
+
+        return null;
     }
 
     public void PlayAnimation(AnimationClip animClip)
@@ -351,18 +391,19 @@ public class MotionManager : MonoBehaviour
 
     public void PauseAnimation()
     {
-        _Animaton.StopPlayback();
+        _OrgSpeed = _Animaton.speed;
+        _Animaton.speed = 0;
         if (_EffectAnimator != null)
         {
-            _EffectAnimator.StopPlayback();
+            _EffectAnimator.speed = 0;
         }
         if (_WeaponAnimator != null)
         {
-            _WeaponAnimator.StopPlayback();
+            _WeaponAnimator.speed = 0;
         }
         if (_WeaponEffectAnimator != null)
         {
-            _WeaponEffectAnimator.StopPlayback();
+            _WeaponEffectAnimator.speed = 0;
         }
         //foreach (AnimationState state in _Animaton)
         //{
@@ -396,6 +437,18 @@ public class MotionManager : MonoBehaviour
         //if (_Animaton.IsPlaying(animClip.name))
         {
             _Animaton.speed = _OrgSpeed;
+        }
+        if (_EffectAnimator != null)
+        {
+            _EffectAnimator.speed = _OrgSpeed;
+        }
+        if (_WeaponAnimator != null)
+        {
+            _WeaponAnimator.speed = _OrgSpeed;
+        }
+        if (_WeaponEffectAnimator != null)
+        {
+            _WeaponEffectAnimator.speed = _OrgSpeed;
         }
 
         if (_PlayingEffect != null)
@@ -551,7 +604,7 @@ public class MotionManager : MonoBehaviour
         }
         _RoleAttrManager._MotionManager = this;
 
-        if (_RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
+        if (MotionType == Tables.MOTION_TYPE.MainChar)
         {
             _RoleAttrManager.InitMainRoleAttr();
             if(RoleData.SelectRole != null)
@@ -586,7 +639,7 @@ public class MotionManager : MonoBehaviour
 
             //RecvAllEffects();
             FightManager.Instance.OnObjDie(this);
-            FlyEvent(0.1f, -1, -1, this, null, Vector3.zero, 0);
+            FlyEvent(0.1f, -1, -1, this, null, Vector3.zero, 0, 5);
             //_EventController.PushEvent(GameBase.EVENT_TYPE.EVENT_MOTION_FLY, this, new Hashtable());
             //_BaseMotionManager.FlyEvent(0.1f, -1, this, null);
         }
@@ -954,14 +1007,14 @@ public class MotionManager : MonoBehaviour
         {
             if (!_BindTransform.ContainsKey(_Animaton.name))
             {
-                var bindTran = transform.Find(_Animaton.name);
+                var bindTran = _Animaton.transform.Find(_Animaton.name);
                 _BindTransform.Add(_Animaton.name, bindTran);
             }
         }
 
         if (!_BindTransform.ContainsKey(bindName))
         {
-            var bindTran = transform.Find(_Animaton.name + "/" + bindName);
+            var bindTran = _Animaton.transform.Find(bindName);
             _BindTransform.Add(bindName, bindTran);
         }
 
@@ -1042,8 +1095,6 @@ public class MotionManager : MonoBehaviour
         if (ResourcePool.Instance._CommonHitEffect.Count > effectIdx && effectIdx >= 0)
         {
             Hashtable hash = new Hashtable();
-            if (impactSender != null)
-                hash.Add("Rotation", Quaternion.LookRotation(impactSender.transform.position - transform.position, Vector3.zero));
 
             PlayDynamicEffect(ResourcePool.Instance._CommonHitEffect[effectIdx], hash);
         }
@@ -1073,6 +1124,7 @@ public class MotionManager : MonoBehaviour
 
     #region move
 
+    private Transform _ShadowTrans;
     private Vector3 _TargetVec;
     private Vector3 _TargetPos;
     private float _LastTime;
@@ -1080,7 +1132,21 @@ public class MotionManager : MonoBehaviour
 
     public void SetPosition(Vector3 position)
     {
-        transform.position = position;
+        float xLimit = position.x;
+        if (RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
+        {
+            xLimit = Mathf.Clamp(position.x, FightManager.Instance._CameraFollow.MainMovePosXMin, FightManager.Instance._CameraFollow.MainMovePosXMax);
+        }
+
+        float zLimit = position.z;
+        if (RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
+        {
+            zLimit = Mathf.Clamp(position.z, FightManager.Instance._CameraFollow._SceneAnimController.SceneZMin, FightManager.Instance._CameraFollow._SceneAnimController.SceneZMax);
+        }
+
+        Vector3 destPos = new Vector3(xLimit, FightManager.Instance._CameraFollow._SceneAnimController.SceneY, zLimit);
+        transform.position = destPos;
+
         return;
     }
 
@@ -1091,12 +1157,48 @@ public class MotionManager : MonoBehaviour
 
     public void SetRotate(Vector3 rotate)
     {
+        if (_Animaton == null)
+            return;
+
         transform.rotation = Quaternion.Euler(rotate);
+
+        if (rotate.y == 0)
+        {
+            _Animaton.transform.parent.localRotation = Quaternion.Euler(45, 0, 0);
+            _ShadowTrans.transform.localRotation = Quaternion.Euler(45, 0, 0);
+
+            if(_EffectAnimator != null)
+                _EffectAnimator.transform.parent.localPosition = new Vector3(_EffectAnimator.transform.parent.localPosition.x, _EffectAnimator.transform.parent.localPosition.y, -0.03f);
+            if (_WeaponAnimator != null)
+                _WeaponAnimator.transform.parent.localPosition = new Vector3(_WeaponAnimator.transform.parent.localPosition.x, _WeaponAnimator.transform.parent.localPosition.y, -0.01f);
+            if (_WeaponEffectAnimator != null)
+                _WeaponEffectAnimator.transform.localPosition = new Vector3(_WeaponEffectAnimator.transform.parent.localPosition.x, _WeaponEffectAnimator.transform.parent.localPosition.y, -0.02f);
+        }
+        else
+        {
+            _Animaton.transform.parent.localRotation = Quaternion.Euler(-45, 0, 0);
+            _ShadowTrans.transform.localRotation = Quaternion.Euler(-45, 0, 0);
+
+            if (_EffectAnimator != null)
+                _EffectAnimator.transform.parent.localPosition = new Vector3(_EffectAnimator.transform.parent.localPosition.x, _EffectAnimator.transform.parent.localPosition.y, 0.03f);
+            if (_WeaponAnimator != null)
+                _WeaponAnimator.transform.parent.localPosition = new Vector3(_WeaponAnimator.transform.parent.localPosition.x, _WeaponAnimator.transform.parent.localPosition.y, 0.01f);
+            if (_WeaponEffectAnimator != null)
+                _WeaponEffectAnimator.transform.localPosition = new Vector3(_WeaponEffectAnimator.transform.parent.localPosition.x, _WeaponEffectAnimator.transform.parent.localPosition.y, 0.02f);
+        }
+        
     }
 
     public void SetLookAt(Vector3 target)
     {
-        transform.LookAt(target);
+        if (target.x > transform.position.x)
+        {
+            SetRotate(Vector3.zero);
+        }
+        else if (target.x < transform.position.x)
+        {
+            SetRotate(new Vector3(0, 180, 0));
+        }
     }
 
     public void ResetMove()
@@ -1176,14 +1278,15 @@ public class MotionManager : MonoBehaviour
 
     }
 
-    public void MoveTarget(Vector3 targetPos)
+    public void MoveTarget(Vector3 targetPos,float speed)
     {
 
-        SetMove(targetPos-transform.position, (targetPos - transform.position).magnitude/ RoleAttrManager.MoveSpeed, targetPos);
+        SetMove(targetPos-transform.position, (targetPos - transform.position).magnitude/ (RoleAttrManager.MoveSpeed * speed), targetPos);
     }
 
     public void StopMove()
     {
+        _TargetVec = Vector3.zero;
         return;
     }
 
@@ -1231,11 +1334,48 @@ public class MotionManager : MonoBehaviour
         //_NavAgent.avoidancePriority = corpsePrior;
     }
 
+    public Vector3 GetMotionForward()
+    {
+        if (transform.transform.rotation.eulerAngles.y == 0)
+        {
+            return new Vector3(1, 0, 0);
+        }
+        else
+        {
+            return new Vector3(-1, 0, 0);
+        }
+    }
+
+    public Vector3 GetMotionAwayDirect(Vector3 position)
+    {
+        if (position.x >= transform.position.x)
+        {
+            return new Vector3(1, 0, 0);
+        }
+        else
+        {
+            return new Vector3(-1, 0, 0);
+        }
+    }
+
+    public static Vector3 GetForward2D(Vector3 eulerAngles)
+    {
+        if (eulerAngles.y == 0)
+        {
+            return new Vector3(1, 0, 0);
+        }
+        else
+        {
+            return new Vector3(-1, 0, 0);
+        }
+    }
+
     #endregion
 
     #region jump
 
-    private float _JumpSpeed = 5f;
+    private float _JumpSpeed = 14f;
+    private float _SwitchZSpeed = 5.0f;
 
     private float _JumpHeight;
     private Transform _JumpBody;
@@ -1247,7 +1387,7 @@ public class MotionManager : MonoBehaviour
         }
     }
     private float _CurJumpSpeed = 3f;
-    private float _Gravity = -10f;
+    private float _Gravity = -40f;
     private float _JumpMoveSpeedRate = 0.6f;
     private Vector2 _JumpMoveDirect = Vector2.zero;
     private bool _JumpStay = false;
@@ -1259,12 +1399,59 @@ public class MotionManager : MonoBehaviour
         }
     }
 
+    private Vector2 _SkillJumpSpeed;
+    private float _SkillJumpTime;
+    private Action _SkillJumpFunc;
+
+    private int _SwitchToPosIdx = 0;
+    private int _CurZInx = 0;
+
+    public bool IsInAir()
+    {
+        return _JumpBody.localPosition.y > 0;
+    }
+
     public void UpdateJump()
     {
         if (_JumpStay)
             return;
 
-        if (_JumpHeight > 0)
+        if (_SkillJumpSpeed != Vector2.zero)
+        {
+            _JumpBody.localPosition += new Vector3(0, _SkillJumpSpeed.y* Time.fixedDeltaTime, 0);
+            SetPosition(transform.position + new Vector3(_SkillJumpSpeed.x * GetMotionForward().x * Time.fixedDeltaTime, 0, 0));
+            _SkillJumpTime -= Time.fixedDeltaTime;
+
+            if (_SkillJumpTime <= 0)
+            {
+                _SkillJumpSpeed = Vector2.zero;
+                _SkillJumpTime = 0;
+                _JumpHeight = 1;
+                _CurJumpSpeed = 0;
+
+                if (_SkillJumpFunc != null)
+                {
+                    _SkillJumpFunc.Invoke();
+                }
+            }
+
+            if (_JumpBody.localPosition.y <= 0)
+            {
+                _SkillJumpSpeed = Vector2.zero;
+                _SkillJumpTime = 0;
+
+                _JumpBody.localPosition = Vector3.zero;
+                _JumpHeight = 0;
+                _JumpMoveDirect = Vector2.zero;
+                ResetJumpSkillAct();
+
+                if (_SkillJumpFunc != null)
+                {
+                    _SkillJumpFunc.Invoke();
+                }
+            }
+        }
+        else if (_JumpHeight > 0)
         {
             _CurJumpSpeed += _Gravity * Time.fixedDeltaTime;
             float jumpstep = _CurJumpSpeed * Time.fixedDeltaTime;
@@ -1285,8 +1472,43 @@ public class MotionManager : MonoBehaviour
             {
                 _JumpBody.localPosition = Vector3.zero;
                 _JumpHeight = 0;
-
+                _JumpMoveDirect = Vector2.zero;
+                ResetJumpSkillAct();
                 TryEnterState(_StateIdle, null);
+            }
+
+            if (_SwitchToPosIdx >= 0)
+            {
+                float jumpToPos = FightManager.Instance._CameraFollow._SwitchZ[_SwitchToPosIdx];
+                float jumpZSpeed = _SwitchZSpeed;
+                if (jumpToPos < transform.position.z)
+                {
+                    jumpZSpeed = -_SwitchZSpeed;
+                    SetPosition(transform.position + new Vector3(0, 0, jumpZSpeed * Time.fixedDeltaTime));
+
+                    if (jumpToPos > transform.position.z)
+                    {
+                        SetPosition(new Vector3(transform.position.x, transform.position.y, jumpToPos));
+                        _CurZInx = _SwitchToPosIdx;
+                        _SwitchToPosIdx = -1;
+                    }
+                    
+                }
+                else
+                {
+                    SetPosition(transform.position + new Vector3(0, 0, jumpZSpeed * Time.fixedDeltaTime));
+
+                    if (jumpToPos < transform.position.z)
+                    {
+                        SetPosition(new Vector3(transform.position.x, transform.position.y, jumpToPos));
+                        _CurZInx = _SwitchToPosIdx;
+                        _SwitchToPosIdx = -1;
+                    }
+                    
+                }
+
+
+
             }
         }
     }
@@ -1296,11 +1518,13 @@ public class MotionManager : MonoBehaviour
         _JumpHeight = height;
         _CurJumpSpeed = _JumpSpeed;
         _JumpStay = false;
+        _SwitchToPosIdx = -1;
     }
 
     public void SetJumpStay()
     {
         _JumpStay = true;
+        _SwitchToPosIdx = -1;
     }
 
     public void JumpFall()
@@ -1312,11 +1536,44 @@ public class MotionManager : MonoBehaviour
     public void JumpMove(Vector2 direct)
     {
         _JumpMoveDirect = direct;
+        _SwitchToPosIdx = -1;
     }
 
-    public bool IsInAir()
+    public void SetSkillJump(Vector2 speed, float time, Action skillJumpFun = null)
     {
-        return _JumpHeight > 0;
+        _SkillJumpSpeed = speed;
+        _SkillJumpTime = time;
+
+        _SkillJumpFunc = skillJumpFun;
+
+        _SwitchToPosIdx = -1;
+    }
+
+    public void ResetJump()
+    {
+        _JumpHeight = 0;
+        _CurJumpSpeed = 0;
+        _JumpStay = false;
+
+        _SkillJumpSpeed = Vector2.zero;
+        _SkillJumpTime = 0;
+
+        _SkillJumpFunc = null;
+
+        _SwitchToPosIdx = -1;
+    }
+
+    public void ResetJumpSkillAct()
+    {
+        foreach (var skillMotion in _StateSkill._SkillMotions.Values)
+        {
+            skillMotion.ResetActedTimesInJump();
+        }
+    }
+
+    public void JumpToZPos(int toZPosIdx)
+    {
+        _SwitchToPosIdx = toZPosIdx;
     }
 
     #endregion
@@ -1408,7 +1665,7 @@ public class MotionManager : MonoBehaviour
 
     #region collider
 
-    public Vector3 _ColliderInfo = new Vector3(0.4f, 1.8f, 0);
+    public Vector3 _ColliderInfo = new Vector3(0.2f, 1.8f, 1);
     public Vector3 _ColliderCenter = new Vector3(0, 0, 0);
     public bool _IsTrigger = true;
 
@@ -1421,40 +1678,37 @@ public class MotionManager : MonoBehaviour
             {
                 if (_ColliderInfo.x > 0)
                 {
-                    _TriggerCollider = gameObject.AddComponent<CapsuleCollider>();
-                    //_TriggerCollider = AnimationEvent.GetComponentInChildren<Collider>();
-                    //if (_TriggerCollider == null)
-                    //{
-                    //    var sole = AnimationEvent.transform.Find("center/sole");
-                    //    if (sole == null)
-                    //    {
-                    //        sole = AnimationEvent.transform.Find("Bip001/sole");
-                    //    }
-                    //    var collider = sole.gameObject.AddComponent<CapsuleCollider>();
-                    //    collider.radius = _ColliderInfo.x;
-                    //    collider.height = _ColliderInfo.y;
-                    //    collider.direction = 2;
-                    //    if (!_IsTrigger)
-                    //    {
-                    //        collider.center = new Vector3(0, 0, 3000);
-                    //    }
-                    //    else
-                    //    {
-                    //        if (_ColliderCenter == Vector3.zero)
-                    //        {
-                    //            collider.center = _ColliderCenter;
-                    //        }
-                    //        else
-                    //        {
-                    //            collider.center = new Vector3(0, 0, collider.height * 0.5f);
-                    //        }
-                    //    }
-                    //    collider.isTrigger = true;
-                    //    var rigidbody = sole.gameObject.AddComponent<Rigidbody>();
-                    //    rigidbody.isKinematic = true;
-                    //    rigidbody.useGravity = false;
-                    //    _TriggerCollider = collider;
-                    //}
+                    _TriggerCollider = _JumpBody.gameObject.GetComponent<Collider>();
+                    if (_TriggerCollider == null)
+                    {
+                        var sole = _JumpBody;
+                        if (sole == null)
+                        {
+                            sole = _JumpBody;
+                        }
+                        var collider = sole.gameObject.AddComponent<BoxCollider>();
+                        collider.size = _ColliderInfo;
+                        if (!_IsTrigger)
+                        {
+                            collider.center = new Vector3(0, 0, 3000);
+                        }
+                        else
+                        {
+                            if (_ColliderCenter == Vector3.zero)
+                            {
+                                collider.center = new Vector3(0, collider.size.y * 0.5f, 0);
+                            }
+                            else
+                            {
+                                collider.center = _ColliderCenter;
+                            }
+                        }
+                        collider.isTrigger = true;
+                        var rigidbody = sole.gameObject.AddComponent<Rigidbody>();
+                        rigidbody.isKinematic = true;
+                        rigidbody.useGravity = false;
+                        _TriggerCollider = collider;
+                    }
                 }
             }
             return _TriggerCollider;
@@ -1464,6 +1718,8 @@ public class MotionManager : MonoBehaviour
     #endregion
 
     #region state mechine
+
+    public bool _HasRiseState = true;
 
     public string _MotionAnimPath = "";
 
@@ -1478,6 +1734,7 @@ public class MotionManager : MonoBehaviour
     public StateSkill _StateSkill;
     public StateJump _StateJump;
     public StateJumpIdle _StateJumpIdle;
+    public StateJumpZ _StateJumpZ;
 
     public StateBase _ActionState;
 
@@ -1496,6 +1753,9 @@ public class MotionManager : MonoBehaviour
 
         _StateJumpIdle = new StateJumpIdle();
         _StateJumpIdle.InitAnimation(this);
+
+        _StateJumpZ = new StateJumpZ();
+        _StateJumpZ.InitAnimation(this);
 
         _StateHit = new StateHit();
         _StateHit.InitAnimation(this);
@@ -1555,6 +1815,12 @@ public class MotionManager : MonoBehaviour
 
     #region state opt
 
+    public bool _ActionPause = false;
+    public bool _IsCanFly = true;
+    public bool _IsCanHit = true;
+    private float _ActionPauseTime = 0;
+    private float _ActionPauseStart = 0;
+
     public ObjMotionSkillBase ActingSkill
     {
         get
@@ -1594,11 +1860,17 @@ public class MotionManager : MonoBehaviour
 
     public void ActionPause(float time)
     {
+        _ActionPause = true;
+        _ActionPauseTime = time;
+        _ActionPauseStart = Time.time;
         StateOpt(StateBase.MotionOpt.Pause_State, time);
     }
 
     public void ActionResume()
     {
+        _ActionPause = false;
+        _ActionPauseTime = 0;
+        _ActionPauseStart = 0;
         StateOpt(StateBase.MotionOpt.Resume_State);
     }
 
@@ -1609,16 +1881,28 @@ public class MotionManager : MonoBehaviour
 
     public void HitEvent(float hitTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, bool isPauseFly = false)
     {
+        if (!_IsCanHit)
+        {
+            return;
+        }
+
         if (!IsBuffCanHit(impactSender, hitImpact))
         {
             return;
         }
+
+        if (IsInAir())
+        {
+            FlyEvent(0.1f, hitEffect, hitAudio, impactSender, hitImpact, moveDirect, moveTime, 5);
+            return;
+        }
+
         BuffBeHit(impactSender, hitImpact);
         foreach (var aiBase in _AIBases)
         {
             aiBase.OnBeHit(hitImpact);
         }
-        StateOpt(StateBase.MotionOpt.Hit, hitTime, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio, isPauseFly);
+        StateOpt(StateBase.MotionOpt.Hit, hitTime, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio, isPauseFly, 0.0f);
     }
 
     public void FrozenEvent()
@@ -1626,8 +1910,16 @@ public class MotionManager : MonoBehaviour
 
     }
 
-    public void FlyEvent(float flyHeight, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime)
+    public void FlyEvent(float flyHeight, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, float upSpeed)
     {
+        if (!_IsCanFly && !IsMotionDie)
+        {
+            if (_IsCanHit)
+            {
+                HitEvent(0.6f, hitEffect, hitAudio, impactSender, hitImpact, moveDirect, moveTime, false);
+            }
+            return;
+        }
         //Debug.Log("FlyEvent");
         if (!IsBuffCanHit(impactSender, hitImpact))
         {
@@ -1638,7 +1930,7 @@ public class MotionManager : MonoBehaviour
         {
             aiBase.OnBeHit(hitImpact);
         }
-        StateOpt(StateBase.MotionOpt.Fly, flyHeight, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio);
+        StateOpt(StateBase.MotionOpt.Fly, flyHeight, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio, false, upSpeed);
     }
 
     public void CatchEvent(float catchTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime)
@@ -1661,9 +1953,9 @@ public class MotionManager : MonoBehaviour
         StateOpt(StateBase.MotionOpt.Stop_Catch);
     }
 
-    public void StartMoveState(Vector3 target)
+    public void StartMoveState(Vector3 target, Transform lookatTrans = null, float speed = 1)
     {
-        StateOpt(StateBase.MotionOpt.Move_Target, target);
+        StateOpt(StateBase.MotionOpt.Move_Target, target, speed, lookatTrans);
     }
 
     public void StopMoveState()
@@ -1674,6 +1966,20 @@ public class MotionManager : MonoBehaviour
     public void JumpState()
     {
         StateOpt(StateBase.MotionOpt.Jump);
+    }
+
+    public void JumpSwitchZ()
+    {
+        int jumpToPosIdx = _CurZInx;
+        if (jumpToPosIdx + 1 >= FightManager.Instance._CameraFollow._SwitchZ.Count)
+        {
+            jumpToPosIdx = 0;
+        }
+        else
+        {
+            jumpToPosIdx = jumpToPosIdx + 1;
+        }
+        StateOpt(StateBase.MotionOpt.Jump, jumpToPosIdx);
     }
 
     #endregion

@@ -10,7 +10,7 @@ public class ImpactHitBack : ImpactHit
     {
         InitActImpact(senderManager, reciverManager);
 
-        Vector3 destMove = -senderManager.transform.forward.normalized * _Speed * _Time;
+        Vector3 destMove = -senderManager.GetMotionForward().normalized * _Speed * _Time;
 
         HitMotion(senderManager, reciverManager, destMove, _Time);
 

@@ -98,6 +98,8 @@ public class AI_Base : MonoBehaviour
         _BornPos = transform.position;
 
         InitReleaseSkillTimes();
+
+        InitPassiveSkills();
     }
 
     protected virtual void AIUpdate()
@@ -202,12 +204,16 @@ public class AI_Base : MonoBehaviour
     public class AI_Skill_Info
     {
         public ObjMotionSkillBase SkillBase;
-        public float SkillRange;
+        public Vector2 SkillRange;
         public float SkillInterval;
         public float ReadyTime = 0;
         public float StartCD = -1;
         public float AfterSkillWait = 1;
         public float MonDamageRate = 1;
+
+        //for 2D
+        public bool ActOutCamera = false;
+        public bool ActDiffZ = false;
 
         public float FirstHitTime { get; set; }
         public float LastUseSkillTime { get; set; }
@@ -244,7 +250,7 @@ public class AI_Base : MonoBehaviour
     public void InitSkillGoes(MotionManager mainMotion)
     {
         GameObject motionObj = new GameObject("Motion");
-        motionObj.transform.SetParent(mainMotion.transform);
+        motionObj.transform.SetParent(mainMotion.transform.Find("AnimTrans"));
         motionObj.transform.localPosition = Vector3.zero;
         motionObj.transform.localRotation = Quaternion.Euler(Vector3.zero);
         for(int i = 0; i< _AISkills.Count; ++i)
@@ -300,7 +306,7 @@ public class AI_Base : MonoBehaviour
         if (!skillInfo.SkillBase.IsCanActSkill())
             return;
 
-        _SelfMotion.transform.LookAt(_TargetMotion.transform.position);
+        _SelfMotion.SetLookAt(_TargetMotion.transform.position);
         _SelfMotion.ActSkill(skillInfo.SkillBase);
         SetSkillCD(skillInfo, skillInfo.SkillInterval);
     }
@@ -317,10 +323,11 @@ public class AI_Base : MonoBehaviour
             if (!_AISkills[i].IsSkillCD())
                 continue;
 
+
             //if (!IsCommonCD())
             //    continue;
 
-            if (_AISkills[i].SkillRange < dis)
+            if (_AISkills[i].SkillRange.y < dis || _AISkills[i].SkillRange.x > dis)
                 continue;
 
             StartSkill(_AISkills[i]);
@@ -352,7 +359,7 @@ public class AI_Base : MonoBehaviour
             diffModify = Mathf.Clamp(diffModify, 1, 2);
             if (_SelfMotion.RoleAttrManager.MotionType == Tables.MOTION_TYPE.Normal)
             {
-                _ActValue = (int)(500 * diffModify);
+                _ActValue = (int)(3000 * diffModify);
                 _AttackInterval = 1;
             }
             else if (_SelfMotion.RoleAttrManager.MotionType == Tables.MOTION_TYPE.Elite)
@@ -566,10 +573,14 @@ public class AI_Base : MonoBehaviour
 
     public static float GetPathLength(Vector3 fromPos, Vector3 toPos)
     {
+        return Vector3.Distance(fromPos, toPos);
+
         var navMeshPath = GetPath(fromPos, toPos);
         if (navMeshPath == null)
             return 9999999;
         return GetPathLength(navMeshPath);
+
+
     }
     #endregion
 
@@ -804,7 +815,31 @@ public class AI_Base : MonoBehaviour
     }
 
     #endregion
-    
+
+    #region Passive skills
+
+    public Transform _PassiveGO;
+
+    public void InitPassiveSkills()
+    {
+        if (_PassiveGO == null)
+            return;
+
+        List<ImpactBase> passiveImpacts = new List<ImpactBase>();
+        for (int i = 0; i < _PassiveGO.childCount; ++i)
+        {
+            var passiveImpact = _PassiveGO.GetChild(i).GetComponents<ImpactBase>();
+            passiveImpacts.AddRange(passiveImpact);
+        }
+
+        foreach (var buff in passiveImpacts)
+        {
+            buff.ActImpact(_SelfMotion, _SelfMotion);
+        }
+    }
+
+    #endregion
+
 }
 
 

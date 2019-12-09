@@ -55,6 +55,39 @@ public class BulletEmitterBase : ImpactBase
         return bulletObj as T;
     }
 
+    protected T InitBulletGO2D<T>() where T : class
+    {
+        Vector3 modifyPos = MotionManager.GetForward2D(transform.rotation.eulerAngles) * _EmitterOffset.x + transform.up * _EmitterOffset.y;
+        var bulletObj = ResourcePool.Instance.GetIdleBullet(_BulletPrefab);
+        bulletObj.gameObject.SetActive(true);
+        bulletObj.transform.SetParent(ResourcePool.Instance.transform);
+        if (_SenderPos)
+        {
+            bulletObj.transform.position = SenderMotion.transform.position + modifyPos;
+        }
+        else
+        {
+            bulletObj.transform.position = transform.position + modifyPos;
+        }
+        bulletObj.transform.rotation = transform.rotation;
+        bulletObj.transform.localScale = _BulletScaleModify;
+        bulletObj.gameObject.layer = FightLayerCommon.GetBulletLayer(_SenderManager);
+        bulletObj.Init(_SenderManager, this);
+        var bulletHits = bulletObj.GetComponentsInChildren<ImpactDamage>();
+        foreach (var impactDamage in bulletHits)
+        {
+            impactDamage._DamageRate = _Damage;
+            impactDamage._DamageType = _DamageType;
+
+            if (impactDamage is ImpactHit)
+            {
+                ImpactHit impactHit = impactDamage as ImpactHit;
+                impactHit._IsBulletHit = true;
+            }
+        }
+        return bulletObj as T;
+    }
+
     protected List<T> InitBulletGO<T>(int bulletCnt) where T :class
     {
         List<T> bullets = new List<T>();

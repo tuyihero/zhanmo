@@ -37,14 +37,14 @@ public class SelectBase : MonoBehaviour
 
     public virtual void RegisterEvent()
     {
-        //for (int i = 0; i < _EventFrame.Count; ++i)
-        //{
-        //    var anim = _ObjMotion.Animation.GetClip(_EventAnim.name);
-        //    if (anim != null)
-        //    {
-        //        _ObjMotion.AnimationEvent.AddSelectorEvent(anim, _EventFrame[i], _ColliderID);
-        //    }
-        //}
+        for (int i = 0; i < _EventFrame.Count; ++i)
+        {
+            var anim = _ObjMotion.GetAnimClip(_EventAnim.name);
+            if (anim != null)
+            {
+                _ObjMotion.AnimationEvent.AddSelectorEvent(anim, _EventFrame[i], _ColliderID);
+            }
+        }
     }
 
     public virtual void ResetSelector()
@@ -71,7 +71,7 @@ public class SelectBase : MonoBehaviour
 
     public IEnumerator AutoFinish()
     {
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(0.1f);
 
         ColliderFinish();
     }

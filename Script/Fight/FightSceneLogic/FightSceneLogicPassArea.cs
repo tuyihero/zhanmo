@@ -21,6 +21,11 @@ public class FightSceneLogicPassArea : FightSceneLogicBase
     {
         base.StartLogic();
 
+        if (FightManager.Instance.MainChatMotion != null)
+        {
+            FightManager.Instance.MainChatMotion.SetPosition(_MainCharBornPos.position);
+        }
+
         for (int i = 0; i < _FightArea.Count; ++i)
         {
             _FightArea[i].InitArea();
@@ -36,24 +41,6 @@ public class FightSceneLogicPassArea : FightSceneLogicBase
     protected override void UpdateLogic()
     {
         base.UpdateLogic();
-
-        foreach (var area in _FightArea)
-        {
-            if (area.AreaState == AreaState.None)
-            {
-                if (area is FightSceneAreaKShowTeleport)
-                    continue;
-
-                //float dis = Vector3.Distance(FightManager.Instance.MainChatMotion.transform.position, area.transform.position);
-                float dis = AI_Base.GetPathLength(FightManager.Instance.MainChatMotion.transform.position, area.transform.position);
-                
-                if (dis < 25)
-                {
-                    area.StartArea();
-                }
-            }
-        }
-
 
         if (_RunningArea != null)
             _RunningArea.UpdateArea();
@@ -74,6 +61,23 @@ public class FightSceneLogicPassArea : FightSceneLogicBase
             }
         }
         
+    }
+
+    public override void MotionDisapear(MotionManager motion)
+    {
+        base.MotionDisapear(motion);
+
+        foreach (var area in _FightArea)
+        {
+            if (area.AreaState == AreaState.Acting)
+            {
+                if (area is FightSceneAreaKShowTeleport)
+                    continue;
+
+                area.MotionDisapear(motion);
+            }
+        }
+
     }
 
     public Vector3 GetNextAreaPos()
@@ -128,7 +132,7 @@ public class FightSceneLogicPassArea : FightSceneLogicBase
         ++_RunningIdx;
         if (_RunningIdx < _FightArea.Count)
         {
-            if (_FightArea[_RunningIdx] is FightSceneAreaKShowTeleport || _FightArea[_RunningIdx] is FightSceneAreaKBossWithFish)
+            //if (_FightArea[_RunningIdx] is FightSceneAreaKShowTeleport || _FightArea[_RunningIdx] is FightSceneAreaKBossWithFish)
             {
                 AreaStart(_FightArea[_RunningIdx]);
             }

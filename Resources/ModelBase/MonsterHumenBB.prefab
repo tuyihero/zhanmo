@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8652123883623978192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4271237628901315413}
+  - component: {fileID: 5802463288518908290}
+  - component: {fileID: 6524163553721503669}
+  m_Layer: 0
+  m_Name: MonsterHumenBB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4271237628901315413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652123883623978192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.8672266, y: -8.988731, z: -0.1494213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5802463288518908290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652123883623978192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43273e280e8f98a41a942431da6950c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _IsRoleHit: 0
+  _RoleHitTime: 0.01
+  _Animaton: {fileID: 0}
+  _EffectAnimator: {fileID: 0}
+  _WeaponAnimator: {fileID: 0}
+  _WeaponEffectAnimator: {fileID: 0}
+  _SpBuffNames: []
+  _IsBuffNameDirty: 0
+  _SkillElement: 5
+  _AudioSource: {fileID: 0}
+  _CanBeSelectByEnemy: 1
+  _ColliderInfo: {x: 0.5, y: 1, z: 0.4}
+  _ColliderCenter: {x: 0, y: 0.5, z: 0}
+  _IsTrigger: 1
+  _HasRiseState: 0
+  _MotionAnimPath: 
+  _ActionPause: 0
+  _IsCanFly: 1
+  _IsCanHit: 1
+  _BehitAudio: {fileID: 0}
+  _DeadAudio: {fileID: 0}
+--- !u!114 &6524163553721503669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652123883623978192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be035c71667dc5479314bb3c078c817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TargetMotion: {fileID: 0}
+  _SelfMotion: {fileID: 0}
+  GroupID: 0
+  _AISkills:
+  - SkillBase: {fileID: 9161281179412998393, guid: f0964d9f9094d4e46b39724b0e7d1beb,
+      type: 3}
+    SkillRange: {x: 1, y: 1.5}
+    SkillInterval: 3
+    ReadyTime: 0
+    StartCD: 0
+    AfterSkillWait: 0
+    MonDamageRate: 1
+    ActOutCamera: 0
+    ActDiffZ: 0
+  _AlertRange: 7
+  _CloseRange: 2
+  _HuntRange: 10
+  _ReHuntRange: 5
+  _PassiveGO: {fileID: 0}
+  _AttackDistanceX: {x: 1, y: 1.4}

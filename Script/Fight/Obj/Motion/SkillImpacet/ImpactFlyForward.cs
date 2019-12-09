@@ -10,7 +10,7 @@ public class ImpactFlyForward : ImpactFly
     {
         InitActImpact(senderManager, reciverManager);
 
-        Vector3 destMove = senderManager.transform.forward.normalized * _Speed * _Time;
+        Vector3 destMove = senderManager.GetMotionForward().normalized * _Speed * _Time;
 
         HitFlyMotion(senderManager, reciverManager, destMove, _Time);
 

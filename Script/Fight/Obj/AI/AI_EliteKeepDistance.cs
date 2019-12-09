@@ -67,7 +67,7 @@ public class AI_EliteKeepDistance : AI_EliteBase
         _LastMoveTime = Time.time;
 
         float moveAngle = 0;
-        float targetAngle = Vector3.Angle(_SelfMotion.transform.position - _TargetMotion.transform.position, _TargetMotion.transform.forward);
+        float targetAngle = Vector3.Angle(_SelfMotion.transform.position - _TargetMotion.transform.position, _TargetMotion.GetMotionForward());
         if (targetAngle > 0)
         {
             moveAngle = targetAngle + _BackAngleRange;
@@ -79,7 +79,7 @@ public class AI_EliteKeepDistance : AI_EliteBase
 
         var rot = new Vector3(0, _TargetMotion.transform.rotation.eulerAngles.y + moveAngle, 0);
         _SelfMotion.transform.rotation = Quaternion.Euler(rot);
-        Vector3 targetPos = _TargetMotion.transform.position + _SelfMotion.transform.forward * _CloseRange;
+        Vector3 targetPos = _TargetMotion.transform.position + _SelfMotion.GetMotionForward() * _CloseRange;
 
         NavMeshHit navmeshHit;
         if (NavMesh.SamplePosition(targetPos, out navmeshHit, 1000, 1))

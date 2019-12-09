@@ -9,7 +9,7 @@ public class ImpactPushToTargetBackAct : ImpactBase
     {
         base.ActImpact(senderManager, reciverManager);
 
-        Vector3 pos = reciverManager.transform.position + reciverManager.transform.forward * _Distance;
+        Vector3 pos = reciverManager.transform.position + reciverManager.GetMotionForward() * _Distance;
         senderManager.SetPosition(pos);
         senderManager.SetLookAt(reciverManager.transform.position);
     }

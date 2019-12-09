@@ -97,4 +97,30 @@ public class BulletBase : MonoBehaviour
     }
 
     #endregion
+
+    #region 2d
+
+    private Transform _SpriteGO;
+
+    protected void RefreshSpriteRot()
+    {
+        if (_SpriteGO == null)
+        {
+            _SpriteGO = transform.Find("Sprite");
+        }
+
+        if (_SpriteGO != null)
+        {
+            if (transform.rotation.eulerAngles.y == 0)
+            {
+                _SpriteGO.localRotation = Quaternion.Euler(45, 0, 0);
+            }
+            else
+            {
+                _SpriteGO.localRotation = Quaternion.Euler(-45, 0, 0);
+            }
+        }
+    }
+
+    #endregion
 }

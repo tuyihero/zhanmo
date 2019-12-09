@@ -8,6 +8,7 @@ public class SerializeEnemyInfo
 {
     public Transform _EnemyTransform;
     public string _EnemyDataID;
+    public Vector2 _EnemyPos2D;
 }
 
 public enum AreaState
@@ -59,6 +60,12 @@ public class FightSceneAreaBase : MonoBehaviour
     public virtual void MotionDie(MotionManager motion)
     {
         
+
+    }
+
+    public virtual void MotionDisapear(MotionManager motion)
+    {
+
 
     }
 

@@ -1,0 +1,219 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &683894016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683894017}
+  - component: {fileID: 683894019}
+  - component: {fileID: 683894018}
+  m_Layer: 9
+  m_Name: Push1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683894017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683894016}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2901342486343724770}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683894019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683894016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d58854972868441835c6e115b32d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ColliderID: 1
+  _IsColliderFinish: 0
+  _IsRemindSelected: 0
+  _EventAnim: {fileID: 0}
+  _EventFrame: 
+  _AudioID: -1
+--- !u!114 &683894018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683894016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d71c3efed89a49a8be945dd903c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Time: 0.2
+  _Speed: 2
+--- !u!1 &4191121649102627124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9061935265616088187}
+  - component: {fileID: 8626920592460548708}
+  - component: {fileID: 4824787546334044936}
+  - component: {fileID: 5077997070569062933}
+  m_Layer: 9
+  m_Name: Hit1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9061935265616088187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191121649102627124}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2901342486343724770}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8626920592460548708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191121649102627124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecdd01fd518f814d93a0fdc83e97fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ColliderID: 1
+  _IsColliderFinish: 0
+  _IsRemindSelected: 0
+  _EventAnim: {fileID: 0}
+  _EventFrame: 
+  _AudioID: -1
+  _ColliderFinishFrame: 
+  _SelectLieObj: 0
+  _HittedAudio: -1
+  _NonHittedAudio: -1
+--- !u!114 &4824787546334044936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191121649102627124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ccae8dc75eb1641a8b195f23a8afeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DamageRate: 0.11
+  _DamageType: 5
+  _IsCharSkillDamage: 0
+  _HitTime: 0.6
+  _HitEffect: 2
+  _HitAudio: -1
+  _IsBulletHit: 0
+  _ForceHit: 0
+  _HitPauseTime: 0
+  _Time: 0.2
+  _Speed: 2
+--- !u!65 &5077997070569062933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191121649102627124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.3, z: 0.2}
+  m_Center: {x: 1.2, y: 0.6, z: 0}
+--- !u!1 &8783500534223007090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2901342486343724770}
+  - component: {fileID: 8824925497029093135}
+  m_Layer: 0
+  m_Name: Skill3_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2901342486343724770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783500534223007090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9061935265616088187}
+  - {fileID: 683894017}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8824925497029093135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783500534223007090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0369374bc1cff9848a88d7e41515773f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NextAnim:
+  - {fileID: 7400000, guid: 71fd74268fd60b640b23b217b201b37b, type: 2}
+  _NextEffect: []
+  _NextAudio: []
+  _IsActNextAnimAtNextInput: 0
+  _ActInput: 3
+  _SkillMotionPrior: 100
+  _SkillMotionPriorSelf: 0
+  _SuperArmorColliderID: -1
+  _ActTimesInJump: 0
+  _ActStayInJump: 1
+  _SkillBaseSpeed: 1
+  _SkillActTimes: 0
+  _SkillHitMotions: []
+  _SkillCD: 2
+  _StoreUseTimes: 0
+  _MPCost: 0

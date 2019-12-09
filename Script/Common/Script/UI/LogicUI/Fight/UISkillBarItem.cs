@@ -126,5 +126,14 @@ public class UISkillBarItem : UIItemSelect
     }
 
     #endregion
+
+    #region double click
+
+    public void OnDoubleClick()
+    {
+
+    }
+
+    #endregion
 }
 

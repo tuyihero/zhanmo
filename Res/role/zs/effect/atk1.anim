@@ -20,11 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 33086b16a05600746b5ddb6002057a46, type: 3}
-    - time: 0.1
-      value: {fileID: 21300000, guid: 6e5271f76f792cd4b8ec19911ba8ca7e, type: 3}
+      value: {fileID: 0}
     - time: 0.2
+      value: {fileID: 21300000, guid: 33086b16a05600746b5ddb6002057a46, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: 6e5271f76f792cd4b8ec19911ba8ca7e, type: 3}
+    - time: 0.4
       value: {fileID: 21300000, guid: 4cb689280c5505342ac839e4fbc97e65, type: 3}
+    - time: 0.5
+      value: {fileID: 0}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,15 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 0}
     - {fileID: 21300000, guid: 33086b16a05600746b5ddb6002057a46, type: 3}
     - {fileID: 21300000, guid: 6e5271f76f792cd4b8ec19911ba8ca7e, type: 3}
     - {fileID: 21300000, guid: 4cb689280c5505342ac839e4fbc97e65, type: 3}
+    - {fileID: 0}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.23333333
+    m_StopTime: 0.53333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

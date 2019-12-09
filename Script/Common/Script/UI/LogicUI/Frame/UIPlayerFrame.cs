@@ -34,9 +34,10 @@ public class UIPlayerFrame : UIBase
     void Update()
     {
         HpUpdate();
+        MpUpdate();
     }
 
-    #region 
+    #region hp
 
     public Image _Icon;
     public Text _Level;
@@ -53,6 +54,25 @@ public class UIPlayerFrame : UIBase
 
         _HPText.text = FightManager.Instance.MainChatMotion.RoleAttrManager.HP + "/" + FightManager.Instance.MainChatMotion.RoleAttrManager.GetBaseAttr(RoleAttrEnum.HPMax);
         _HPProcess.value = FightManager.Instance.MainChatMotion.RoleAttrManager.HPPersent;
+    }
+
+    #endregion
+
+    #region mp
+
+    public Slider _MPProcess;
+    public Text _MPText;
+
+    private void MpUpdate()
+    {
+        if (!FightManager.Instance)
+            return;
+
+        if (!FightManager.Instance.MainChatMotion)
+            return;
+
+        _MPText.text = FightManager.Instance.MainChatMotion.RoleAttrManager.MP + "/" + FightManager.Instance.MainChatMotion.RoleAttrManager.GetBaseAttr(RoleAttrEnum.MPMax);
+        _MPProcess.value = FightManager.Instance.MainChatMotion.RoleAttrManager.MPPersent;
     }
 
     #endregion

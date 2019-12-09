@@ -10,7 +10,7 @@ public class ImpactPushLuBanJump : ImpactBase
         base.ActImpact(senderManager, reciverManager);
 
         int randomAngle = Random.Range(90, 270);
-        reciverManager.SetRotate(reciverManager.transform.forward + new Vector3(0, randomAngle, 0));
+        reciverManager.SetRotate(reciverManager.GetMotionForward() + new Vector3(0, randomAngle, 0));
     }
 
 }

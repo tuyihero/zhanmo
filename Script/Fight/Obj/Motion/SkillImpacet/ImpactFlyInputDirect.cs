@@ -13,7 +13,7 @@ public class ImpactFlyInputDirect : ImpactFly
         Vector3 moveDirect = new Vector3(InputManager.Instance.CameraAxis.x, 0, InputManager.Instance.CameraAxis.y);
         if (moveDirect == Vector3.zero)
         {
-            moveDirect = senderManager.transform.forward.normalized;
+            moveDirect = senderManager.GetMotionForward().normalized;
         }
         Vector3 destMove = moveDirect * _Speed * _Time;
 

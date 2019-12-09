@@ -120,7 +120,7 @@ public class StateHit : StateBase
             _MotionManager.PlayAudio(ResourcePool.Instance._CommonAudio[hitAudio]);
         if (realHitTime <= 0)
             return;
-
+        
         
         float speed = 1;
         if (realHitTime > _Animation.length)

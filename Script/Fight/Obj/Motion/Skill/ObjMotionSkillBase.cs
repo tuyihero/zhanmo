@@ -43,12 +43,19 @@ public class ObjMotionSkillBase : MonoBehaviour
     public List<AnimationClip> _NextAnim;
     public List<EffectController> _NextEffect;
     public List<AudioClip> _NextAudio;
+    public bool _IsActNextAnimAtNextInput = false;
     public string _ActInput;
     public int _SkillMotionPrior = 100;
     public bool _SkillMotionPriorSelf = false;
     public int _SuperArmorColliderID = -1;
-    public bool _ActSkillInJump = false;
+    public int _ActTimesInJump = 0;
     public bool _ActStayInJump = true;
+    private int _ActedTimesInJump = 0;
+    public void ResetActedTimesInJump()
+    {
+        _ActedTimesInJump = 0;
+    }
+    
 
     public float _SkillBaseSpeed = 1;
     public float SkillSpeed
@@ -87,34 +94,55 @@ public class ObjMotionSkillBase : MonoBehaviour
 
     public virtual bool IsCanActSkill()
     {
-        if (_MotionManager._ActionState == _MotionManager._StateIdle)
-            return true;
-
-        if (_MotionManager._ActionState == _MotionManager._StateMove)
-            return true;
-
-        if ((_MotionManager._ActionState == _MotionManager._StateJump || _MotionManager._ActionState == _MotionManager._StateJumpIdle) && _ActSkillInJump)
+        bool isCanActSkill = true;
+        if (_MotionManager._ActionState == _MotionManager._StateIdle
+            || _MotionManager._ActionState == _MotionManager._StateMove)
         {
-            if (_ActStayInJump)
-            {
-                _MotionManager.SetJumpStay();
-            }
-            return true;
+            isCanActSkill = true;
         }
-
-        if (_MotionManager._ActionState == _MotionManager._StateSkill)
+        else if (_MotionManager._ActionState == _MotionManager._StateHit
+            || _MotionManager._ActionState == _MotionManager._StateFly
+            || _MotionManager._ActionState == _MotionManager._StateCatch
+            || _MotionManager._ActionState == _MotionManager._StateDie
+            || _MotionManager._ActionState == _MotionManager._StateLie
+            || _MotionManager._ActionState == _MotionManager._StateRise)
+        {
+            isCanActSkill = false;
+        }
+        else if (_MotionManager._ActionState == _MotionManager._StateSkill)
         {
             if (_MotionManager.ActingSkill == null)
-                return true;
-            if (_MotionManager.ActingSkill._SkillMotionPrior < _SkillMotionPrior)
             {
-                return true;
+                isCanActSkill = true;
             }
+            else if (_MotionManager.ActingSkill._SkillMotionPrior < _SkillMotionPrior)
+            {
+                isCanActSkill = true;
+            }
+            else
+            {
+                isCanActSkill = false;
+            }
+
             if (_SkillMotionPriorSelf && CanNextInput)
-                return true;
+                isCanActSkill = true;
         }
 
-        return false;
+        //if (isCanActSkill)
+        {
+            if (_MotionManager.IsInAir())
+            {
+                if (_ActTimesInJump > 0 && _ActedTimesInJump < _ActTimesInJump)
+                {
+                    isCanActSkill &= true;
+                }
+                else
+                {
+                    isCanActSkill &= false;
+                }
+            }
+        }
+        return isCanActSkill;
     }
 
     public bool StartSkill(Hashtable exHash = null)
@@ -167,6 +195,10 @@ public class ObjMotionSkillBase : MonoBehaviour
             case AnimEventManager.NEXT_INPUT_START:
                 FightSkillManager.Instance.SkillNextInput(this);
                 _CanNextInput = true;
+                if (_IsActNextAnimAtNextInput)
+                {
+                    PlayerNextAnim();
+                }
                 break;
         }
     }
@@ -185,6 +217,20 @@ public class ObjMotionSkillBase : MonoBehaviour
         ++_SkillActTimes;
 
         _CanNextInput = false;
+
+        if ((_MotionManager.IsInAir())
+            && (_ActTimesInJump > 0 && _ActedTimesInJump < _ActTimesInJump))
+        {
+            ++_ActedTimesInJump;
+            if (_ActStayInJump)
+            {
+                _MotionManager.SetJumpStay();
+            }
+            else
+            {
+                _MotionManager.JumpFall();
+            }
+        }
 
         return true;
     }
@@ -426,6 +472,24 @@ public class ObjMotionSkillBase : MonoBehaviour
 
     #endregion
 
+    #region mp
 
+    public int _MPCost = 0;
+
+    public void CostMP()
+    {
+        MotionManager.RoleAttrManager.AddMP(-_MPCost);
+    }
+
+    public bool IsMPEnough()
+    {
+        if (_MPCost <= MotionManager.RoleAttrManager.MP)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    #endregion
 
 }

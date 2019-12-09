@@ -119,7 +119,7 @@ public class StateBase
         {
             yield return null;
         }
-        _MotionManager.PlayAnimation(_Animation);
+        _MotionManager.PlayAnimation(_Animation, 1.2f);
     }
     #endregion
 

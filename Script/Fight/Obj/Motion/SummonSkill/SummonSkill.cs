@@ -111,7 +111,7 @@ public class SummonSkill
             summonAI.InitSkillDamageRate(GameDataValue.GetSummonDamageRate(summonData.Level));
         }
 
-        Vector3 pos = masterMotion.transform.position + masterMotion.transform.forward * summonAI._SummonPosZ;
+        Vector3 pos = masterMotion.transform.position + masterMotion.GetMotionForward() * summonAI._SummonPosZ;
         summonAI._SelfMotion._CanBeSelectByEnemy = false;
         summonAI._SelfMotion.transform.position = pos;
         summonAI._SelfMotion.transform.LookAt(masterMotion.transform);

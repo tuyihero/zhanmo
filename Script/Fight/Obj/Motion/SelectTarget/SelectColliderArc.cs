@@ -12,7 +12,7 @@ public class SelectColliderArc : SelectCollider
         if (motion == null)
             return;
 
-        float targetAngle = Mathf.Abs(Vector3.Angle(motion.transform.position - _ObjMotion.transform.position, _ObjMotion.transform.forward));
+        float targetAngle = Mathf.Abs(Vector3.Angle(motion.transform.position - _ObjMotion.transform.position, _ObjMotion.GetMotionForward()));
         if (targetAngle > _Angle)
             return;
 

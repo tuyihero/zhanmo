@@ -21,7 +21,7 @@ public class ResourcePool : InstanceBase<ResourcePool>
     {
         //if (ResourceManager._ResFromBundle)
         {
-            //InitEffect();
+            InitEffect();
             //InitAutio();
             //InitConfig();
         }
@@ -43,20 +43,9 @@ public class ResourcePool : InstanceBase<ResourcePool>
             return;
 
         _CommonHitEffect = new List<EffectController>();
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Effect_Dead_A_Hit", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Effect_Dead_B_Hit", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Effect_Blade_Red", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Hit_Fire", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Hit_Ice", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Hit_Light", InitEffectCallBack, null);
-
-        ResourceManager.Instance.LoadPrefab("Effect/Hit/Hit_Wind", InitEffectCallBack, null);
-        
+        ResourceManager.Instance.LoadPrefab("Effect/Hit/HitOther", InitEffectCallBack, null);
+        ResourceManager.Instance.LoadPrefab("Effect/Hit/HitWarrior", InitEffectCallBack, null);
+        ResourceManager.Instance.LoadPrefab("Effect/Hit/HitAssasin", InitEffectCallBack, null);
     }
 
     public void LoadEffect(string effectRes, LoadBundleAssetCallback<EffectController> callBack, Hashtable hash)
@@ -419,8 +408,6 @@ public class ResourcePool : InstanceBase<ResourcePool>
             return null;
         }
         var motionScript = motion.GetComponent<MotionManager>();
-        var aiScript = motion.GetComponent<AI_Base>();
-        aiScript.InitSkillGoes(motionScript);
 
         GameObject modelObj = null;
         if (_IdleModel.ContainsKey(monsterTab.ModelPath))
@@ -441,7 +428,7 @@ public class ResourcePool : InstanceBase<ResourcePool>
                 Debug.LogError("GetIdleModel error:" + monsterTab.MotionPath);
                 return null;
             }
-            modelObj.name = monsterTab.ModelPath;
+            
             var animation = modelObj.GetComponent<Animation>();
             if (animation == null)
             {
@@ -449,6 +436,7 @@ public class ResourcePool : InstanceBase<ResourcePool>
             }
         }
 
+        modelObj.name = "Body";
         var animEvent = modelObj.GetComponent<AnimationEventManager>();
         if (animEvent != null)
         {
@@ -456,27 +444,42 @@ public class ResourcePool : InstanceBase<ResourcePool>
         }
         modelObj.AddComponent<AnimationEventManager>();
 
+        GameObject animTrans = new GameObject("AnimTrans");
+        animTrans.transform.SetParent(motion.transform);
+        animTrans.transform.localPosition = Vector3.zero;
+        animTrans.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        animTrans.transform.localScale = Vector3.one;
+
+        //GameObject motionGO = new GameObject("Motion");
+        //motionGO.transform.SetParent(animTrans.transform);
+        //motionGO.transform.localPosition = Vector3.zero;
+        //motionGO.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+
         modelObj.gameObject.SetActive(true);
-        modelObj.transform.SetParent(motion.transform);
+        modelObj.transform.SetParent(animTrans.transform);
         modelObj.transform.localPosition = Vector3.zero;
-        modelObj.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        modelObj.transform.localRotation = Quaternion.Euler(45,0,0);
 
         if (_ShaowPanel != null)
         {
             var shadow = GameObject.Instantiate(_ShaowPanel);
+            shadow.name = "Shadow";
             shadow.transform.SetParent(motion.transform);
             shadow.transform.localPosition = Vector3.zero;
-            shadow.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            shadow.transform.localRotation = Quaternion.Euler(45, 0, 0);
             shadow.gameObject.SetActive(true);
         }
 
+        var aiScript = motion.GetComponent<AI_Base>();
+        aiScript.InitSkillGoes(motionScript);
         return motion.GetComponent<MotionManager>();
     }
 
     public void RecvIldeMotion(MotionManager objMotion)
     {
         objMotion.RecvAllEffects();
-        var model = objMotion.AnimationEvent.gameObject;
+        var model = objMotion.transform.Find("AnimTrans/Body").gameObject;
         string objName = objMotion.MonsterBase.ModelPath;
         if (!_IdleModel.ContainsKey(objName))
         {
@@ -598,18 +601,30 @@ public class ResourcePool : InstanceBase<ResourcePool>
 
         resPath = "ModelBase/" + mainBase;
         MotionManager motion = null;
+        GameObject animTrans = new GameObject("AnimTrans");
+
         yield return ResourceManager.Instance.LoadPrefab(resPath, (mainBaseName, mainBaseGO, mainCallbackHash) =>
         {
             var mainCharMotion = mainBaseGO.GetComponent<MotionManager>();
             mainCharMotion.tag = "Player";
             motion = mainCharMotion;
-            resPath = "Model/" + weaponName;
-            modelGO.transform.SetParent(mainCharMotion.transform);
+
+            animTrans.transform.SetParent(motion.transform);
+            animTrans.transform.localPosition = Vector3.zero;
+            animTrans.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            animTrans.transform.localScale = Vector3.one;
+
+            modelGO.transform.SetParent(animTrans.transform);
             Debug.Log("modelGO:" + modelGO.name + ",modelGO parent:" + modelGO.transform.parent.name);
             modelGO.transform.localPosition = Vector3.zero;
-            modelGO.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            modelGO.transform.localRotation = Quaternion.Euler(45, 0, 0);
 
-            weaponGO.transform.SetParent(modelGO.transform.Find("Weapon"));
+            GameObject motionGO = new GameObject("Motion");
+            motionGO.transform.SetParent(animTrans.transform);
+            motionGO.transform.localPosition = Vector3.zero;
+            motionGO.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            weaponGO.transform.SetParent(modelGO.transform.Find("Body/Weapon"));
             weaponGO.transform.localPosition = Vector3.zero;
             weaponGO.transform.localRotation = Quaternion.Euler(Vector3.zero);
             weaponGO.transform.localScale = Vector3.one;
@@ -617,9 +632,10 @@ public class ResourcePool : InstanceBase<ResourcePool>
             if (_ShaowPanel != null)
             {
                 var shadow = GameObject.Instantiate(_ShaowPanel);
+                shadow.name = "Shadow";
                 shadow.transform.SetParent(motion.transform);
                 shadow.transform.localPosition = Vector3.zero;
-                shadow.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                shadow.transform.localRotation = Quaternion.Euler(45, 0, 0);
                 shadow.gameObject.SetActive(true);
             }
             callBack.Invoke(modelName, mainCharMotion, hash);

@@ -27,8 +27,6 @@ public class UIHPPanel : UIInstanceBase<UIHPPanel>
         {
             _ShowHpMotions.Add(hash);
         }
-
-        Debug.Log("ShowHPItem:" + motionManager.name);
     }
 
     public static void HideHPItem(UIHPItem hpItem)

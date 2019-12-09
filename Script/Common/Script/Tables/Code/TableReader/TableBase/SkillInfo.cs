@@ -29,6 +29,9 @@ namespace Tables
         public List<int> EffectValue { get; set; }
         public List<int> CostStep { get; set; }
         public int Pos { get; set; }
+        public int Group { get; set; }
+        public int GroupPre { get; set; }
+        public List<string> SkillGO { get; set; }
         public SkillInfoRecord(DataRecord dataRecord)
         {
             if (dataRecord != null)
@@ -39,6 +42,7 @@ namespace Tables
             }
             EffectValue = new List<int>();
             CostStep = new List<int>();
+            SkillGO = new List<string>();
         }
         public override string[] GetRecordStr()
         {
@@ -74,6 +78,12 @@ namespace Tables
                 recordStrList.Add(TableWriteBase.GetWriteStr(testTableItem));
             }
             recordStrList.Add(TableWriteBase.GetWriteStr(Pos));
+            recordStrList.Add(TableWriteBase.GetWriteStr(Group));
+            recordStrList.Add(TableWriteBase.GetWriteStr(GroupPre));
+            foreach (var testTableItem in SkillGO)
+            {
+                recordStrList.Add(TableWriteBase.GetWriteStr(testTableItem));
+            }
 
             return recordStrList.ToArray();
         }
@@ -165,6 +175,13 @@ namespace Tables
                 pair.Value.CostStep.Add(TableReadBase.ParseInt(pair.Value.ValueStr[19]));
                 pair.Value.CostStep.Add(TableReadBase.ParseInt(pair.Value.ValueStr[20]));
                 pair.Value.Pos = TableReadBase.ParseInt(pair.Value.ValueStr[21]);
+                pair.Value.Group = TableReadBase.ParseInt(pair.Value.ValueStr[22]);
+                pair.Value.GroupPre = TableReadBase.ParseInt(pair.Value.ValueStr[23]);
+                pair.Value.SkillGO.Add(TableReadBase.ParseString(pair.Value.ValueStr[24]));
+                pair.Value.SkillGO.Add(TableReadBase.ParseString(pair.Value.ValueStr[25]));
+                pair.Value.SkillGO.Add(TableReadBase.ParseString(pair.Value.ValueStr[26]));
+                pair.Value.SkillGO.Add(TableReadBase.ParseString(pair.Value.ValueStr[27]));
+                pair.Value.SkillGO.Add(TableReadBase.ParseString(pair.Value.ValueStr[28]));
             }
         }
     }

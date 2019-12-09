@@ -166,9 +166,10 @@ public class LogicManager
         //UIHPPanel.ShowAsyn();
         //UIControlPanel.ShowAsyn();
         //UIJoyStick.ShowAsyn();
-        //UISkillBar.ShowAsyn();
+        UIDirectControl.ShowAsyn();
+        UISkillBar.ShowAsyn();
         //UIDropNamePanel.ShowAsyn();
-        //UIPlayerFrame.ShowAsyn();
+        UIPlayerFrame.ShowAsyn();
         //UIFuncInFight.ShowAsyn();
 
         GameCore.Instance._SoundManager.PlayBGMusic(EnterStageInfo.Audio);

@@ -7,7 +7,7 @@ public class StateFly : StateBase
 
     protected override string GetAnimName()
     {
-        return "away";
+        return "down";
     }
 
     public override void InitState(MotionManager motionManager)
@@ -16,7 +16,7 @@ public class StateFly : StateBase
 
         _MotionManager.AddAnimationEndEvent(_Animation);
         _MotionManager.AnimationEvent.AddEvent(_Animation, 0.65f, FlyEnd);
-        _FlyBody = _MotionManager.AnimationEvent.gameObject;
+        _FlyBody = _MotionManager.JumpBody;
     }
 
     public override bool CanStartState(params object[] args)
@@ -27,7 +27,12 @@ public class StateFly : StateBase
     public override void StartState(params object[] args)
     {
         //base.StartState(args);
-        MotionFly((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
+        var param1 = (float)args[0];
+        var param2 = (int)args[1];
+        var param3 = (int)args[6];
+        var param4 = (MotionManager)args[2];
+        var param5 = (float)args[8];
+        MotionFly((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2], (float)args[8]);
         SetHitMove((Vector3)args[4], (float)args[5]);
 
         if (_MotionManager._BehitAudio != null)
@@ -59,7 +64,7 @@ public class StateFly : StateBase
                 SetHitMove((Vector3)args[4], (float)args[5]);
                 break;
             case MotionOpt.Fly:
-                MotionFly((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
+                MotionFly((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2], (float)args[8]);
                 SetHitMove((Vector3)args[4], (float)args[5]);
                 break;
             case MotionOpt.Catch:
@@ -91,11 +96,13 @@ public class StateFly : StateBase
         return (bool)_BuffArg[ImpactBuff.BuffModifyType.IsCanHit];
     }
 
-    private const float _UpSpeed = 15;
-    private const float _DownSpeed = 10;
+    private const float _ConstUpSpeed = 5;
+    private float _UpSpeed = 5;
+    private const float _ConstDownSpeed = 40;
+    private float _DownSpeed = 0;
 
-    private GameObject _FlyBody;
-    public GameObject FlyBody
+    private Transform _FlyBody;
+    public Transform FlyBody
     {
         get
         {
@@ -111,6 +118,12 @@ public class StateFly : StateBase
     {
         switch (funcName)
         {
+            case AnimEventManager.KEY_FRAME:
+                if (_FlyHeight > 0)
+                {
+                    _MotionManager.PauseAnimation();
+                }
+                break;
             case AnimEventManager.ANIMATION_END:
                 FlyEnd();
                 break;
@@ -130,9 +143,14 @@ public class StateFly : StateBase
         IsFlyEnd = true;
     }
 
-    public void MotionFly(float flyHeight, int effectID, int audioID, MotionManager impactSender)
+    public void MotionFly(float flyHeight, int effectID, int audioID, MotionManager impactSender, float upSpeed)
     {
         //Debug.Log("MotionFly");
+        _UpSpeed = upSpeed;
+        if (upSpeed == 0)
+        {
+            _UpSpeed = _ConstUpSpeed;
+        }
         _MotionManager.PlayHitEffect(impactSender, effectID);
         if (audioID > 0)
         {
@@ -141,6 +159,11 @@ public class StateFly : StateBase
 
         _MotionManager.SetLookAt(impactSender.transform.position);
         _FlyHeight = flyHeight * (GameDataValue.ConfigIntToFloat(_MotionManager.RoleAttrManager.GetBaseAttr(RoleAttrEnum.FlyGravity)));
+        if (_MotionManager.IsInAir())
+        {
+            _FlyHeight += _MotionManager.JumpBody.localPosition.y;
+            _MotionManager.ResetJump();
+        }
 
         IsFlyEnd = false;
         _MotionManager.SetCorpsePrior();
@@ -174,7 +197,7 @@ public class StateFly : StateBase
 
     public void ResetFly()
     {
-        _FlyBody.transform.localPosition = Vector3.zero;
+        _FlyBody.localPosition = Vector3.zero;
     }
 
     public void FlyUpdate()
@@ -189,22 +212,27 @@ public class StateFly : StateBase
         }
         else if (_FlyHeight > 0)
         {
-            _FlyBody.transform.localPosition += _UpSpeed * Time.fixedDeltaTime * Vector3.up;
+            _FlyBody.localPosition += _UpSpeed * Time.fixedDeltaTime * Vector3.up;
 
-            if (_FlyBody.transform.localPosition.y > _FlyHeight)
+            if (_FlyBody.localPosition.y > _FlyHeight)
             {
-                _FlyBody.transform.localPosition = new Vector3(0, _FlyHeight, 0);
+                _FlyBody.localPosition = new Vector3(0, _FlyHeight, 0);
                 _FlyHeight = 0;
+                _DownSpeed = 0;
             }
 
             //Debug.Log("_FlyHeight:" + _FlyBody.transform.localPosition.y);
         }
-        else if (_FlyBody.transform.localPosition.y > 0)
+        else if (_FlyBody.localPosition.y > 0.0f)
         {
-            _FlyBody.transform.localPosition -= _DownSpeed * Time.fixedDeltaTime * Vector3.up;
-            if (_FlyBody.transform.localPosition.y < 0)
+            _DownSpeed += _ConstDownSpeed * Time.fixedDeltaTime;
+            _FlyBody.localPosition -= _DownSpeed * Time.fixedDeltaTime * Vector3.up;
+            Debug.Log("_FlyBody.localPosition:" + _FlyBody.localPosition.y + ",isDown:" + (_FlyBody.localPosition.y <= 0.01f));
+
+            if (_FlyBody.localPosition.y <= 0.01f)
             {
-                _FlyBody.transform.localPosition = Vector3.zero;
+                _FlyBody.localPosition = Vector3.zero;
+                _MotionManager.ResumeAnimation();
             }
             //Debug.Log("_FlyBody.transform.localPosition.y:" + _FlyBody.transform.localPosition.y);
         }

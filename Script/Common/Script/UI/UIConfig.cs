@@ -55,6 +55,7 @@ public class UIConfig
     public static AssetInfo UIStageDiffTips = new AssetInfo("LogicUI/Fight/UIStageDiffTips");
     public static AssetInfo UIFuncInFight = new AssetInfo("LogicUI/Fight/UIFuncInFight");
     public static AssetInfo UIJoyStick = new AssetInfo("LogicUI/Fight/UIJoyStick");
+    public static AssetInfo UIDirectControl = new AssetInfo("LogicUI/Fight/UIDirectControl");
     public static AssetInfo UISkillBar = new AssetInfo("LogicUI/Fight/UISkillBar");
     public static AssetInfo UIFiveElement = new AssetInfo("LogicUI/FiveElement/UIFiveElement");
     public static AssetInfo UIFiveElementCoreTooltip = new AssetInfo("LogicUI/FiveElement/UIFiveElementCoreTooltip");

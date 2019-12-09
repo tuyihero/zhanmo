@@ -126,7 +126,7 @@ public class SelectTargetCommon
     }
     public static List<SelectedInfo> GetFrontMotions(MotionManager selfMotion, float length, float angle, SelectSortType sortType, SelectTargetType targetType)
     {
-        return GetDirectMotions(selfMotion, selfMotion.transform.forward, length, angle, sortType, targetType);
+        return GetDirectMotions(selfMotion, selfMotion.GetMotionForward(), length, angle, sortType, targetType);
     }
 
     public static List<SelectedInfo> GetFrontMotions(MotionManager selfMotion, float length)

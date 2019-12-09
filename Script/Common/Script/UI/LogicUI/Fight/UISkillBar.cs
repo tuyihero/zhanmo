@@ -124,6 +124,8 @@ public class UISkillBar : UIBase
         }
     }
 
+
+
     #region cd
     List<string> skillInput = new List<string>() { "j", "k", "l" };
 

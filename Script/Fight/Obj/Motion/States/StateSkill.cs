@@ -39,6 +39,8 @@ public class StateSkill : StateBase
             isCanActSkill &= !FightSkillManager.Instance.IsSkillInCD(skillBase);
         }
 
+        isCanActSkill &= skillBase.IsMPEnough();
+
         return isCanActSkill;
     }
 
@@ -62,9 +64,17 @@ public class StateSkill : StateBase
         switch (opt)
         {
             case MotionOpt.Act_Skill:
+                if (ActingSkill is ObjMotionSkillPre)
+                {
+                    ((ObjMotionSkillPre)ActingSkill).ResumeSkill();
+                }
                 ActSkill(args);
                 break;
             case MotionOpt.Input_Skill:
+                if (ActingSkill is ObjMotionSkillPre)
+                {
+                    ((ObjMotionSkillPre)ActingSkill).ResumeSkill();
+                }
                 string key = args[0] as string;
                 if (ActingSkill._ActInput == key)
                 {
@@ -147,6 +157,7 @@ public class StateSkill : StateBase
         if (!skillBase.IsCanActSkill())
             return;
 
+        skillBase.CostMP();
         ActSkill(skillBase, hash);
     }
 

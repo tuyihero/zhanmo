@@ -11,7 +11,7 @@ public class ImpactHitToPos : ImpactHit
     {
         InitActImpact(senderManager, reciverManager);
 
-        Vector3 hitPos = senderManager.transform.position + senderManager.transform.forward * _Offset.x + senderManager.transform.right * _Offset.y;
+        Vector3 hitPos = senderManager.transform.position + senderManager.GetMotionForward() * _Offset.x + senderManager.transform.right * _Offset.y;
         Vector3 distance = hitPos - reciverManager.transform.position;
 
         float moveTime = _Time;

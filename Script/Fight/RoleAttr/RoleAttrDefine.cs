@@ -56,6 +56,8 @@ public enum RoleAttrEnum
     RiseUpSpeed,
     RiseHandSpeed,
 
+    MPMax,
+
     BASE_ATTR_MAX,
 }
 

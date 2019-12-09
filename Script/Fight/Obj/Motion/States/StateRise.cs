@@ -7,7 +7,7 @@ public class StateRise : StateBase
 
     protected override string GetAnimName()
     {
-        return "Act_Rise_01";
+        return "up";
     }
 
     public override void InitState(MotionManager motionManager)

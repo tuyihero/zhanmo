@@ -10,7 +10,7 @@ public class ImpactFlyAway : ImpactFly
     {
         InitActImpact(senderManager, reciverManager);
 
-        Vector3 destMove = (reciverManager.transform.position - senderManager.transform.position).normalized * _Speed * _Time;
+        Vector3 destMove = senderManager.GetMotionAwayDirect(reciverManager.transform.position) * _Speed * _Time;
 
         HitFlyMotion(senderManager, reciverManager, destMove, _Time);
 

@@ -8,7 +8,10 @@ public class FightSceneLogicPassTest : FightSceneLogicPassArea
 {
     public override void StartLogic()
     {
-        
+        if (FightManager.Instance.MainChatMotion != null)
+        {
+            FightManager.Instance.MainChatMotion.SetPosition(_MainCharBornPos.position);
+        }
         StartCoroutine(StartLogicDelay());
     }
 
@@ -32,7 +35,7 @@ public class FightSceneLogicPassTest : FightSceneLogicPassArea
 
     public override void StartNextArea()
     {
-        //base.StartNextArea();
+        base.StartNextArea();
     }
 
     protected override void UpdateLogic()

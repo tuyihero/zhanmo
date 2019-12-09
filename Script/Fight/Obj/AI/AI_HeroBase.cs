@@ -9,8 +9,6 @@ public class AI_HeroBase : AI_Base
         base.Init();
         InitRise();
 
-        InitPassiveSkills();
-
         //BuffStar();
         BuffBlockSummon();
         //IsCancelNormalAttack = false;
@@ -48,7 +46,7 @@ public class AI_HeroBase : AI_Base
             if (!_AISkills[i].IsSkillCD())
                 continue;
 
-            if (_AISkills[i].SkillRange < dis)
+            if (_AISkills[i].SkillRange.y < dis || _AISkills[i].SkillRange.x > dis)
                 continue;
 
             StartSkill(_AISkills[i]);
@@ -355,29 +353,6 @@ public class AI_HeroBase : AI_Base
 
     #endregion
 
-    #region Passive skills
-
-    public Transform _PassiveGO;
-
-    public void InitPassiveSkills()
-    {
-        if (_PassiveGO == null)
-            return;
-
-        List<ImpactBase> passiveImpacts = new List<ImpactBase>();
-        for (int i = 0; i < _PassiveGO.childCount; ++i)
-        {
-            var passiveImpact = _PassiveGO.GetChild(i).GetComponents<ImpactBase>();
-            passiveImpacts.AddRange(passiveImpact);
-        }
-
-        foreach (var buff in passiveImpacts)
-        {
-            buff.ActImpact(_SelfMotion, _SelfMotion);
-        }
-    }
-
-    #endregion
 
     #region stage 2 /crizy buff
 

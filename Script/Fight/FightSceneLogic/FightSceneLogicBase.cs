@@ -39,6 +39,11 @@ public class FightSceneLogicBase : MonoBehaviour
         }
     }
 
+    public virtual void MotionDisapear(MotionManager motion)
+    {
+        
+    }
+
     public virtual List<string> GetLogicMonIDs()
     {
         return new List<string>();

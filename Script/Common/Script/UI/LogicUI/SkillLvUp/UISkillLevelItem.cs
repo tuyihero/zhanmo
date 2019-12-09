@@ -6,47 +6,63 @@ using System.Collections;
  
 using UnityEngine.EventSystems;
 using System;
+using Tables;
 
 
 
-public class UISkillLevelItem : UIItemSelect
+public class UISkillLevelItem : MonoBehaviour
 {
-
-
     public Text _SkillNameText;
     public Text _SkillLevelText;
+    public Image _Lock;
     public Image _Icon;
 
-    public ItemSkill _SkillItem;
+    public string _SkillID;
 
-    public override void Show(Hashtable hash)
+    private ItemSkill _SkillItem;
+    private SkillInfoRecord _SkillTab;
+    public SkillInfoRecord SkillTab
     {
-        base.Show();
-
-        _SkillItem = (ItemSkill)hash["InitObj"];
-        if (_SkillItem == null)
-            return;
-
-        var skillRecord = Tables.TableReader.SkillInfo.GetRecord(_SkillItem.SkillID);
-        string skillName = Tables.StrDictionary.GetFormatStr(skillRecord.NameStrDict);
-        _SkillNameText.text = skillName;
-        _SkillLevelText.text = "Lv." + _SkillItem.SkillActureLevel + "/" + _SkillItem.SkillRecord.MaxLevel;
-        ResourceManager.Instance.SetImage(_Icon, skillRecord.Icon);
+        get
+        {
+            if (_SkillTab == null)
+            {
+                _SkillTab = Tables.TableReader.SkillInfo.GetRecord(_SkillItem.SkillID);
+            }
+            return _SkillTab;
+        }
     }
 
-    public override void Refresh()
+    public void Start()
     {
-        base.Refresh();
+        _SkillItem = SkillData.Instance.GetSkillInfo(_SkillID);
+        //string skillName = Tables.StrDictionary.GetFormatStr(SkillTab.NameStrDict);
+        //_SkillNameText.text = skillName;
+        //ResourceManager.Instance.SetImage(_Icon, SkillTab.Icon);
 
-        _SkillLevelText.text = "Lv." + _SkillItem.SkillActureLevel + "/" + _SkillItem.SkillRecord.MaxLevel;
-        //ShowEquip(_ShowItem as ItemEquip);
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        //_SkillLevelText.text = "Lv." + _SkillItem.SkillActureLevel + "/" + _SkillItem.SkillRecord.MaxLevel;
+        if (SkillData.Instance.IsSkillConflict(SkillTab))
+        {
+            _Lock.gameObject.SetActive(true);
+        }
+        else
+        {
+            _Lock.gameObject.SetActive(false);
+        }
     }
 
     #region 
 
-    public override void OnItemClick()
+    public void OnItemClick()
     {
-        base.OnItemClick();
+        Debug.Log("OnItemClick:" + _SkillID);
+        SkillData.Instance.SkillLevelUp(_SkillID);
+        UISkillLevelUp.RefreshSkillItems(SkillTab.Profession);
     }
 
     #endregion

@@ -13,7 +13,7 @@ public class ImpactCatchToPos : ImpactCatch
 
         //if (reciverManager.BaseMotionManager.IsCanBePush())
         {
-            Vector3 hitPos = senderManager.transform.position + senderManager.transform.forward * _Offset.x + reciverManager.transform.right * _Offset.y;
+            Vector3 hitPos = senderManager.transform.position + senderManager.GetMotionForward() * _Offset.x + reciverManager.transform.right * _Offset.y;
             Vector3 distance = hitPos - reciverManager.transform.position;
             
             float moveTime = _Time;

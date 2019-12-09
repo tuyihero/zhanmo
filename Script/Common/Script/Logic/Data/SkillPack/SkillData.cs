@@ -77,8 +77,7 @@ public class SkillData : SaveItemBase
         _ProfessionSkills = new List<ItemSkill>();
         foreach (var skillPair in Tables.TableReader.SkillInfo.Records)
         {
-            if (skillPair.Value.Profession > 0 &&
-            ((skillPair.Value.Profession >> (int)RoleData.SelectRole.Profession) & 1) != 0)
+            if (skillPair.Value.Profession == (int)RoleData.SelectRole.Profession)
             {
                 var skillInfo = GetSkillInfo(skillPair.Value.Id, ref isNeedSave);
                 _ProfessionSkills.Add(skillInfo);
@@ -109,148 +108,40 @@ public class SkillData : SaveItemBase
 
     public List<string> GetRoleSkills()
     {
-        List<string> skillMotions = new List<string>() { "Attack","Skill1", "Skill2", "Skill3", "Skill4", "Skill5", "Skill6", "JumpAtk" };
-        return skillMotions;
-        //if (RoleData.SelectRole.Profession == PROFESSION.BOY_DEFENCE || RoleData.SelectRole.Profession == PROFESSION.GIRL_DEFENCE)
-        //{
-        //    skillMotions.Add("Defence");
-        //}
-        //else
+        List<string> skillMotions = new List<string>() { "SkillPre", "JumpAtk" };
+
+        Dictionary<int, ItemSkill> skillGroup = new Dictionary<int, ItemSkill>();
+
+        foreach (var skillItem in ProfessionSkills)
         {
-            skillMotions.Add("Roll");
-        }
-
-        bool spSkill1 = false;
-        bool spSkill2 = false;
-        bool spSkill3 = false;
-        foreach (var skillInfo in _SkillItems)
-        {
-            if (skillInfo.SkillRecord.Profession > 0 &&
-            ((skillInfo.SkillRecord.Profession >> (int)RoleData.SelectRole.Profession) & 1) == 0)
-                continue;
-
-            if (skillInfo.SkillActureLevel == 0)
-                continue;
-
-            if (skillInfo.SkillRecord.SkillInput == "5")
+            if (skillItem.SkillLevel > 0)
             {
-                //if ((RoleData.SelectRole.Profession == PROFESSION.BOY_DEFENCE || RoleData.SelectRole.Profession == PROFESSION.GIRL_DOUGE))
-                //{
-                //    if (!skillMotions.Contains("Buff1"))
-                //    {
-                //        skillMotions.Add("Buff1");
-                //    }
-                //}
-                //else
+                if (skillGroup.ContainsKey(skillItem.SkillRecord.Group))
                 {
-                    if (!skillMotions.Contains("Buff1_2"))
+                    if (skillItem.SkillRecord.GroupPre > skillGroup[skillItem.SkillRecord.Group].SkillRecord.GroupPre
+                        && !string.IsNullOrEmpty( skillItem.SkillRecord.SkillGO[0]))
                     {
-                        skillMotions.Add("Buff1_2");
+                        skillGroup[skillItem.SkillRecord.Group] = skillItem;
                     }
                 }
-            }
-            
-
-            if (skillInfo.SkillRecord.SkillInput == "6")
-            {
-                //if ((RoleData.SelectRole.Profession == PROFESSION.BOY_DEFENCE || RoleData.SelectRole.Profession == PROFESSION.GIRL_DOUGE))
-                //{
-                //    if (!skillMotions.Contains("Buff2"))
-                //    {
-                //        skillMotions.Add("Buff2");
-                //    }
-                //}
-                //else
+                else
                 {
-                    if (!skillMotions.Contains("Buff2_2"))
-                    {
-                        skillMotions.Add("Buff2_2");
-                    }
+                    skillGroup.Add(skillItem.SkillRecord.Group, skillItem);
                 }
-            }
-            
-
-            if (skillInfo.SkillRecord.SkillAttr.AttrImpact == "RoleAttrImpactSP")
-            {
-                if (skillInfo.SkillRecord.SkillInput == "1")
-                {
-                    spSkill1 = true;
-                }
-                if (skillInfo.SkillRecord.SkillInput == "2")
-                {
-                    spSkill2 = true;
-                }
-                if (skillInfo.SkillRecord.SkillInput == "3")
-                {
-                    spSkill3 = true;
-                }
-            }
-
-            if (skillInfo.SkillRecord.SkillAttr.AttrImpact == "RoleAttrImpactBuffInHit")
-            {
-                skillMotions.Add("BuffInHit");
+                
             }
         }
 
-        //if (RoleData.SelectRole.Profession == PROFESSION.GIRL_DOUGE || RoleData.SelectRole.Profession == PROFESSION.BOY_DEFENCE)
-        //{
-        //    if (spSkill1)
-        //    {
-        //        skillMotions.Add("Skill1_1_2");
-        //    }
-        //    else
-        //    {
-        //        skillMotions.Add("Skill1");
-        //    }
-
-        //    if (spSkill2)
-        //    {
-        //        skillMotions.Add("Skill2_1_2");
-        //    }
-        //    else
-        //    {
-        //        skillMotions.Add("Skill2");
-        //    }
-
-        //    if (spSkill3)
-        //    {
-        //        skillMotions.Add("Skill3_1_2");
-        //    }
-        //    else
-        //    {
-        //        skillMotions.Add("Skill3");
-        //    }
-        //}
-        //else
+        foreach (var skillItem in skillGroup.Values)
         {
-            if (spSkill1)
+            foreach (var skillGO in skillItem.SkillRecord.SkillGO)
             {
-                skillMotions.Add("Skill1_2_2");
-            }
-            else
-            {
-                skillMotions.Add("Skill1_2");
-            }
-
-            if (spSkill2)
-            {
-                skillMotions.Add("Skill2_2_2");
-            }
-            else
-            {
-                skillMotions.Add("Skill2_2");
-            }
-
-            if (spSkill3)
-            {
-                skillMotions.Add("Skill3_2_2");
-            }
-            else
-            {
-                skillMotions.Add("Skill3_2");
+                if (!string.IsNullOrEmpty(skillGO))
+                {
+                    skillMotions.Add(skillGO);
+                }
             }
         }
-
 
         return skillMotions;
     }
@@ -261,6 +152,19 @@ public class SkillData : SaveItemBase
         return GetSkillInfo(skillID, ref needSave);
     }
 
+    public bool IsSkillConflict(SkillInfoRecord skillTab)
+    {
+        foreach (var skillItem in ProfessionSkills)
+        {
+            if (skillItem.SkillRecord.Group == skillTab.Group
+                && skillItem.SkillRecord.GroupPre == skillTab.GroupPre
+                && skillItem.SkillRecord.Id != skillTab.Id
+                && skillItem.SkillLevel > 0)
+                return true;
+        }
+
+        return false;
+    }
     public ItemSkill GetSkillInfo(string skillID, ref bool isNeedSave)
     {
         var skillItem = _SkillItems.Find((skillInfo) =>
@@ -303,6 +207,15 @@ public class SkillData : SaveItemBase
             if (isTip)
             {
                 UIMessageTip.ShowMessageTip(62004);
+            }
+            return false;
+        }
+
+        if (IsSkillConflict(skillTab))
+        {
+            if (isTip)
+            {
+                UIMessageTip.ShowMessageTip(62002);
             }
             return false;
         }
@@ -376,6 +289,22 @@ public class SkillData : SaveItemBase
         return false;
     }
 
+    public void ResetAllSkills()
+    {
+        foreach (var skillItem in ProfessionSkills)
+        {
+            skillItem.SetStackNum(0);
+            if (skillItem.SkillRecord.SkillAttr.AttrImpact == "RoleAttrImpactSkillDamage"
+                    || skillItem.SkillRecord.SkillAttr.AttrImpact == "RoleAttrImpactBuffRate"
+                    || skillItem.SkillRecord.SkillAttr.AttrImpact == "RoleAttrImpactBuffActSkill" /*默认学会*/)
+            {
+                skillItem.SetStackNum(1);
+            }
+        }
+
+        SaveClass(true);
+    }
+
     public void SkillLevelUp(string skillID)
     {
         var findSkill = _SkillItems.Find((skillInfo) =>
@@ -391,6 +320,12 @@ public class SkillData : SaveItemBase
         if (skillTab.MaxLevel <= findSkill.SkillLevel)
         {
             UIMessageTip.ShowMessageTip(62004);
+            return;
+        }
+
+        if (IsSkillConflict(skillTab))
+        {
+            UIMessageTip.ShowMessageTip(62002);
             return;
         }
 

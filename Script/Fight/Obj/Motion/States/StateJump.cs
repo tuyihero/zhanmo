@@ -39,6 +39,12 @@ public class StateJump : StateBase
             case MotionOpt.Resume_State:
                 _MotionManager.ResumeAnimation(_Animation);
                 break;
+            case MotionOpt.Jump:
+                if (args.Length > 0)
+                {
+                    _MotionManager.TryEnterState(_MotionManager._StateJumpZ, args);
+                }
+                break;
             case MotionOpt.Act_Skill:
                 _MotionManager.TryEnterState(_MotionManager._StateSkill, args);
                 break;

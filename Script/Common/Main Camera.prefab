@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1684893339652975012
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24e34fda50a5f49b5503961cc409df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 1
+  _MaxMoveSpeed: 10
   _Black1: {fileID: 1684893339445391063}
   _Black2: {fileID: 1684893339313795135}
   _SceneAnimController: {fileID: 0}

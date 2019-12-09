@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8083061072927373440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3708769349595234053}
+  - component: {fileID: 6392917338502542802}
+  m_Layer: 0
+  m_Name: MonsterMechineLoong
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3708769349595234053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083061072927373440}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.8672266, y: -8.988731, z: -0.1494213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6392917338502542802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083061072927373440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43273e280e8f98a41a942431da6950c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _IsRoleHit: 0
+  _RoleHitTime: 0.01
+  _Animaton: {fileID: 0}
+  _EffectAnimator: {fileID: 0}
+  _WeaponAnimator: {fileID: 0}
+  _WeaponEffectAnimator: {fileID: 0}
+  _SpBuffNames: []
+  _IsBuffNameDirty: 0
+  _SkillElement: 5
+  _AudioSource: {fileID: 0}
+  _CanBeSelectByEnemy: 1
+  _ColliderInfo: {x: 0.5, y: 1.8, z: 0.2}
+  _ColliderCenter: {x: 0, y: 0.9, z: 0}
+  _IsTrigger: 1
+  _MotionAnimPath: 
+  _ActionPause: 0
+  _BehitAudio: {fileID: 0}
+  _DeadAudio: {fileID: 0}

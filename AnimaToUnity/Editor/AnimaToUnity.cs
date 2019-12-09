@@ -706,10 +706,103 @@ public class AnimaToUnity : MonoBehaviour
 
                 foreach (var oldDirect in directs)
                 {
-                    Directory.Delete(oldDirect);
+                    try
+                    {
+                        Directory.Delete(oldDirect);
+                    }
+                    catch (System.Exception e)
+                    { }
                 }
             }
             
+        }
+
+    }
+
+    [MenuItem("TFImage/ClearFold")]
+    public static void ClearFold()
+    {
+        Object[] selection = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        foreach (var selectGO in selection)
+        {
+            if (selectGO is AnimatorController || selectGO is AnimationClip)
+            {
+                var texturePath = AssetDatabase.GetAssetPath(selectGO);
+                string foldPath = Application.dataPath + texturePath.Replace("Assets", "");
+                File.Delete(foldPath);
+            }
+            else if (selectGO is DefaultAsset)
+            {
+                try
+                {
+                    var texturePath = AssetDatabase.GetAssetPath(selectGO);
+                    string foldPath = Application.dataPath + texturePath.Replace("Assets", "");
+                    Directory.Delete(foldPath);
+                }
+                catch (System.Exception e)
+                { }
+            }
+
+        }
+
+    }
+
+    [MenuItem("TFImage/CreatePrefab")]
+    public static void CreatePrefab()
+    {
+        Object[] selection = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        Dictionary<string, AnimatorController> effectControllerDict = new Dictionary<string, AnimatorController>();
+
+        foreach (var selectGO in selection)
+        {
+            if (selectGO is AnimatorController)
+            {
+                if (selectGO.name.Equals("effect"))
+                {
+                    var effectAnimController = AssetDatabase.GetAssetPath(selectGO);
+                    effectControllerDict.Add(Path.GetDirectoryName(Path.GetDirectoryName(effectAnimController)), selectGO as AnimatorController);
+                    continue;
+                }
+            }
+        }
+
+        foreach (var selectGO in selection)
+        {
+            if (selectGO is AnimatorController)
+            {
+                if (selectGO.name.Equals("effect"))
+                {
+                    continue;
+                }
+
+                var nameSplits = selectGO.name.Split('_');
+                string prefabName = "Boss" + nameSplits[nameSplits.Length - 1];
+
+                GameObject montionBase = new GameObject(prefabName);
+                montionBase.AddComponent<MotionManager>();
+
+                GameObject model = new GameObject(prefabName);
+                GameObject bodyAnim = new GameObject("Body");
+                bodyAnim.transform.SetParent(model.transform);
+                var bodyAimator = bodyAnim.AddComponent<Animator>();
+                bodyAimator.runtimeAnimatorController = selectGO as RuntimeAnimatorController;
+                bodyAnim.AddComponent<SpriteRenderer>();
+
+                GameObject effectAnim = new GameObject("Effect");
+                effectAnim.transform.SetParent(bodyAnim.transform);
+                effectAnim.transform.localPosition = Vector3.zero;
+                effectAnim.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                effectAnim.transform.localScale = new Vector3(2, 2, 2);
+                var texturePath = AssetDatabase.GetAssetPath(selectGO);
+                if (effectControllerDict.ContainsKey(Path.GetDirectoryName(texturePath)))
+                {
+                    var effectAnimController = effectControllerDict[Path.GetDirectoryName(texturePath)];
+                    var effectAimator = effectAnim.AddComponent<Animator>();
+                    effectAimator.runtimeAnimatorController = effectAnimController as RuntimeAnimatorController;
+                    effectAnim.AddComponent<SpriteRenderer>();
+                }
+                
+            }
         }
 
     }

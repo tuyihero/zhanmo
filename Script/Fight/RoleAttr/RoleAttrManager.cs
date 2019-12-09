@@ -81,8 +81,8 @@ public class RoleAttrManager : MonoBehaviour
         _MoveSpeed = _BaseMoveSpeed * _MoveSpeedRate;
     }
 
-    private float _BaseAttackSpeed = 1.0f;
-    private float _AttackSpeed = 1.0f;
+    private float _BaseAttackSpeed = 1.2f;
+    private float _AttackSpeed = 1.2f;
     public float AttackSpeed
     {
         get
@@ -100,6 +100,37 @@ public class RoleAttrManager : MonoBehaviour
         var AttackSpeedRate = _BaseAttr.GetValue(RoleAttrEnum.AttackSpeed) * 0.0001f + 1;
         AttackSpeedRate = Mathf.Clamp(AttackSpeedRate, 0.1f, 3.0f);
         _AttackSpeed = _BaseAttackSpeed * AttackSpeedRate;
+    }
+
+    private int _MP;
+    public int MP
+    {
+        get
+        {
+            return _MP;
+        }
+    }
+
+    public float MPPersent
+    {
+        get
+        {
+            return (_MP / (float)_BaseAttr.GetValue(RoleAttrEnum.MPMax));
+        }
+    }
+
+    public void AddMP(int mpValue)
+    {
+        int mpMax = _BaseAttr.GetValue(RoleAttrEnum.MPMax);
+        _MP += mpValue;
+        _MP = Mathf.Clamp(_MP, 0, mpMax);
+    }
+
+    public void AddMPPersent(float persent)
+    {
+        int mpMax = _BaseAttr.GetValue(RoleAttrEnum.MPMax);
+        _MP += (int)(mpMax * persent);
+        _MP = Mathf.Clamp(_MP, 0, mpMax);
     }
 
     private int _HP;
@@ -479,6 +510,7 @@ public class RoleAttrManager : MonoBehaviour
         RefreshMoveSpeed();
         RefreshAttackSpeed();
         AddHPPersent(1);
+        AddMPPersent(1);
         InitEvent();
         InitSkillAttr();
         _MotionType = MOTION_TYPE.MainChar;
@@ -486,7 +518,7 @@ public class RoleAttrManager : MonoBehaviour
 
     public void InitEnemyAttr(MonsterBaseRecord monsterBase, int level, MOTION_TYPE motionType)
     {
-        _BaseMoveSpeed = 4;
+        _BaseMoveSpeed = 2;
         _Level = level;
         _MonsterValue = 1;
         

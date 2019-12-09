@@ -103,9 +103,9 @@ public class GameDataValue
     #region baseAttr -> exAttr atk
 
     public static int _AtkPerRoleLevel = 0;
-    public static int _AtkRoleLevelBase = 0;
+    public static int _AtkRoleLevelBase = 1;
     public static int _HPPerRoleLevel = 0;
-    public static int _HPRoleLevelBase = 100;
+    public static int _HPRoleLevelBase = 10000;
 
     public static float _AttackPerStrength = 2.5f;
     public static float _DmgEnhancePerStrength = 0f;

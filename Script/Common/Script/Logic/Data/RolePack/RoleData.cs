@@ -273,6 +273,7 @@ public class RoleData
         roleAttr.SetValue(RoleAttrEnum.HPMax, RoleLevel * GameDataValue._HPPerRoleLevel + GameDataValue._HPRoleLevelBase);
         roleAttr.SetValue(RoleAttrEnum.CriticalHitChance, 500);
         roleAttr.SetValue(RoleAttrEnum.CriticalHitDamge, 5000);
+        roleAttr.SetValue(RoleAttrEnum.MPMax, 100);
     }
 
     public void SetEquipAttr(RoleAttrStruct roleAttr)

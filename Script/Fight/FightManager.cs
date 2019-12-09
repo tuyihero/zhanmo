@@ -124,6 +124,8 @@ public class FightManager : InstanceBase<FightManager>
             _LogicFightTime = _LogicPassTime;
             _LogicStartTime = Time.time;
             _CountDown = true;
+
+            TimeManager.Instance.Init();
         }
     }
 
@@ -157,8 +159,8 @@ public class FightManager : InstanceBase<FightManager>
         cameraRoot.transform.rotation = sceneCamera.transform.rotation;
 
         sceneCamera.transform.SetParent(cameraRoot.transform);
-        sceneCamera.transform.localPosition = Vector3.zero;
-        sceneCamera.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        //sceneCamera.transform.localPosition = Vector3.zero;
+        //sceneCamera.transform.localRotation = Quaternion.Euler(Vector3.zero);
         sceneCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("UI"));
         sceneCamera.nearClipPlane = 1.0f;
         //cameraRoot.AddComponent<AudioListener>();
@@ -171,6 +173,7 @@ public class FightManager : InstanceBase<FightManager>
         _ActingRegion = 0;
         _CameraFollow = cameraRoot.GetComponent<CameraFollow>();
         _CameraFollow.SetSceneAnim(GameObject.FindObjectOfType<SceneAnimController>());
+        _CameraFollow._SceneAnimController.InitSceneObjPos();
         //_CameraFollow._FollowObj = _MainChatMotion.gameObject;
         //_CameraFollow._Distance = LogicManager.Instance.EnterStageInfo.CameraOffset[_ActingRegion];
 
@@ -200,6 +203,8 @@ public class FightManager : InstanceBase<FightManager>
         _FightLevel = ActData.Instance.GetStageLevel();
 
         _InitStep = InitStep.InitCameraFinish;
+
+        gameObject.AddComponent<TimeManager>();
     }
 
     private void InitResourcePool()
@@ -260,7 +265,7 @@ public class FightManager : InstanceBase<FightManager>
            MainChatMotion = mainMotion;
 
        }, null));
-        var motionTran = MainChatMotion.transform.Find("Motion");
+        var motionTran = MainChatMotion.transform.Find("AnimTrans/Motion");
         GlobalBuffData.Instance.ActBuffInFight();
         UITestEquip.ActBuffInFight();
 
@@ -308,8 +313,9 @@ public class FightManager : InstanceBase<FightManager>
                 addSkillImpact._AddSkill.gameObject.SetActive(true);
             }
         }
+        MainChatMotion.InitRoleAttr(null, MOTION_TYPE.MainChar);
         MainChatMotion.InitMotion();
-        MainChatMotion.SetPosition(new Vector3(2, -1, 0));
+        //MainChatMotion.SetPosition(new Vector3(2, -1, 0));
         FightLayerCommon.SetPlayerLayer(MainChatMotion);
         //UIHPPanel.ShowHPItem(_MainChatMotion);
 
@@ -336,7 +342,7 @@ public class FightManager : InstanceBase<FightManager>
 
     #region scene obj
 
-    List<MotionManager> _MonMotion = new List<MotionManager>();
+    public List<MotionManager> _MonMotion = new List<MotionManager>();
 
     private int _SceneEnemyCnt = 0;
     public int SceneEnemyCnt
@@ -373,24 +379,24 @@ public class FightManager : InstanceBase<FightManager>
         if (monsterBase.MotionType == Tables.MOTION_TYPE.Elite)
         {
             aiBase.InitSkillDamageRate(0.6f);
-            mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale * 1.1f;
+            //mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale * 1.1f;
         }
         else if (monsterBase.MotionType == Tables.MOTION_TYPE.ExElite)
         {
             aiBase.InitSkillDamageRate(0.6f);
-            mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale * 1.2f;
+            //mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale * 1.2f;
         }
         else if(monsterBase.MotionType == Tables.MOTION_TYPE.Hero)
         {
             aiBase.InitSkillDamageRate(1.0f);
-            mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale;
+            //mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale;
             //mainBase.Animation.transform.localScale = mainBase.Animation.transform.localScale * 0.8f;
             //mainBase.NavAgent.radius = mainBase.NavAgent.radius * mainBase.Animation.transform.localScale.x * 0.8f;
         }
         else
         {
             aiBase.InitSkillDamageRate(0.3f);
-            mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale;
+            //mainBase.Animation.transform.localScale = Vector3.one * monsterBase.ModelScale;
         }
         aiBase.InitMonsterDamageRate();
 
@@ -408,6 +414,8 @@ public class FightManager : InstanceBase<FightManager>
 
     public void ObjDisapear(MotionManager objMotion)
     {
+        _FightScene.MotionDisapear(objMotion);
+
         _MonMotion.Remove(objMotion);
 
         ResourcePool.Instance.RecvIldeMotion(objMotion);
@@ -460,6 +468,7 @@ public class FightManager : InstanceBase<FightManager>
         });
 
         _FightScene.transform.SetParent(transform);
+        _FightScene.transform.localPosition = Vector3.zero;
         var needLoadScene = _FightScene.GetLogicScenes();
         if (needLoadScene == null)
         {
@@ -475,6 +484,8 @@ public class FightManager : InstanceBase<FightManager>
             {
 
                 resGO.SetActive(true);
+                resGO.transform.position = Vector3.zero;
+                resGO.transform.rotation = Quaternion.Euler(45, 0, 0);
                 //actGroup = GameObject.Find(needLoadScene[i] + "_RandomAreas").GetComponent<AreaGroup>();
                 //actGroup._LightGO.SetActive(false);
                 //actGroup.transform.parent.gameObject.SetActive(false);
@@ -566,8 +577,8 @@ public class FightManager : InstanceBase<FightManager>
         Hashtable hash = new Hashtable();
         if (FightManager.Instance != null && FightManager.Instance.MainChatMotion != null)
         {
-            hash.Add("WorldPos", FightManager.Instance.MainChatMotion.transform.position);
-            var effectID = FightManager.Instance.MainChatMotion.PlayDynamicEffect(_PlayBornEffect, hash);
+            //hash.Add("WorldPos", FightManager.Instance.MainChatMotion.transform.position);
+            //var effectID = FightManager.Instance.MainChatMotion.PlayDynamicEffect(_PlayBornEffect, hash);
         }
         
     }

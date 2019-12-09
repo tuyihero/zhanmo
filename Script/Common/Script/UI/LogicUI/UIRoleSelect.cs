@@ -58,7 +58,6 @@ public class UIRoleSelect : UIBase
 
     private int _SelectRoleID = 0;
     private int _SelectSex = 0;
-    private List<int> _SelectRecords = new List<int>() { 0, 1,2};
 
     public void SelectRole(int roleID)
     {
@@ -86,15 +85,14 @@ public class UIRoleSelect : UIBase
             _ProMain[2].SetActive(true);
 
         }
-        
-        _SelectRecords[_SelectSex] = _SelectRoleID;
+
         ShowModel(roleID);
     }
 
     public void OnProSelect1(int idx)
     {
         //_SelectSex = idx;
-        SelectRole(_SelectRecords[idx]);
+        SelectRole(idx);
     }
 
     public void OnProSelect2(int idx)

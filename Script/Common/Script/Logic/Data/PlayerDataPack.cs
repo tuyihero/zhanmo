@@ -139,7 +139,7 @@ public class PlayerDataPack : DataPackBase
                 _RoleList[i].MainBaseName = "CharAssasinBase";
                 _RoleList[i].MotionFold = "CharAssasin";
                 _RoleList[i].ModelName = "CharAssasin";
-                _RoleList[i].Profession = PROFESSION.WARRIOR;
+                _RoleList[i].Profession = PROFESSION.ASSASSIN;
                 _RoleList[i].DefaultWeaponModel = "WeaponAssasin1";
                 _RoleList[i].IconName = "hero/hero_p_shuangshoufu";
             }
@@ -148,7 +148,7 @@ public class PlayerDataPack : DataPackBase
                 _RoleList[i].MainBaseName = "CharAssasinBase";
                 _RoleList[i].MotionFold = "CharAssasin";
                 _RoleList[i].ModelName = "CharAssasin";
-                _RoleList[i].Profession = PROFESSION.WARRIOR;
+                _RoleList[i].Profession = PROFESSION.MAGE;
                 _RoleList[i].DefaultWeaponModel = "WeaponAssasin1";
                 _RoleList[i].IconName = "hero/hero_p_shuangshoufu";
             }

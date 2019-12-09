@@ -7,7 +7,7 @@ using System;
 
 public class UIPressBtn : MonoBehaviour, IEventSystemHandler, IPointerDownHandler, IPointerUpHandler
 {
-    #region 
+    #region press
 
     public float _PressStart = 0;
     public float _PressInterval = 0;
@@ -34,6 +34,9 @@ public class UIPressBtn : MonoBehaviour, IEventSystemHandler, IPointerDownHandle
 
     #region  IPointerDownHandler
 
+    private float _LastPressTime = 0;
+    private static float _DoubleClickInterval = 0.2f;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         PressInvoke();
@@ -47,6 +50,7 @@ public class UIPressBtn : MonoBehaviour, IEventSystemHandler, IPointerDownHandle
             StartCoroutine(OnPressInvoke());
         }
         _IsPress = true;
+
     }
 
     private IEnumerator OnPressStart()

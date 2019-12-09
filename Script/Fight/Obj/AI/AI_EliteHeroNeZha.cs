@@ -25,7 +25,7 @@ public class AI_EliteHeroNeZha : AI_HeroDexNormal
         {
             var back = _SelfMotion.transform.position - _TargetMotion.transform.position;
             var targetPos = back.normalized * _KeepDis + _SelfMotion.transform.position;
-            _SelfMotion.MoveTarget(targetPos);
+            _SelfMotion.MoveTarget(targetPos, 1);
         }
 
         _SelfMotion.SetLookAt(_TargetMotion.transform.position);

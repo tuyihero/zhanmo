@@ -18,7 +18,7 @@ public class ImpactPushToTargetBackRandom : ImpactBase
         {
             var rot = new Vector3(0, reciverManager.transform.rotation.eulerAngles.y + _Angle, 0);
             reciverManager.transform.rotation = Quaternion.Euler(rot);
-            Vector3 pos = reciverManager.transform.position + reciverManager.transform.forward * _Distance;
+            Vector3 pos = reciverManager.transform.position + reciverManager.GetMotionForward() * _Distance;
 
             NavMeshHit navmeshHit;
             if (NavMesh.SamplePosition(pos, out navmeshHit, 1000, 1))

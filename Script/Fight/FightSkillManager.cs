@@ -92,7 +92,7 @@ public class FightSkillManager
             skillInfo._StoreCntLimit = skillBase._StoreUseTimes;
             skillInfo._StoreCnt = skillInfo._StoreCntLimit - 1;
             skillInfo._CDTime = skillBase._SkillCD;
-            skillInfo._LastActCD = Time.time;
+            skillInfo._LastActCD = TimeManager.Instance.FightTime;
         }
         else
         {
@@ -103,7 +103,7 @@ public class FightSkillManager
             else
             {
                 skillInfo._CDTime = skillBase._SkillCD;
-                skillInfo._LastActCD = Time.time;
+                skillInfo._LastActCD = TimeManager.Instance.FightTime;
             }
         }
         UIFuncInFight.UpdateSkillInfoUI();
@@ -131,7 +131,7 @@ public class FightSkillManager
         if (skillInfo._StoreCnt > 0)
             return false;
 
-        if (Time.time - skillInfo._LastActCD > skillInfo._CDTime)
+        if (TimeManager.Instance.FightTime - skillInfo._LastActCD > skillInfo._CDTime)
             return false;
 
         return true;
@@ -163,10 +163,10 @@ public class FightSkillManager
                 }
                 return false;
             });
-            if (Time.time - skillInfo._LastReuse > skillInfo._ReuseTime)
+            if (TimeManager.Instance.FightTime - skillInfo._LastReuse > skillInfo._ReuseTime)
             {
                 skillInfo._ReuseTime = reuseTime;
-                skillInfo._LastReuse = Time.time;
+                skillInfo._LastReuse = TimeManager.Instance.FightTime;
             }
             else
             {
@@ -200,7 +200,7 @@ public class FightSkillManager
             }
 
             skillInfo._ReuseTime = reuseTime;
-            skillInfo._LastReuse = Time.time;
+            skillInfo._LastReuse = TimeManager.Instance.FightTime;
 
             _ReuseSkillBase = skillBase;
             UIFuncInFight.UpdateSkillInfoUI();
@@ -223,7 +223,7 @@ public class FightSkillManager
             return false;
         }
 
-        if (Time.time - skillInfo._LastReuse > skillInfo._ReuseTime)
+        if (TimeManager.Instance.FightTime - skillInfo._LastReuse > skillInfo._ReuseTime)
             return false;
 
         return true;
@@ -234,7 +234,7 @@ public class FightSkillManager
         List<FightSkillInfo> removeList = new List<FightSkillInfo>();
         foreach (var skillInfoPair in _FightSkillDict)
         {
-            if (skillInfoPair._LastActCD > 0 && Time.time - skillInfoPair._LastActCD > skillInfoPair._CDTime)
+            if (skillInfoPair._LastActCD > 0 && TimeManager.Instance.FightTime - skillInfoPair._LastActCD > skillInfoPair._CDTime)
             {
                 if (skillInfoPair._StoreCnt < skillInfoPair._StoreCntLimit)
                 {
@@ -245,7 +245,7 @@ public class FightSkillManager
                     }
                     else
                     {
-                        skillInfoPair._LastActCD = Time.time;
+                        skillInfoPair._LastActCD = TimeManager.Instance.FightTime;
                     }
                 }
                 else
@@ -254,7 +254,7 @@ public class FightSkillManager
                 }
             }
 
-            if (skillInfoPair._LastReuse > 0 && Time.time - skillInfoPair._LastReuse > skillInfoPair._ReuseTime)
+            if (skillInfoPair._LastReuse > 0 && TimeManager.Instance.FightTime - skillInfoPair._LastReuse > skillInfoPair._ReuseTime)
                 removeList.Add(skillInfoPair);
         }
 
@@ -370,16 +370,16 @@ public class FightSkillManager
             skillInfo._SkillInput = summonData.SummonRecordID;
             skillInfo._SkillIcon = summonData.SummonRecord.MonsterBase.HeadIcon;
             skillInfo._CDTime = cdTime;
-            skillInfo._LastActCD = Time.time;
+            skillInfo._LastActCD = TimeManager.Instance.FightTime;
             skillInfo._ShowInUI = !isCommonCD;
         }
         else
         {
-            var nowCD = skillInfo._CDTime - (Time.time - skillInfo._LastActCD);
+            var nowCD = skillInfo._CDTime - (TimeManager.Instance.FightTime - skillInfo._LastActCD);
             if (cdTime > nowCD)
             {
                 skillInfo._CDTime = cdTime;
-                skillInfo._LastActCD = Time.time;
+                skillInfo._LastActCD = TimeManager.Instance.FightTime;
                 skillInfo._ShowInUI = !isCommonCD;
             }
         }
@@ -406,7 +406,7 @@ public class FightSkillManager
         if (skillInfo._StoreCnt > 0)
             return false;
 
-        if (Time.time - skillInfo._LastActCD > skillInfo._CDTime)
+        if (TimeManager.Instance.FightTime - skillInfo._LastActCD > skillInfo._CDTime)
             return false;
 
         return true;
@@ -432,7 +432,7 @@ public class FightSkillManager
         if (skillInfo._StoreCnt > 0)
             return 0;
 
-        float cdPro = (skillInfo._CDTime - (Time.time - skillInfo._LastActCD)) / skillInfo._CDTime;
+        float cdPro = (skillInfo._CDTime - (TimeManager.Instance.FightTime - skillInfo._LastActCD)) / skillInfo._CDTime;
 
         return cdPro;
     }

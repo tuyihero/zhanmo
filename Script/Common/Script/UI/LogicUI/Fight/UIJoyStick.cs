@@ -25,8 +25,11 @@ public class UIJoyStick : UIBase, IDragHandler, IPointerUpHandler, IPointerDownH
     public Image _BackGround;
     public float _MaxRadius = 50.0f;
 
+    public Text _PosText;
+
     private Vector2 _TouchPos = Vector2.zero;
     private Vector2 _LastTouchPos = Vector2.zero;
+    private Vector2 _OriginJoyPosition = Vector2.zero;
     private RectTransform _JoyStickRectTransform;
     private int _TouchFingerID = -1;
 
@@ -37,6 +40,8 @@ public class UIJoyStick : UIBase, IDragHandler, IPointerUpHandler, IPointerDownH
         _JoyStickRectTransform = _JoyStickSprite.GetComponent<RectTransform>();
         SetImageAlpah(_JoyStickSprite, 0.5f);
         SetImageAlpah(_BackGround, 0.5f);
+        _OriginJoyPosition = UIManager.Instance.ScreenCanvas.worldCamera.WorldToScreenPoint(_JoyStickRectTransform.position);
+
     }
 
 
@@ -109,12 +114,38 @@ public class UIJoyStick : UIBase, IDragHandler, IPointerUpHandler, IPointerDownH
             }
         }
 
-
+        _PosText.text = data.position.ToString();
         // 记录鼠标位置
-        _LastTouchPos = Input.mousePosition;
+        _OriginJoyPosition = UIManager.Instance.ScreenCanvas.worldCamera.WorldToScreenPoint(_JoyStickRectTransform.position);
+        _LastTouchPos = _OriginJoyPosition;
         // 拖动时重设精灵透明度
         SetImageAlpah(_JoyStickSprite, 1);
         SetImageAlpah(_BackGround, 1);
+
+        // 计算距离
+        Vector2 posDelta = data.position - _OriginJoyPosition;
+        float nDistance = posDelta.magnitude;
+        if (nDistance <= _MaxRadius)
+        {
+            // 若拖动位置在最大半径以内 则直接设置newXY
+            _JoyStickRectTransform.anchoredPosition = new Vector2(posDelta.x, posDelta.y);
+        }
+        else
+        {
+            // 若拖动位置超出最大半径 则设置连线和圆的交点位置
+            Vector3 nResult = new Vector3(0, 0, 0);
+            // 计算鼠标和摇杆连线的直线方程 与摇杆移动范围为半径的圆的交点坐标
+            var rate = _MaxRadius / nDistance;
+
+            nResult.x = posDelta.x * rate;
+            nResult.y = posDelta.y * rate;
+
+            _JoyStickRectTransform.anchoredPosition = nResult;
+            
+        }
+        SendMoveDirection();
+        // 更新鼠标位置
+        _LastTouchPos = _TouchPos;
 
     }
 
@@ -127,7 +158,26 @@ public class UIJoyStick : UIBase, IDragHandler, IPointerUpHandler, IPointerDownH
 
     private void SendMoveDirection()
     {
-        InputManager.Instance.Axis = _JoyStickRectTransform.anchoredPosition / _MaxRadius;
+        //InputManager.Instance.Axis = _JoyStickRectTransform.anchoredPosition / _MaxRadius;
+        var inputAxis = Vector2.zero;
+        if (_JoyStickRectTransform.anchoredPosition.x > 0 && Mathf.Abs( _JoyStickRectTransform.anchoredPosition.x) > Mathf.Abs(_JoyStickRectTransform.anchoredPosition.y))
+        {
+            inputAxis = new Vector2(1,0);
+        }
+        else if (_JoyStickRectTransform.anchoredPosition.x < 0 && Mathf.Abs(_JoyStickRectTransform.anchoredPosition.x) > Mathf.Abs(_JoyStickRectTransform.anchoredPosition.y))
+        {
+            inputAxis = new Vector2(-1, 0);
+        }
+        else if (_JoyStickRectTransform.anchoredPosition.y > 0 && Mathf.Abs(_JoyStickRectTransform.anchoredPosition.y) > Mathf.Abs(_JoyStickRectTransform.anchoredPosition.x))
+        {
+            inputAxis = new Vector2(0, 1);
+        }
+        else if (_JoyStickRectTransform.anchoredPosition.y < 0 && Mathf.Abs(_JoyStickRectTransform.anchoredPosition.y) > Mathf.Abs(_JoyStickRectTransform.anchoredPosition.x))
+        {
+            inputAxis = new Vector2(0, -1);
+        }
+        Debug.Log("inputAxis:" + inputAxis);
+        InputManager.Instance.Axis = inputAxis;
     }
 }
 

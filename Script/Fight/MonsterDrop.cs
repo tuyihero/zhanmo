@@ -88,7 +88,7 @@ public class MonsterDrop
     public static List<DropItemData> GetMonsterDrops(Tables.MonsterBaseRecord monsterRecord, MOTION_TYPE monsterType, int level, STAGE_TYPE stageType = STAGE_TYPE.NORMAL)
     {
         List<DropItemData> dropList = new List<DropItemData>();
-
+        return dropList;
         if (stageType == STAGE_TYPE.NORMAL || stageType == STAGE_TYPE.BOSS)
         {//only normal and boss stage drop equip
             List<ItemEquip> dropEquips = GameDataValue.GetMonsterDropEquip(monsterType, monsterRecord, level, stageType);
