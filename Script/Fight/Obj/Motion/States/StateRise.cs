@@ -17,7 +17,7 @@ public class StateRise : StateBase
         _MotionManager.AddAnimationEndEvent(_Animation);
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
@@ -37,7 +37,7 @@ public class StateRise : StateBase
                 _MotionManager.TryEnterState(_MotionManager._StateCatch, args);
                 break;
             case MotionOpt.Anim_Event:
-                DispatchRiseEvent(args[0] as string, args[1]);
+                DispatchRiseEvent(args["FuncName"] as string, args["Param"]);
                 break;
             default:
                 break;
@@ -46,7 +46,7 @@ public class StateRise : StateBase
 
     #region 
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         if (_Animation != null)
         {
@@ -61,7 +61,7 @@ public class StateRise : StateBase
         switch (funcName)
         {
             case AnimEventManager.ANIMATION_END:
-                _MotionManager.TryEnterState(_MotionManager._StateIdle);
+                _MotionManager.TryEnterState(_MotionManager._StateIdle, null);
                 break;
         }
     }

@@ -9,31 +9,31 @@ public class StateJumpIdle : StateBase
         return "jumpIdle";
     }
 
-    public override bool CanStartState(params object[] args)
+    public override bool CanStartState(Hashtable args)
     {
         return true;
     }
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         base.StartState(args);
 
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
             case MotionOpt.Input_Direct:
                 Vector2 moveDirect = Vector2.zero;
-                if (args[0] is Vector2)
+                if (args.ContainsKey("InputDirect"))
                 {
-                    moveDirect = (Vector2)args[0];
+                    moveDirect = (Vector2)args["InputDirect"];
                 }
                 _MotionManager.JumpMove(moveDirect);
                 break;
             case MotionOpt.Pause_State:
-                _MotionManager.PauseAnimation(_Animation, (float)args[0]);
+                _MotionManager.PauseAnimation(_Animation, (float)args["PauseTime"]);
                 break;
             case MotionOpt.Resume_State:
                 _MotionManager.ResumeAnimation(_Animation);

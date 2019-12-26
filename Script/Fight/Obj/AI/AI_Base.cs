@@ -612,8 +612,8 @@ public class AI_Base : MonoBehaviour
         public int HitTimes;
     }
 
-    protected ImpactBuff _HitProtectedPrefab;
-    public ImpactBuff HitProtectedPrefab
+    protected ImpactBase[] _HitProtectedPrefab;
+    public ImpactBase[] HitProtectedPrefab
     {
         get
         {
@@ -621,8 +621,12 @@ public class AI_Base : MonoBehaviour
             {
                 //var buffGO = ResourceManager.Instance.GetGameObject("SkillMotion/CommonImpact/HitProtectedBuff");
                 //_HitProtectedPrefab = buffGO.GetComponent<ImpactBuff>();
-                _HitProtectedPrefab = ResourcePool.Instance.GetConfig<ImpactBuff>(ResourcePool.ConfigEnum.HitProtectedBuff);
-                _HitProtectedPrefab.Init(null, null);
+                var hitPrefabGO = ResourcePool.Instance.GetConfig<Transform>(ResourcePool.ConfigEnum.HitProtectedBuff);
+                _HitProtectedPrefab = hitPrefabGO.GetComponents<ImpactBase>();
+                foreach (var impactBuff in _HitProtectedPrefab)
+                {
+                    impactBuff.Init(null, null);
+                }
             }
             return _HitProtectedPrefab;
         }
@@ -790,13 +794,18 @@ public class AI_Base : MonoBehaviour
     private void ReleaseHit()
     {
         Debug.Log("ReleaseHit ");
-        ImpactFlyAway impact = new ImpactFlyAway();
-        impact._FlyHeight = 1;
-        impact._Time = 0.5f;
-        impact._Speed = 10;
-        impact._DamageRate = 0;
-        impact.ActImpact(_SelfMotion, _SelfMotion);
-        HitProtectedPrefab.ActBuffInstance(_SelfMotion, _SelfMotion);
+        foreach (var impactBuff in HitProtectedPrefab)
+        {
+            if (impactBuff is ImpactBuff)
+            {
+                (impactBuff as ImpactBuff).ActBuffInstance(_TargetMotion, _SelfMotion);
+            }
+            else
+            {
+                impactBuff.ActImpact(_TargetMotion, _SelfMotion);
+            }
+        }
+        
         _ProtectMode = false;
     }
 

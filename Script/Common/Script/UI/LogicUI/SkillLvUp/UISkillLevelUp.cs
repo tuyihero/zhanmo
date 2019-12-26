@@ -65,6 +65,9 @@ public class UISkillLevelUp : UIBase
     {
         foreach (var skillItem in _SkillItems)
         {
+            if (skillItem.SkillTab == null)
+                continue;
+
             if (skillItem.SkillTab.Profession == profession)
             {
                 skillItem.Refresh();

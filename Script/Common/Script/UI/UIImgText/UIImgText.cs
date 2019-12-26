@@ -29,20 +29,25 @@ public class UIImgText : MonoBehaviour
         if (_CharRoot != null)
             return;
 
-        var charRoot = new GameObject("CharRoot");
-        
-        var horizon = charRoot.AddComponent<HorizontalLayoutGroup>();
-        horizon.childAlignment = TextAnchor.UpperLeft;
-        horizon.childForceExpandHeight = false;
-        horizon.childForceExpandWidth = false;
-        var layoutElement = charRoot.AddComponent<LayoutElement>();
-        layoutElement.ignoreLayout = true;
+        _CharRoot = transform.Find("CharRoot");
 
-        _CharRoot = charRoot.transform;
-        _CharRoot.SetParent(transform);
-        _CharRoot.localPosition = Vector3.zero;
-        _CharRoot.localRotation = Quaternion.Euler(Vector3.zero);
-        _CharRoot.localScale = Vector3.one;
+        if (_CharRoot == null)
+        {
+            var charRoot = new GameObject("CharRoot");
+
+            var horizon = charRoot.AddComponent<HorizontalLayoutGroup>();
+            horizon.childAlignment = TextAnchor.UpperLeft;
+            horizon.childForceExpandHeight = false;
+            horizon.childForceExpandWidth = false;
+            var layoutElement = charRoot.AddComponent<LayoutElement>();
+            layoutElement.ignoreLayout = true;
+
+            _CharRoot = charRoot.transform;
+            _CharRoot.SetParent(transform);
+            _CharRoot.localPosition = Vector3.zero;
+            _CharRoot.localRotation = Quaternion.Euler(Vector3.zero);
+            _CharRoot.localScale = Vector3.one;
+        }
     }
 
     #region

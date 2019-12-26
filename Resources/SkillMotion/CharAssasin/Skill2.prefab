@@ -204,8 +204,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1
-  _UpSpeed: 10
+  _UpSpeed: 8
+  _UpTime: 0.2
   _Time: 0.1
   _Speed: 5
 --- !u!65 &2854440733497494757
@@ -453,8 +453,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1.5
-  _UpSpeed: 15
+  _UpSpeed: 8
+  _UpTime: 0.2
   _Time: 0
   _Speed: 0
 --- !u!65 &2468736917962082461

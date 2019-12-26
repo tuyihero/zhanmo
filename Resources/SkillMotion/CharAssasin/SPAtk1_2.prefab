@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Time: 0.3
-  _Speed: {x: 0, y: 3}
+  _Speed: {x: 0, y: 6}
 --- !u!1 &7358462678957486507
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   _IsColliderFinish: 0
   _IsRemindSelected: 0
   _EventAnim: {fileID: 7400000, guid: e644fb86b0dec764f9758991836505d9, type: 2}
-  _EventFrame: 0c0000000f000000
+  _EventFrame: 080000000b000000
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
@@ -202,8 +202,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1.2
-  _UpSpeed: 5
+  _UpSpeed: 7
+  _UpTime: 0.1
 --- !u!65 &3181908141027602404
 BoxCollider:
   m_ObjectHideFlags: 0

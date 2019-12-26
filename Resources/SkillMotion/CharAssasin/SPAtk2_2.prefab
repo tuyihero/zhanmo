@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ColliderID: 1
-  _IsColliderFinish: 0
+  _IsColliderFinish: 1
   _IsRemindSelected: 0
   _EventAnim: {fileID: 0}
   _EventFrame: 
@@ -75,9 +75,9 @@ MonoBehaviour:
   _HitAudio: -1
   _IsBulletHit: 0
   _ForceHit: 0
-  _HitPauseTime: 0.15
-  _FlyHeight: 1.2
-  _UpSpeed: 5
+  _HitPauseTime: 0.25
+  _UpSpeed: 10
+  _UpTime: 0.2
 --- !u!65 &9220268590201779599
 BoxCollider:
   m_ObjectHideFlags: 0

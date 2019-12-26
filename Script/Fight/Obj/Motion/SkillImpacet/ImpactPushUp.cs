@@ -10,7 +10,8 @@ public class ImpactPushUp : ImpactBase
     {
         base.ActImpact(senderManager, reciverManager);
 
-        reciverManager.SetSkillJump(_Speed, _Time);
+        float atkSpeed = SkillMotion.SkillSpeed;
+        reciverManager.SetSkillJump(_Speed * atkSpeed, _Time / atkSpeed);
     }
 
 }

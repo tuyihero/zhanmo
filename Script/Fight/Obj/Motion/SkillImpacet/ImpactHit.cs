@@ -9,6 +9,7 @@ public class ImpactHit : ImpactDamage
     public bool _IsBulletHit = false;
     public bool _ForceHit = false;
     public float _HitPauseTime = 0;
+    public float _PauseFlyTime = 0;
 
     public override void ActImpact(MotionManager senderManager, MotionManager reciverManager)
     {

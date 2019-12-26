@@ -1,5 +1,190 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &566777144030626867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5625956164876740425}
+  - component: {fileID: 7067657763420744999}
+  - component: {fileID: 8914031391244468098}
+  - component: {fileID: 1727489157544677745}
+  m_Layer: 9
+  m_Name: Hit2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5625956164876740425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566777144030626867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3154415417209638231}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7067657763420744999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566777144030626867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecdd01fd518f814d93a0fdc83e97fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ColliderID: 2
+  _IsColliderFinish: 0
+  _IsRemindSelected: 0
+  _EventAnim: {fileID: 0}
+  _EventFrame: 
+  _AudioID: -1
+  _ColliderFinishFrame: 
+  _SelectLieObj: 1
+  _HittedAudio: -1
+  _NonHittedAudio: -1
+--- !u!65 &8914031391244468098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566777144030626867}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 3, z: 0.2}
+  m_Center: {x: 0.5, y: 1, z: 0}
+--- !u!114 &1727489157544677745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566777144030626867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36a3ae47a40b344381805dd266aa63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DamageRate: 0.25
+  _DamageType: 5
+  _IsCharSkillDamage: 0
+  _HitTime: 0.6
+  _HitEffect: 1
+  _HitAudio: -1
+  _IsBulletHit: 0
+  _ForceHit: 0
+  _HitPauseTime: 0
+  _PauseFlyTime: 0
+  _UpSpeed: 5
+  _UpTime: 0.2
+  _IsBorder: 1
+  _Time: 0.2
+  _Speed: 5
+--- !u!1 &1590394485791488291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3326039688501709324}
+  - component: {fileID: 8813968912514183695}
+  - component: {fileID: 7367994264009398224}
+  - component: {fileID: 2004860230428825278}
+  m_Layer: 9
+  m_Name: Hit1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3326039688501709324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590394485791488291}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3154415417209638231}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8813968912514183695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590394485791488291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecdd01fd518f814d93a0fdc83e97fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ColliderID: 1
+  _IsColliderFinish: 0
+  _IsRemindSelected: 0
+  _EventAnim: {fileID: 0}
+  _EventFrame: 
+  _AudioID: -1
+  _ColliderFinishFrame: 
+  _SelectLieObj: 1
+  _HittedAudio: -1
+  _NonHittedAudio: -1
+--- !u!65 &7367994264009398224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590394485791488291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 3, z: 0.2}
+  m_Center: {x: 0.5, y: 1, z: 0}
+--- !u!114 &2004860230428825278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590394485791488291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fe59779f3c67d40b7a791726d5e5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DamageRate: 0.25
+  _DamageType: 5
+  _IsCharSkillDamage: 0
+  _HitTime: 0.6
+  _HitEffect: 1
+  _HitAudio: -1
+  _IsBulletHit: 0
+  _ForceHit: 0
+  _HitPauseTime: 0
+  _PauseFlyTime: 0
 --- !u!1 &1755408031837388255
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +212,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3326039688501709324}
+  - {fileID: 5625956164876740425}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,17 +231,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NextAnim:
-  - {fileID: 7400000, guid: 9eed9e7141170894fb1750690504a25a, type: 2}
+  - {fileID: 7400000, guid: 97a00f5eddbd8f549a818e634267a580, type: 2}
   _NextEffect: []
   _NextAudio: []
+  _IsActNextAnimAtNextInput: 0
   _ActInput: 2
   _SkillMotionPrior: 100
   _SkillMotionPriorSelf: 0
   _SuperArmorColliderID: -1
-  _ActSkillInJump: 0
+  _ActTimesInJump: 0
   _ActStayInJump: 1
   _SkillBaseSpeed: 1
   _SkillActTimes: 0
   _SkillHitMotions: []
   _SkillCD: 0
   _StoreUseTimes: 0
+  _MPCost: 0

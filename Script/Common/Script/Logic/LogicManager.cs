@@ -163,7 +163,8 @@ public class LogicManager
 
     public void EnterFightFinish()
     {
-        //UIHPPanel.ShowAsyn();
+        UIHPPanel.ShowAsyn();
+        UICombo.ShowAsyn();
         //UIControlPanel.ShowAsyn();
         //UIJoyStick.ShowAsyn();
         UIDirectControl.ShowAsyn();

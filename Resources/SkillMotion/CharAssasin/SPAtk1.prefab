@@ -76,8 +76,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1.5
-  _UpSpeed: 5
+  _UpSpeed: 10
+  _UpTime: 0.3
 --- !u!65 &8193687287192106420
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -216,4 +216,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Time: 0.3
-  _Speed: {x: 0, y: 3}
+  _Speed: {x: 0, y: 6}

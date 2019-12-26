@@ -108,7 +108,7 @@ public class SkillData : SaveItemBase
 
     public List<string> GetRoleSkills()
     {
-        List<string> skillMotions = new List<string>() { "SkillPre", "JumpAtk" };
+        List<string> skillMotions = new List<string>() { "SkillPre"};
 
         Dictionary<int, ItemSkill> skillGroup = new Dictionary<int, ItemSkill>();
 

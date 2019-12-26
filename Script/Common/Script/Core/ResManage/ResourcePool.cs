@@ -23,7 +23,7 @@ public class ResourcePool : InstanceBase<ResourcePool>
         {
             InitEffect();
             //InitAutio();
-            //InitConfig();
+            InitConfig();
         }
     }
 
@@ -880,15 +880,15 @@ public class ResourcePool : InstanceBase<ResourcePool>
     public static Dictionary<ConfigEnum, string> ConfigPrefabs = new Dictionary<ConfigEnum, string>()
     {
         { ConfigEnum.HitProtectedBuff, "SkillMotion/CommonImpact/HitProtectedBuff"},
-        { ConfigEnum.DexAccelateBuff, "SkillMotion/CommonImpact/DexAccelateBuff"},
-        { ConfigEnum.SuperArmor, "SkillMotion/CommonImpact/SuperArmor"},
-        { ConfigEnum.SuperArmorBlock, "SkillMotion/CommonImpact/SuperArmorBlock"},
-        { ConfigEnum.BlockBullet, "SkillMotion/CommonImpact/BlockBullet"},
-        { ConfigEnum.IntShieldBuff, "SkillMotion/CommonImpact/IntShieldBuff"},
-        { ConfigEnum.StrBuff, "SkillMotion/CommonImpact/StrBuff"},
-        { ConfigEnum.ResourceConfig, "Common/ResourceConfig"},
-        { ConfigEnum.RandomBuff, "SkillMotion/CommonImpact/EliteRandomBuff"},
-        { ConfigEnum.BlockSummon, "SkillMotion/CommonImpact/BlockSummon"},
+        //{ ConfigEnum.DexAccelateBuff, "SkillMotion/CommonImpact/DexAccelateBuff"},
+        //{ ConfigEnum.SuperArmor, "SkillMotion/CommonImpact/SuperArmor"},
+        //{ ConfigEnum.SuperArmorBlock, "SkillMotion/CommonImpact/SuperArmorBlock"},
+        //{ ConfigEnum.BlockBullet, "SkillMotion/CommonImpact/BlockBullet"},
+        //{ ConfigEnum.IntShieldBuff, "SkillMotion/CommonImpact/IntShieldBuff"},
+        //{ ConfigEnum.StrBuff, "SkillMotion/CommonImpact/StrBuff"},
+        //{ ConfigEnum.ResourceConfig, "Common/ResourceConfig"},
+        //{ ConfigEnum.RandomBuff, "SkillMotion/CommonImpact/EliteRandomBuff"},
+        //{ ConfigEnum.BlockSummon, "SkillMotion/CommonImpact/BlockSummon"},
     };
 
     public Dictionary<string, GameObject> _ConfigPrefabs;

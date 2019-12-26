@@ -16,16 +16,16 @@ public class StateHit : StateBase
         _MotionManager.AddAnimationEndEvent(_Animation);
     }
 
-    public override bool CanStartState(params object[] args)
+    public override bool CanStartState(Hashtable args)
     {
-        return IsBuffCanBeHit((MotionManager)args[2], (ImpactHit)args[3]);
+        return IsBuffCanBeHit((MotionManager)args["SenderMotion"], (ImpactHit)args["HitImpact"]);
     }
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         {
-            MotionHit((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
-            SetHitMove((Vector3)args[4], (float)args[5]);
+            MotionHit((float)args["HitTime"], (int)args["HitEffect"], (int)args["HitAudio"], (MotionManager)args["SenderMotion"]);
+            SetHitMove((Vector3)args["MoveDirect"], (float)args["MoveTime"], (bool)args["IsBorder"]);
         }
 
         if (_MotionManager._BehitAudio != null)
@@ -34,12 +34,12 @@ public class StateHit : StateBase
         }
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
             case MotionOpt.Pause_State:
-                _MotionManager.PauseAnimation(_Animation, (float)args[0]);
+                _MotionManager.PauseAnimation(_Animation, (float)args["PauseTime"]);
                 break;
             case MotionOpt.Resume_State:
                 _MotionManager.ResumeAnimation(_Animation);
@@ -52,8 +52,8 @@ public class StateHit : StateBase
                 break;
             case MotionOpt.Hit:
                 //_MotionManager.TryEnterState(_MotionManager._StateHit, args);
-                MotionHit((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
-                SetHitMove((Vector3)args[4], (float)args[5]);
+                MotionHit((float)args["HitTime"], (int)args["HitEffect"], (int)args["HitAudio"], (MotionManager)args["SenderMotion"]);
+                SetHitMove((Vector3)args["MoveDirect"], (float)args["MoveTime"], (bool)args["IsBorder"]);
                 break;
             case MotionOpt.Fly:
                 _MotionManager.TryEnterState(_MotionManager._StateFly, args);
@@ -62,7 +62,7 @@ public class StateHit : StateBase
                 _MotionManager.TryEnterState(_MotionManager._StateCatch, args);
                 break;
             case MotionOpt.Anim_Event:
-                DispatchHitEvent(args[0] as string, args[1]);
+                DispatchHitEvent(args["FuncName"] as string, args["Param"]);
                 break;
 
             default:
@@ -97,17 +97,17 @@ public class StateHit : StateBase
                 HitKeyframe(param);
                 break;
             case AnimEventManager.ANIMATION_END:
-                _MotionManager.TryEnterState(_MotionManager._StateIdle);
+                _MotionManager.TryEnterState(_MotionManager._StateIdle, null);
                 break;
         }
     }
 
-    public void SetHitMove(Vector3 moveDirect, float moveTime)
+    public void SetHitMove(Vector3 moveDirect, float moveTime, bool isBorder)
     {
         if (moveTime <= 0)
             return;
 
-        _MotionManager.SetMove(moveDirect, moveTime);
+        _MotionManager.SetMove(moveDirect, moveTime, isBorder);
     }
 
     public void MotionHit(float hitTime, int hitEffect, int hitAudio, MotionManager impactSender)

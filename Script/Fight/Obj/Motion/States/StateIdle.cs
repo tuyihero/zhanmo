@@ -10,7 +10,7 @@ public class StateIdle : StateBase
         return "idle";
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
@@ -21,7 +21,7 @@ public class StateIdle : StateBase
                 _MotionManager.TryEnterState(_MotionManager._StateMove, args);
                 break;
             case MotionOpt.Pause_State:
-                _MotionManager.PauseAnimation(_Animation, (float)args[0]);
+                _MotionManager.PauseAnimation(_Animation, (float)args["PauseTime"]);
                 break;
             case MotionOpt.Resume_State:
                 _MotionManager.ResumeAnimation(_Animation);

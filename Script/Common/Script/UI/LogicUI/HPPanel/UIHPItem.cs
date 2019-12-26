@@ -65,6 +65,8 @@ public class UIHPItem : UIItemBase
             _EliteFlag.SetActive(true);
             _ExEliteFlag.SetActive(true);
         }
+
+        
     }
 
 
@@ -88,6 +90,8 @@ public class UIHPItem : UIItemBase
         ActSpBuffNames();
 
         _RectTransform.anchoredPosition = UIManager.Instance.WorldToScreenPoint(_FollowTransform.position + _HeightDelta);
+
+        //UpdateCombat();
     }
 
     #region act hp process
@@ -152,6 +156,29 @@ public class UIHPItem : UIItemBase
             {
                 _SpBuffNameTexts[i].gameObject.SetActive(false);
             }
+        }
+    }
+
+    #endregion
+
+    #region combat
+
+    public Text _CombatText;
+
+    public void UpdateCombat()
+    {
+        if (!_CombatText.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        if (FightManager.Instance.Combo < 2)
+        {
+            _CombatText.text = "";
+        }
+        else
+        {
+            _CombatText.text = Tables.StrDictionary.GetFormatStr(2500010, FightManager.Instance.Combo);
         }
     }
 

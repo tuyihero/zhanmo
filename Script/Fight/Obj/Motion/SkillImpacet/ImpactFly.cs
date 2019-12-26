@@ -3,8 +3,9 @@ using System.Collections;
 
 public class ImpactFly : ImpactHit
 {
-    public float _FlyHeight = 0.6f;
-    public float _UpSpeed = 0;
+    public float _UpSpeed = 5;
+    public float _UpTime = 0.2f;
+    public bool _IsBorder = true;
 
     public override void ActImpact(MotionManager senderManager, MotionManager reciverManager)
     {
@@ -23,7 +24,7 @@ public class ImpactFly : ImpactHit
             reciverManager.ActionPause(_HitPauseTime);
         }
 
-        reciverManager.FlyEvent(_FlyHeight + reciverManager.JumpBody.localPosition.y, _HitEffect, _HitAudio,  senderManager, this, Vector3.zero, 0, 5);
+        reciverManager.FlyEvent(_UpTime, _HitEffect, _HitAudio,  senderManager, this, Vector3.zero, 0, _UpSpeed, _IsBorder);
     }
 
     protected virtual void HitFlyMotion(MotionManager senderManager, MotionManager reciverManager, Vector3 moveDirect, float moveTime)
@@ -36,11 +37,11 @@ public class ImpactFly : ImpactHit
 
         if (senderManager.ActingSkill != null)
         {
-            reciverManager.FlyEvent(_FlyHeight + reciverManager.JumpBody.localPosition.y, _HitEffect, _HitAudio,  senderManager, this, moveDirect, moveTime / senderManager.ActingSkill.SkillSpeed, _UpSpeed);
+            reciverManager.FlyEvent(_UpTime, _HitEffect, _HitAudio,  senderManager, this, moveDirect, moveTime / senderManager.ActingSkill.SkillSpeed, _UpSpeed, _IsBorder);
         }
         else
         {
-            reciverManager.FlyEvent(_FlyHeight + reciverManager.JumpBody.localPosition.y, _HitEffect, _HitAudio,  senderManager, this, moveDirect, moveTime, _UpSpeed);
+            reciverManager.FlyEvent(_UpTime, _HitEffect, _HitAudio,  senderManager, this, moveDirect, moveTime, _UpSpeed, _IsBorder);
         }
     }
 
@@ -53,7 +54,7 @@ public class ImpactFly : ImpactHit
         }
 
         {
-            reciverManager.FlyEvent(_FlyHeight + reciverManager.JumpBody.localPosition.y, _HitEffect, _HitAudio, senderManager, this, moveDirect, moveTime, _UpSpeed);
+            reciverManager.FlyEvent(_UpTime, _HitEffect, _HitAudio, senderManager, this, moveDirect, moveTime, _UpSpeed);
         }
     }
 

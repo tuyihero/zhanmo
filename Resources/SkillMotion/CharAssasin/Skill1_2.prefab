@@ -76,8 +76,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 0.05
-  _UpSpeed: 5
+  _UpSpeed: 1
+  _UpTime: 0.2
 --- !u!65 &1096029562636546671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1.2
-  _UpSpeed: 5
+  _UpSpeed: 1
+  _UpTime: 0.2
 --- !u!65 &6294565098954836889
 BoxCollider:
   m_ObjectHideFlags: 0

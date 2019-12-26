@@ -81,8 +81,8 @@ public class RoleAttrManager : MonoBehaviour
         _MoveSpeed = _BaseMoveSpeed * _MoveSpeedRate;
     }
 
-    private float _BaseAttackSpeed = 1.2f;
-    private float _AttackSpeed = 1.2f;
+    private float _BaseAttackSpeed = 1.0f;
+    private float _AttackSpeed = 1.0f;
     public float AttackSpeed
     {
         get
@@ -673,12 +673,12 @@ public class RoleAttrManager : MonoBehaviour
 
         if (MotionType == MOTION_TYPE.MainChar)
         {
-            UIDamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, ShowDamageType.Hurt, 1);
+            //UIDamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, ShowDamageType.Hurt, 1);
             //DamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, ShowDamageType.Hurt, 1);
         }
         else
         {
-            UIDamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, damageClass.DamageType, 1);
+            //UIDamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, damageClass.DamageType, 1);
             //DamagePanel.ShowItem((Vector3)resultHash["DamagePos"], damageClass.TotalDamageValue, damageClass.AttachDamageValue, ShowDamageType.Normal, 1);
         }
 

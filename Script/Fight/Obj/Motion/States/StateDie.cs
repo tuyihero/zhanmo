@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateDie : StateBase
 {
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         _MotionManager.StartCoroutine(MotionDie());
 

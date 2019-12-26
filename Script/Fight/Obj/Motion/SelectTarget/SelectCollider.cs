@@ -147,8 +147,11 @@ public class SelectCollider : SelectBase
         {
             _TrigMotions.Add(motion);
 
-            if (motion._StateLie == motion._ActionState && !_SelectLieObj)
-                return;
+            if (!_SelectLieObj)
+            {
+                if (motion._StateLie == motion._ActionState || motion._StateRise == motion._ActionState)
+                    return;
+            }
 
             if (!motion._CanBeSelectByEnemy)
                 return;

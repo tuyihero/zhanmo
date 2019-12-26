@@ -9,41 +9,41 @@ public class StateMove : StateBase
         return "run";
     }
 
-    public override bool CanStartState(params object[] args)
+    public override bool CanStartState(Hashtable args)
     {
-        if (args[0] is Vector2)
+        if (args.ContainsKey("InputDirect"))
         {
-            if ((Vector2)args[0] == Vector2.zero)
+            if ((Vector2)args["InputDirect"] == Vector2.zero)
                 return false;
         }
 
         return true;
     }
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         base.StartState(args);
 
-        if (args[0] is Vector2)
+        if (args.ContainsKey("InputDirect"))
         {
-            _MotionManager.MoveDirect((Vector2)args[0]);
+            _MotionManager.MoveDirect((Vector2)args["InputDirect"]);
         }
-        else if(args[0] is Vector3)
+        else if(args.ContainsKey("MoveTarget"))
         {
-            _MotionManager.MoveTarget((Vector3)args[0], (float)args[1]);
-            PlayAnim((Vector3)args[0], (float)args[1], (Transform)args[2]);
+            _MotionManager.MoveTarget((Vector3)args["MoveTarget"], (float)args["MoveSpeed"]);
+            PlayAnim((Vector3)args["MoveTarget"], (float)args["MoveSpeed"], (Transform)args["MoveLookatTrans"]);
         }
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
             case MotionOpt.Input_Direct:
                 Vector2 moveDirect = Vector2.zero;
-                if (args[0] is Vector2)
+                if (args.ContainsKey("InputDirect"))
                 {
-                    moveDirect = (Vector2)args[0];
+                    moveDirect = (Vector2)args["InputDirect"];
                 }
                 if (moveDirect != Vector2.zero)
                 {
@@ -55,8 +55,8 @@ public class StateMove : StateBase
                 }
                 break;
             case MotionOpt.Move_Target:
-                _MotionManager.MoveTarget((Vector3)args[0], (float)args[1]);
-                PlayAnim((Vector3)args[0], (float)args[1], (Transform)args[2]);
+                _MotionManager.MoveTarget((Vector3)args["MoveTarget"], (float)args["MoveSpeed"]);
+                PlayAnim((Vector3)args["MoveTarget"], (float)args["MoveSpeed"], (Transform)args["MoveLookatTrans"]);
                 break;
             case MotionOpt.Stop_Move:
                 _MotionManager.TryEnterState(_MotionManager._StateIdle, args);
@@ -65,7 +65,7 @@ public class StateMove : StateBase
                 _MotionManager.TryEnterState(_MotionManager._StateJump, args);
                 break;
             case MotionOpt.Pause_State:
-                _MotionManager.PauseAnimation(_Animation, (float)args[0]);
+                _MotionManager.PauseAnimation(_Animation, (float)args["PauseTime"]);
                 break;
             case MotionOpt.Resume_State:
                 _MotionManager.ResumeAnimation(_Animation);

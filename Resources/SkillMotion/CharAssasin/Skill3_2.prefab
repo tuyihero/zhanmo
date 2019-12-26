@@ -64,6 +64,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Time: 0.2
   _Speed: 2
+--- !u!1 &1881489467241631401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2962797852648433652}
+  - component: {fileID: 8441614009361468924}
+  - component: {fileID: 31313752914239887}
+  - component: {fileID: 9184671712819575869}
+  m_Layer: 9
+  m_Name: Hit2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2962797852648433652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881489467241631401}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2901342486343724770}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8441614009361468924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881489467241631401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ecdd01fd518f814d93a0fdc83e97fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ColliderID: 2
+  _IsColliderFinish: 0
+  _IsRemindSelected: 0
+  _EventAnim: {fileID: 0}
+  _EventFrame: 
+  _AudioID: -1
+  _ColliderFinishFrame: 
+  _SelectLieObj: 0
+  _HittedAudio: -1
+  _NonHittedAudio: -1
+--- !u!65 &31313752914239887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881489467241631401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.3, z: 0.2}
+  m_Center: {x: 1.2, y: 0.6, z: 0}
+--- !u!114 &9184671712819575869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881489467241631401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fe59779f3c67d40b7a791726d5e5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DamageRate: 0.11
+  _DamageType: 5
+  _IsCharSkillDamage: 0
+  _HitTime: 1
+  _HitEffect: 0
+  _HitAudio: -1
+  _IsBulletHit: 0
+  _ForceHit: 0
+  _HitPauseTime: 0
 --- !u!1 &4191121649102627124
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +274,7 @@ Transform:
   m_Children:
   - {fileID: 9061935265616088187}
   - {fileID: 683894017}
+  - {fileID: 2962797852648433652}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NextAnim:
-  - {fileID: 7400000, guid: 71fd74268fd60b640b23b217b201b37b, type: 2}
+  - {fileID: 7400000, guid: 655747a630064be4d941095f6482159d, type: 2}
   _NextEffect: []
   _NextAudio: []
   _IsActNextAnimAtNextInput: 0

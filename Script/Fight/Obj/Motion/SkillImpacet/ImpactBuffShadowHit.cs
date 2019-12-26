@@ -16,6 +16,7 @@ public class ImpactBuffShadowHit : ImpactBuff
     {
         base.ActBuff(senderManager, ownerManager);
 
+        _EffectAfterAnim._Duration = _LastTime;
         _EffectAfterAnim._Interval = _HitDuration;
         _EffectAfterAnim._FadeOut = _HitDuration * _ShadowCnt;
 

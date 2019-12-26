@@ -76,6 +76,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &2331909301184677002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87,7 +88,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0.96, y: 0.64, z: 0}
 --- !u!1 &1675591388068223377
 GameObject:
@@ -165,8 +166,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 0.2
-  _UpSpeed: 0
+  _PauseFlyTime: 0
+  _UpSpeed: 0.1
+  _UpTime: 0.1
+  _IsBorder: 1
   _Time: 0.1
   _Speed: 10
 --- !u!65 &5810787672700687451
@@ -180,7 +183,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1.2, z: 0.2}
   m_Center: {x: 0.96, y: 0.64, z: 0}
 --- !u!1 &4211110069772721611
 GameObject:
@@ -258,6 +261,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &4357316607753150927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -269,7 +273,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1.2, z: 0.2}
   m_Center: {x: 0.96, y: 0.64, z: 0}
 --- !u!1 &6097298252424873098
 GameObject:
@@ -347,6 +351,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &2154051922942796707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -358,7 +363,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1.2, z: 0.2}
   m_Center: {x: 0.96, y: 0.64, z: 0}
 --- !u!1 &7086146971136255443
 GameObject:
@@ -504,6 +509,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &5293678609607259597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -515,5 +521,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 1, y: 1.2, z: 0.2}
   m_Center: {x: 0.96, y: 0.64, z: 0}

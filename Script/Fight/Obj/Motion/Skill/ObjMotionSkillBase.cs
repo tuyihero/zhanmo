@@ -246,7 +246,7 @@ public class ObjMotionSkillBase : MonoBehaviour
             ++_CurStep;
             PlayAnimation(_NextAnim[_CurStep]);
 
-            if (_CurStep - 1 >= 0 && _NextEffect[_CurStep - 1] != null)
+            if (_CurStep - 1 >= 0 && _NextEffect.Count > _CurStep - 1 && _NextEffect[_CurStep - 1] != null)
             {
                 StopSkillEffect(_NextEffect[_CurStep - 1]);
             }

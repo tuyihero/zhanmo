@@ -10,8 +10,9 @@ public class ImpactPushForward : ImpactBase
     {
         base.ActImpact(senderManager, reciverManager);
 
-        Vector3 destMove = senderManager.GetMotionForward().normalized * _Speed * _Time;
-        reciverManager.SetMove(destMove, _Time / SkillMotion.SkillSpeed);
+        var moveTime = _Time / SkillMotion.SkillSpeed;
+        Vector3 destMove = senderManager.GetMotionForward().normalized * _Speed * _Time * SkillMotion.SkillSpeed;
+        reciverManager.SetMove(destMove, moveTime);
     }
 
 }

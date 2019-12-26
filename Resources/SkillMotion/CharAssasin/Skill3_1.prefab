@@ -137,9 +137,9 @@ MonoBehaviour:
   _HitAudio: -1
   _IsBulletHit: 0
   _ForceHit: 0
-  _HitPauseTime: 0.1
-  _FlyHeight: 1.2
-  _UpSpeed: 5
+  _HitPauseTime: 0.2
+  _UpSpeed: 7
+  _UpTime: 0.3
 --- !u!65 &7511076932142891808
 BoxCollider:
   m_ObjectHideFlags: 0

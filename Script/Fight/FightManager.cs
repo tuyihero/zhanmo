@@ -31,6 +31,8 @@ public class FightManager : InstanceBase<FightManager>
                 if (_LogicFightTime < 0)
                     _LogicFightTime = 0;
             }
+
+            UpdateCombo();
         }
 
     }
@@ -533,12 +535,32 @@ public class FightManager : InstanceBase<FightManager>
 
     #region combo
 
+    public float _ComboResetTime = 1.5f;
+    public float _LastComboUpdate;
+
     private int _Combo = 0;
     public int Combo
     {
         get
         {
             return _Combo;
+        }
+    }
+
+    public void SetCombo(int comboValue)
+    {
+        if (comboValue > _Combo)
+        {
+            _Combo = comboValue;
+            _LastComboUpdate = TimeManager.Instance.FightTime;
+        }
+    }
+
+    public void UpdateCombo()
+    {
+        if (TimeManager.Instance.FightTime - _LastComboUpdate > _ComboResetTime)
+        {
+            _Combo = 0;
         }
     }
 

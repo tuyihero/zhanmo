@@ -15,11 +15,11 @@ public class StateCatch : StateBase
 
         _MotionManager.AddAnimationEndEvent(_Animation);
     }
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         //base.StartState(args);
-        MotionHit((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
-        SetHitMove((Vector3)args[4], (float)args[5]);
+        MotionHit((float)args["CatchTime"], (int)args["HitEffect"], (int)args["HitAudio"], (MotionManager)args["SenderMotion"]);
+        SetHitMove((Vector3)args["MoveDirect"], (float)args["MoveTime"]);
 
         if (_MotionManager._BehitAudio != null)
         {
@@ -28,16 +28,16 @@ public class StateCatch : StateBase
     }
 
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
             case MotionOpt.Anim_Event:
-                DispatchHitEvent(args[0] as string, args[1]);
+                DispatchHitEvent(args["FuncName"] as string, args["Param"]);
                 break;
             case MotionOpt.Catch:
-                MotionHit((float)args[0], (int)args[1], (int)args[6], (MotionManager)args[2]);
-                SetHitMove((Vector3)args[4], (float)args[5]);
+                MotionHit((float)args["CatchTime"], (int)args["HitEffect"], (int)args["HitAudio"], (MotionManager)args["SenderMotion"]);
+                SetHitMove((Vector3)args["MoveDirect"], (float)args["MoveTime"]);
                 break;
             case MotionOpt.Stop_Catch:
                 //_MotionManager.FlyEvent(0.1f, -1, -1, _MotionManager, null, Vector3.zero, 0);
@@ -66,7 +66,7 @@ public class StateCatch : StateBase
 
     public void StopCatch()
     {
-        _MotionManager.TryEnterState(_MotionManager._StateFly, 0.1f, -1, _MotionManager, null, new Vector3(0, 0, 0), 0.0f, -1);
+        _MotionManager.FlyEvent(0.1f, 0, -1, _MotionManager, null, new Vector3(0, 0, 0), 0.0f, 0.0f,true);
     }
 
     public void HitKeyframe(object param)

@@ -14,13 +14,17 @@ public class StateSkill : StateBase
         InitSkills();
     }
 
-    public override bool CanStartState(params object[] args)
+    public override bool CanStartState(Hashtable args)
     {
         bool isCanActSkill = true;
-        ObjMotionSkillBase skillBase = args[0] as ObjMotionSkillBase;
+        ObjMotionSkillBase skillBase = null;
+        if (args.ContainsKey("SkillMotion"))
+        {
+            skillBase = args["SkillMotion"] as ObjMotionSkillBase;
+        }
         if (skillBase == null)
         {
-            string inputKey = args[0] as string;
+            string inputKey = args["InputSkill"] as string;
             if (_SkillMotions.ContainsKey(inputKey))
             {
                 skillBase = _SkillMotions[inputKey];
@@ -44,7 +48,7 @@ public class StateSkill : StateBase
         return isCanActSkill;
     }
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         ActSkill(args);
     }
@@ -59,7 +63,7 @@ public class StateSkill : StateBase
         }
     }
 
-    public override void StateOpt(MotionOpt opt, object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
@@ -75,7 +79,7 @@ public class StateSkill : StateBase
                 {
                     ((ObjMotionSkillPre)ActingSkill).ResumeSkill();
                 }
-                string key = args[0] as string;
+                string key = args["InputSkill"] as string;
                 if (ActingSkill._ActInput == key)
                 {
 
@@ -100,7 +104,7 @@ public class StateSkill : StateBase
                 }
                 break;
             case MotionOpt.Anim_Event:
-                _ActingSkill.AnimEvent(args[0] as string, args[1]);
+                _ActingSkill.AnimEvent(args["FuncName"] as string, args["Param"]);
                 break;
             case MotionOpt.Hit:
                 _MotionManager.TryEnterState(_MotionManager._StateHit, args);
@@ -115,7 +119,7 @@ public class StateSkill : StateBase
                 var curAnim = _ActingSkill.GetCurAnim();
                 if (curAnim != null)
                 {
-                    _MotionManager.PauseAnimation(curAnim, (float)args[0]);
+                    _MotionManager.PauseAnimation(curAnim, (float)args["PauseTime"]);
                 }
                 break;
             case MotionOpt.Resume_State:
@@ -130,16 +134,16 @@ public class StateSkill : StateBase
         }
     }
 
-    private void ActSkill(params object[] args)
+    private void ActSkill(Hashtable args)
     {
         ObjMotionSkillBase skillBase = null;
-        if (args[0] is ObjMotionSkillBase)
+        if (args["SkillMotion"] is ObjMotionSkillBase)
         {
-            skillBase = args[0] as ObjMotionSkillBase;
+            skillBase = args["SkillMotion"] as ObjMotionSkillBase;
         }
-        else if (args[0] is string)
+        else if (args["InputSkill"] is string)
         {
-            string inputKey = args[0] as string;
+            string inputKey = args["InputSkill"] as string;
             if (_SkillMotions.ContainsKey(inputKey))
             {
                 skillBase = _SkillMotions[inputKey];
@@ -149,9 +153,9 @@ public class StateSkill : StateBase
             return;
 
         Hashtable hash = null;
-        if (args.Length > 1)
+        if (args.ContainsKey("SkillParam"))
         {
-            hash = args[1] as Hashtable;
+            hash = args["SkillParam"] as Hashtable;
         }
 
         if (!skillBase.IsCanActSkill())

@@ -151,8 +151,9 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0
-  _FlyHeight: 0.4
   _UpSpeed: 5
+  _UpTime: 0.2
+  _IsBorder: 1
   _Time: 0.2
   _Speed: 5
 --- !u!1 &6228296627442692821
@@ -225,7 +226,7 @@ MonoBehaviour:
   _DamageRate: 0.11
   _DamageType: 5
   _IsCharSkillDamage: 0
-  _HitTime: 0.15
+  _HitTime: 0.6
   _HitEffect: 2
   _HitAudio: -1
   _IsBulletHit: 0

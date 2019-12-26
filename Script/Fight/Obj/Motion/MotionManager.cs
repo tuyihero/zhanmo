@@ -1130,16 +1130,22 @@ public class MotionManager : MonoBehaviour
     private float _LastTime;
     private float _Speed;
 
-    public void SetPosition(Vector3 position)
+    private bool _IsMoveBorder;
+
+    public void SetPosition(Vector3 position, bool border = false)
     {
         float xLimit = position.x;
-        if (RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
+        if ((RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar))
         {
             xLimit = Mathf.Clamp(position.x, FightManager.Instance._CameraFollow.MainMovePosXMin, FightManager.Instance._CameraFollow.MainMovePosXMax);
         }
+        else if (border)
+        {
+            xLimit = Mathf.Clamp(position.x, FightManager.Instance._CameraFollow.MainMovePosXMin - 0.5f, FightManager.Instance._CameraFollow.MainMovePosXMax + 0.5f);
+        }
 
         float zLimit = position.z;
-        if (RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
+        //if (RoleAttrManager != null && RoleAttrManager.MotionType == Tables.MOTION_TYPE.MainChar)
         {
             zLimit = Mathf.Clamp(position.z, FightManager.Instance._CameraFollow._SceneAnimController.SceneZMin, FightManager.Instance._CameraFollow._SceneAnimController.SceneZMax);
         }
@@ -1207,12 +1213,13 @@ public class MotionManager : MonoBehaviour
         _LastTime = 0;
     }
 
-    public void SetMove(Vector3 moveVec, float lastTime)
+    public void SetMove(Vector3 moveVec, float lastTime, bool border = true)
     {
         _TargetVec = moveVec;
         _LastTime = lastTime;
         _Speed = _TargetVec.magnitude / _LastTime;
         _TargetPos = Vector3.zero;
+        _IsMoveBorder = border;
     }
 
     public void SetMove(Vector3 moveVec, float lastTime, Vector3 targetPos)
@@ -1221,6 +1228,7 @@ public class MotionManager : MonoBehaviour
         _LastTime = lastTime;
         _Speed = _TargetVec.magnitude / _LastTime;
         _TargetPos = targetPos;
+        _IsMoveBorder = false;
     }
 
     public void UpdateMove()
@@ -1249,7 +1257,7 @@ public class MotionManager : MonoBehaviour
             }
         }
 
-        SetPosition(destPoint);
+        SetPosition(destPoint, _IsMoveBorder);
         
     }
 
@@ -1374,7 +1382,8 @@ public class MotionManager : MonoBehaviour
 
     #region jump
 
-    private float _JumpSpeed = 14f;
+    public float _JumpSpeed = 14;
+    public float _JumpTime = 0.2f;
     private float _SwitchZSpeed = 5.0f;
 
     private float _JumpHeight;
@@ -1386,8 +1395,9 @@ public class MotionManager : MonoBehaviour
             return _JumpBody;
         }
     }
+    private float _CurJumpTime = 0.5f;
     private float _CurJumpSpeed = 3f;
-    private float _Gravity = -40f;
+    public float _Gravity = -40f;
     private float _JumpMoveSpeedRate = 0.6f;
     private Vector2 _JumpMoveDirect = Vector2.zero;
     private bool _JumpStay = false;
@@ -1422,6 +1432,7 @@ public class MotionManager : MonoBehaviour
             SetPosition(transform.position + new Vector3(_SkillJumpSpeed.x * GetMotionForward().x * Time.fixedDeltaTime, 0, 0));
             _SkillJumpTime -= Time.fixedDeltaTime;
 
+            Debug.Log("Skill jump height:" + _JumpBody.localPosition.y);
             if (_SkillJumpTime <= 0)
             {
                 _SkillJumpSpeed = Vector2.zero;
@@ -1454,6 +1465,15 @@ public class MotionManager : MonoBehaviour
         else if (_JumpHeight > 0)
         {
             _CurJumpSpeed += _Gravity * Time.fixedDeltaTime;
+            //_CurJumpSpeed = _JumpSpeed;
+            //if (_CurJumpTime <= 0)
+            //{
+            //    _CurJumpSpeed = _Gravity;
+            //}
+            //else
+            //{
+            //    _CurJumpTime -= Time.fixedDeltaTime;
+            //}
             float jumpstep = _CurJumpSpeed * Time.fixedDeltaTime;
             float jumpMove = _JumpMoveDirect.normalized.x * RoleAttrManager.MoveSpeed * _JumpMoveSpeedRate* Time.fixedDeltaTime;
             _JumpBody.localPosition += new Vector3(0, jumpstep, 0);
@@ -1518,6 +1538,7 @@ public class MotionManager : MonoBehaviour
         _JumpHeight = height;
         _CurJumpSpeed = _JumpSpeed;
         _JumpStay = false;
+        _CurJumpTime = _JumpTime;
         _SwitchToPosIdx = -1;
     }
 
@@ -1541,6 +1562,9 @@ public class MotionManager : MonoBehaviour
 
     public void SetSkillJump(Vector2 speed, float time, Action skillJumpFun = null)
     {
+        _JumpHeight = 0;
+        _CurJumpSpeed = 0;
+
         _SkillJumpSpeed = speed;
         _SkillJumpTime = time;
 
@@ -1574,6 +1598,13 @@ public class MotionManager : MonoBehaviour
     public void JumpToZPos(int toZPosIdx)
     {
         _SwitchToPosIdx = toZPosIdx;
+
+        if (_JumpBody.localPosition.y < 0.5f)
+        {
+            _JumpHeight = 0.5f;
+            _CurJumpSpeed = _JumpSpeed;
+            _JumpStay = false;
+        }
     }
 
     #endregion
@@ -1783,8 +1814,13 @@ public class MotionManager : MonoBehaviour
         TryEnterState(_StateIdle, null);
     }
 
-    public void TryEnterState(StateBase state, params object[] args)
+    public void TryEnterState(StateBase state, Hashtable args = null)
     {
+        if (args == null)
+        {
+            args = new Hashtable();
+        }
+
         if (!state.CanStartState(args))
             return;
 
@@ -1801,13 +1837,25 @@ public class MotionManager : MonoBehaviour
         {
             aiBase.OnStateChange(orgState, _ActionState);
         }
+
+        if (_ActionState == _StateIdle
+            || _ActionState == _StateLie
+            || _ActionState == _StateDie
+            || _ActionState == _StateRise)
+        {
+            ResetCombo();
+        }
     }
 
-    public void StateOpt(StateBase.MotionOpt opt, params object[] args)
+    public void StateOpt(StateBase.MotionOpt opt, Hashtable args)
     {
         if (_ActionState == null)
             return;
 
+        if (args == null)
+        {
+            args = new Hashtable();
+        }
         _ActionState.StateOpt(opt, args);
     }
 
@@ -1835,22 +1883,31 @@ public class MotionManager : MonoBehaviour
 
     public void InputDirect(Vector2 direct)
     {
-        StateOpt(StateBase.MotionOpt.Input_Direct, direct);
+        Hashtable args = new Hashtable();
+        args.Add("InputDirect", direct);
+        StateOpt(StateBase.MotionOpt.Input_Direct, args);
     }
 
     public void ActSkill(ObjMotionSkillBase skillMotion, Hashtable hash = null)
     {
-        StateOpt(StateBase.MotionOpt.Act_Skill, skillMotion, hash);
+        Hashtable args = new Hashtable();
+        args.Add("SkillMotion", skillMotion);
+        args.Add("SkillParam", skillMotion);
+        StateOpt(StateBase.MotionOpt.Act_Skill, args);
     }
 
     public void InputSkill(string key)
     {
-        StateOpt(StateBase.MotionOpt.Input_Skill, key);
+        Hashtable args = new Hashtable();
+        args.Add("InputSkill", key);
+        StateOpt(StateBase.MotionOpt.Input_Skill, args);
     }
 
     public void FinishSkill(ObjMotionSkillBase skillMotion)
     {
-        StateOpt(StateBase.MotionOpt.Stop_Skill, skillMotion);
+        Hashtable args = new Hashtable();
+        args.Add("SkillMotion", skillMotion);
+        StateOpt(StateBase.MotionOpt.Stop_Skill, args);
 
         //if (InputManager.Instance._InputMotion == this)
         //{
@@ -1863,7 +1920,9 @@ public class MotionManager : MonoBehaviour
         _ActionPause = true;
         _ActionPauseTime = time;
         _ActionPauseStart = Time.time;
-        StateOpt(StateBase.MotionOpt.Pause_State, time);
+        Hashtable args = new Hashtable();
+        args.Add("PauseTime", time);
+        StateOpt(StateBase.MotionOpt.Pause_State, args);
     }
 
     public void ActionResume()
@@ -1871,15 +1930,18 @@ public class MotionManager : MonoBehaviour
         _ActionPause = false;
         _ActionPauseTime = 0;
         _ActionPauseStart = 0;
-        StateOpt(StateBase.MotionOpt.Resume_State);
+        StateOpt(StateBase.MotionOpt.Resume_State, null);
     }
 
     public void NotifyAnimEvent(string function, object param)
     {
-        StateOpt(StateBase.MotionOpt.Anim_Event, function, param);
+        Hashtable args = new Hashtable();
+        args.Add("FuncName", function);
+        args.Add("Param", param);
+        StateOpt(StateBase.MotionOpt.Anim_Event, args);
     }
 
-    public void HitEvent(float hitTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, bool isPauseFly = false)
+    public void HitEvent(float hitTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, bool isPauseFly = false, bool isBorder = true)
     {
         if (!_IsCanHit)
         {
@@ -1891,18 +1953,31 @@ public class MotionManager : MonoBehaviour
             return;
         }
 
-        if (IsInAir())
+        if (IsInAir() && _ActionState != _StateFly)
         {
             FlyEvent(0.1f, hitEffect, hitAudio, impactSender, hitImpact, moveDirect, moveTime, 5);
             return;
         }
+
+        Hashtable args = new Hashtable();
+        args.Add("HitTime", hitTime);
+        args.Add("HitEffect", hitEffect);
+        args.Add("HitAudio", hitAudio);
+        args.Add("SenderMotion", impactSender);
+        args.Add("HitImpact", hitImpact);
+        args.Add("MoveDirect", moveDirect);
+        args.Add("MoveTime", moveTime);
+        args.Add("IsPauseFly", isPauseFly);
+        args.Add("IsBorder", isBorder);
 
         BuffBeHit(impactSender, hitImpact);
         foreach (var aiBase in _AIBases)
         {
             aiBase.OnBeHit(hitImpact);
         }
-        StateOpt(StateBase.MotionOpt.Hit, hitTime, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio, isPauseFly, 0.0f);
+        StateOpt(StateBase.MotionOpt.Hit, args);
+
+        AddCombo();
     }
 
     public void FrozenEvent()
@@ -1910,13 +1985,13 @@ public class MotionManager : MonoBehaviour
 
     }
 
-    public void FlyEvent(float flyHeight, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, float upSpeed)
+    public void FlyEvent(float flyTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime, float upSpeed, bool isBorder = true)
     {
         if (!_IsCanFly && !IsMotionDie)
         {
             if (_IsCanHit)
             {
-                HitEvent(0.6f, hitEffect, hitAudio, impactSender, hitImpact, moveDirect, moveTime, false);
+                HitEvent(0.6f, hitEffect, hitAudio, impactSender, hitImpact, moveDirect, moveTime, false, isBorder);
             }
             return;
         }
@@ -1925,12 +2000,26 @@ public class MotionManager : MonoBehaviour
         {
             return;
         }
+
+        Hashtable args = new Hashtable();
+        args.Add("FlyTime", flyTime);
+        args.Add("HitEffect", hitEffect);
+        args.Add("HitAudio", hitAudio);
+        args.Add("SenderMotion", impactSender);
+        args.Add("HitImpact", hitImpact);
+        args.Add("MoveDirect", moveDirect);
+        args.Add("MoveTime", moveTime);
+        args.Add("UpSpeed", upSpeed);
+        args.Add("IsBorder", isBorder);
+
         BuffBeHit(impactSender, hitImpact);
         foreach (var aiBase in _AIBases)
         {
             aiBase.OnBeHit(hitImpact);
         }
-        StateOpt(StateBase.MotionOpt.Fly, flyHeight, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio, false, upSpeed);
+        StateOpt(StateBase.MotionOpt.Fly, args);
+
+        AddCombo();
     }
 
     public void CatchEvent(float catchTime, int hitEffect, int hitAudio, MotionManager impactSender, ImpactHit hitImpact, Vector3 moveDirect, float moveTime)
@@ -1939,33 +2028,50 @@ public class MotionManager : MonoBehaviour
         {
             return;
         }
+
+        Hashtable args = new Hashtable();
+        args.Add("CatchTime", catchTime);
+        args.Add("HitEffect", hitEffect);
+        args.Add("HitAudio", hitAudio);
+        args.Add("SenderMotion", impactSender);
+        args.Add("HitImpact", hitImpact);
+        args.Add("MoveDirect", moveDirect);
+        args.Add("MoveTime", moveTime);
+
         BuffBeHit(impactSender, hitImpact);
         foreach (var aiBase in _AIBases)
         {
             aiBase.OnBeHit(hitImpact);
         }
-        StateOpt(StateBase.MotionOpt.Catch, catchTime, hitEffect, impactSender, hitImpact, moveDirect, moveTime, hitAudio);
+        StateOpt(StateBase.MotionOpt.Catch, args);
+
+        AddCombo();
     }
 
     public void StopCatch()
     {
         //Debug.Log("StopCatch");
-        StateOpt(StateBase.MotionOpt.Stop_Catch);
+        StateOpt(StateBase.MotionOpt.Stop_Catch, null);
     }
 
     public void StartMoveState(Vector3 target, Transform lookatTrans = null, float speed = 1)
     {
-        StateOpt(StateBase.MotionOpt.Move_Target, target, speed, lookatTrans);
+        Hashtable args = new Hashtable();
+        args.Add("MoveTarget", target);
+        args.Add("MoveSpeed", speed);
+        args.Add("MoveLookatTrans", lookatTrans);
+
+        StateOpt(StateBase.MotionOpt.Move_Target, args);
     }
 
     public void StopMoveState()
     {
-        StateOpt(StateBase.MotionOpt.Stop_Move);
+        StateOpt(StateBase.MotionOpt.Stop_Move, null);
     }
 
     public void JumpState()
     {
-        StateOpt(StateBase.MotionOpt.Jump);
+        StateOpt(StateBase.MotionOpt.Jump, null);
     }
 
     public void JumpSwitchZ()
@@ -1979,7 +2085,11 @@ public class MotionManager : MonoBehaviour
         {
             jumpToPosIdx = jumpToPosIdx + 1;
         }
-        StateOpt(StateBase.MotionOpt.Jump, jumpToPosIdx);
+
+        Hashtable args = new Hashtable();
+        args.Add("JumpToPosIdx", jumpToPosIdx);
+
+        StateOpt(StateBase.MotionOpt.Jump, args);
     }
 
     #endregion
@@ -1988,6 +2098,31 @@ public class MotionManager : MonoBehaviour
 
     public AudioClip _BehitAudio;
     public AudioClip _DeadAudio;
+
+    #endregion
+
+    #region combat
+
+    private int _BeHitCombo = 0;
+    public int BeHitCombo
+    {
+        get
+        {
+            return _BeHitCombo;
+        }
+    }
+
+    public void ResetCombo()
+    {
+        _BeHitCombo = 0;
+    }
+
+    public void AddCombo()
+    {
+        ++_BeHitCombo;
+
+        FightManager.Instance.SetCombo(_BeHitCombo);
+    }
 
     #endregion
 }

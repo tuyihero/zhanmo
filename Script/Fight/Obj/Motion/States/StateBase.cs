@@ -82,12 +82,12 @@ public class StateBase
         }
     }
 
-    public virtual bool CanStartState(params object[] args)
+    public virtual bool CanStartState(Hashtable args)
     {
         return true;
     }
 
-    public virtual void StartState(params object[] args)
+    public virtual void StartState(Hashtable args)
     {
         if (_MotionManager != null && _Animation != null)
         {
@@ -99,7 +99,7 @@ public class StateBase
         }
     }
 
-    public virtual void StateOpt(StateBase.MotionOpt opt, object[] args)
+    public virtual void StateOpt(StateBase.MotionOpt opt, Hashtable args)
     {
 
     }

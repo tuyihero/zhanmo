@@ -32,6 +32,9 @@ public class BulletLine2D : BulletBase
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        if (_SkillMotion._ActionPause)
+            return;
+
         MoveUpdate();
     }
 

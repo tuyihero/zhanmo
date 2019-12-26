@@ -25,8 +25,9 @@ public class UISkillLevelItem : MonoBehaviour
     {
         get
         {
-            if (_SkillTab == null)
+            if (_SkillTab == null && _SkillItem != null)
             {
+                Debug.Log("_SkillItem:" + gameObject.name + ";" + _SkillID);
                 _SkillTab = Tables.TableReader.SkillInfo.GetRecord(_SkillItem.SkillID);
             }
             return _SkillTab;
@@ -36,6 +37,10 @@ public class UISkillLevelItem : MonoBehaviour
     public void Start()
     {
         _SkillItem = SkillData.Instance.GetSkillInfo(_SkillID);
+        if (_SkillItem == null)
+        {
+            Debug.Log("SkillItem null:" + gameObject.name + ";" + _SkillID);
+        }
         //string skillName = Tables.StrDictionary.GetFormatStr(SkillTab.NameStrDict);
         //_SkillNameText.text = skillName;
         //ResourceManager.Instance.SetImage(_Icon, SkillTab.Icon);

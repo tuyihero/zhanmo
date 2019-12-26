@@ -56,8 +56,10 @@ public class UIDirectControl : UIBase
         {
             inputAxis = new Vector2(0, -1);
         }
-        Debug.Log("inputAxis:" + inputAxis);
+
+#if !UNITY_EDITOR
         InputManager.Instance.Axis = inputAxis;
+#endif
     }
 
     

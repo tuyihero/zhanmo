@@ -9,22 +9,22 @@ public class StateJumpZ : StateBase
         return "jump";
     }
 
-    public override bool CanStartState(params object[] args)
+    public override bool CanStartState(Hashtable args)
     {
         return true;
     }
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         base.StartState(args);
 
-        if (args.Length > 0)
+        if (args.ContainsKey("JumpToPosIdx"))
         {
-            _MotionManager.JumpToZPos((int)args[0]);
+            _MotionManager.JumpToZPos((int)args["JumpToPosIdx"]);
         }
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {

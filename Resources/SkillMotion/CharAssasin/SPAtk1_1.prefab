@@ -76,8 +76,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 2.2
-  _UpSpeed: 5
+  _UpSpeed: 7
+  _UpTime: 0.2
 --- !u!65 &4057442930824537293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
-  _FlyHeight: 1.5
-  _UpSpeed: 5
+  _UpSpeed: 6
+  _UpTime: 0.2
 --- !u!65 &3642616274799241646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15df59844e094ba4592a7e2bfd184b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Time: 0.3
-  _Speed: {x: 0, y: 3}
+  _Time: 0.2
+  _Speed: {x: 0, y: 6}
 --- !u!1 &6855015426558711125
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,5 +373,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15df59844e094ba4592a7e2bfd184b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Time: 0.15
-  _Speed: {x: 0, y: 3}
+  _Time: 0.2
+  _Speed: {x: 0, y: 6}

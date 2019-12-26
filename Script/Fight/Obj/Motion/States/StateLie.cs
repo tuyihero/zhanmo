@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateLie : StateBase
 {
 
-    public override void StartState(params object[] args)
+    public override void StartState(Hashtable args)
     {
         _LieStartTime = Time.time;
         _RealLieTime = _LieTime * GameDataValue.ConfigIntToFloat(_MotionManager.RoleAttrManager.GetBaseAttr(RoleAttrEnum.RiseUpSpeed));
@@ -16,7 +16,7 @@ public class StateLie : StateBase
         LieUpdate();
     }
 
-    public override void StateOpt(MotionOpt opt, params object[] args)
+    public override void StateOpt(MotionOpt opt, Hashtable args)
     {
         switch (opt)
         {
@@ -27,9 +27,12 @@ public class StateLie : StateBase
                 _MotionManager.TryEnterState(_MotionManager._StateSkill, args);
                 break;
             case MotionOpt.Hit:
+                args["HitTime"] = 0.01f;
+                args.Add("UpSpeed", 1.0f);
                 _MotionManager.TryEnterState(_MotionManager._StateFly, args);
                 break;
             case MotionOpt.Fly:
+                args["FlyTime"] = 0.01f;
                 _MotionManager.TryEnterState(_MotionManager._StateFly, args);
                 break;
             case MotionOpt.Catch:

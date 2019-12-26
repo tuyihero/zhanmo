@@ -176,8 +176,10 @@ public class UIJoyStick : UIBase, IDragHandler, IPointerUpHandler, IPointerDownH
         {
             inputAxis = new Vector2(0, -1);
         }
-        Debug.Log("inputAxis:" + inputAxis);
+
+#if !UNITY_EDITOR
         InputManager.Instance.Axis = inputAxis;
+#endif
     }
 }
 
