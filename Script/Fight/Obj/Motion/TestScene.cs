@@ -30,7 +30,7 @@ public class TestScene : MonoBehaviour {
 
         var body = transform.Find("Body");
         _BodyAnimator = body.GetComponent<Animator>();
-        var effect = transform.Find("Body/Effect");
+        var effect = transform.Find("Body/Effect/Effect");
         _EffectAnimator = effect.GetComponent<Animator>();
     }
 

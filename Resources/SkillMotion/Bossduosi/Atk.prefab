@@ -66,8 +66,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 1, y: 2, z: 0}
+  m_Size: {x: 1.5, y: 1.6, z: 0.2}
+  m_Center: {x: 0.75, y: 1, z: 0}
 --- !u!114 &99317129996143360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d728a77aa1c173479bffc542c8c41b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DamageRate: 1
+  _DamageRate: 0
   _DamageType: 5
   _IsCharSkillDamage: 0
   _HitTime: 0.6
@@ -89,8 +89,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0
-  _FlyHeight: 0.6
+  _PauseFlyTime: 0
   _UpSpeed: 0
+  _UpTime: 0.2
+  _IsBorder: 1
   _Time: 0.2
   _Speed: 5
 --- !u!1 &6317947363319775090

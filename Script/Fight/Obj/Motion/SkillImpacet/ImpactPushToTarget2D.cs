@@ -19,9 +19,9 @@ public class ImpactPushToTarget2D : ImpactBase
 
 
         Vector3 direct = targetPos - senderManager.transform.position;
-        float length = direct.magnitude - _NearDis;
-        if (length < 0)
-            return;
+        //float length = direct.magnitude - _NearDis;
+        //if (length < 0)
+        //    return;
 
         float moveTime = _Time;
 

@@ -76,6 +76,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
   _UpSpeed: 2
   _UpTime: 0.2
   _IsBorder: 1
@@ -170,6 +171,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &6468950826455109444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,6 +261,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &5562242367630865599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -406,15 +409,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fe59779f3c67d40b7a791726d5e5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DamageRate: 0.15
+  _DamageRate: 0.6
   _DamageType: 5
   _IsCharSkillDamage: 1
-  _HitTime: 0.6
+  _HitTime: 2
   _HitEffect: 1
   _HitAudio: -1
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
 --- !u!65 &8224098235133616054
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5304937628942045009}
   - component: {fileID: 5304937628942045022}
+  - component: {fileID: 6670780018385575652}
   m_Layer: 0
   m_Name: Bosszhuyan
   m_TagString: Untagged
@@ -53,11 +54,60 @@ MonoBehaviour:
   _IsBuffNameDirty: 0
   _SkillElement: 5
   _AudioSource: {fileID: 0}
+  _JumpSpeed: 14
+  _JumpTime: 0.2
+  _Gravity: -40
   _CanBeSelectByEnemy: 1
   _ColliderInfo: {x: 0.2, y: 1.8, z: 1}
   _ColliderCenter: {x: 0, y: 0, z: 0}
   _IsTrigger: 1
+  _HasRiseState: 0
   _MotionAnimPath: 
   _ActionPause: 0
+  _IsCanFly: 1
+  _IsCanHit: 1
   _BehitAudio: {fileID: 0}
   _DeadAudio: {fileID: 0}
+--- !u!114 &6670780018385575652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5304937628942045023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef9804c5a9ab5645b898df690e16d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TargetMotion: {fileID: 0}
+  _SelfMotion: {fileID: 0}
+  GroupID: 0
+  _AISkills:
+  - SkillBase: {fileID: 3583191400061290817, guid: eea0c345e0f6c3645a4220168e0e8b2f,
+      type: 3}
+    SkillRange: {x: 1, y: 6}
+    SkillInterval: 3
+    ReadyTime: 0
+    StartCD: 0
+    AfterSkillWait: 0
+    MonDamageRate: 0
+    ActOutCamera: 1
+    ActDiffZ: 1
+  - SkillBase: {fileID: 8034730879459216112, guid: dddd9185d1bd72e449358c989646151b,
+      type: 3}
+    SkillRange: {x: 0, y: 3}
+    SkillInterval: 5
+    ReadyTime: 0
+    StartCD: 0
+    AfterSkillWait: 0
+    MonDamageRate: 0
+    ActOutCamera: 0
+    ActDiffZ: 0
+  _AlertRange: 7
+  _CloseRange: 2
+  _HuntRange: 10
+  _ReHuntRange: 5
+  _PassiveGO: {fileID: 0}
+  _AttackDistanceX: {x: 2, y: 3}
+  _MoveZ: 1

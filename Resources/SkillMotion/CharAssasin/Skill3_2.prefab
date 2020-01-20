@@ -117,7 +117,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!65 &31313752914239887
 BoxCollider:
@@ -153,6 +153,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0
+  _PauseFlyTime: 0
 --- !u!1 &4191121649102627124
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!114 &4824787546334044936
 MonoBehaviour:
@@ -229,6 +230,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0
+  _PauseFlyTime: 0
   _Time: 0.2
   _Speed: 2
 --- !u!65 &5077997070569062933

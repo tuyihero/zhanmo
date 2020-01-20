@@ -20,16 +20,20 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b2710f19db43d7148a789bb94b43e98d, type: 3}
+      value: {fileID: 21300000, guid: 2676e3e47f7f50147b34554daa51ec74, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: 44e690190a39d3e4aafd47df59e5c6a8, type: 3}
+      value: {fileID: 21300000, guid: e51d98e0ebd96ce43a962e52a93360da, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 389f7be9f73851c4d9b8bfbfa59f4726, type: 3}
+      value: {fileID: 21300000, guid: b2710f19db43d7148a789bb94b43e98d, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: 7eee3a44b6aa5924fa46de68b2050205, type: 3}
+      value: {fileID: 21300000, guid: 44e690190a39d3e4aafd47df59e5c6a8, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 6ef9b88db43743946bad076651bd0cf1, type: 3}
+      value: {fileID: 21300000, guid: 389f7be9f73851c4d9b8bfbfa59f4726, type: 3}
     - time: 0.5
+      value: {fileID: 21300000, guid: 7eee3a44b6aa5924fa46de68b2050205, type: 3}
+    - time: 0.6
+      value: {fileID: 21300000, guid: 6ef9b88db43743946bad076651bd0cf1, type: 3}
+    - time: 0.7
       value: {fileID: 21300000, guid: 5d2e15f74b1ee1c4a87a47d8d25f946e, type: 3}
     attribute: m_Sprite
     path: 
@@ -50,6 +54,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 21300000, guid: 2676e3e47f7f50147b34554daa51ec74, type: 3}
+    - {fileID: 21300000, guid: e51d98e0ebd96ce43a962e52a93360da, type: 3}
     - {fileID: 21300000, guid: b2710f19db43d7148a789bb94b43e98d, type: 3}
     - {fileID: 21300000, guid: 44e690190a39d3e4aafd47df59e5c6a8, type: 3}
     - {fileID: 21300000, guid: 389f7be9f73851c4d9b8bfbfa59f4726, type: 3}
@@ -61,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.53333336
+    m_StopTime: 0.73333335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -80,4 +86,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: KeyFrame
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

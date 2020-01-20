@@ -53,7 +53,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 1
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!114 &8397670033608277853
 MonoBehaviour:
@@ -76,8 +76,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0
+  _PauseFlyTime: 0
   _UpSpeed: 8
   _UpTime: 0.2
+  _IsBorder: 1
 --- !u!65 &3505916554022482478
 BoxCollider:
   m_ObjectHideFlags: 0

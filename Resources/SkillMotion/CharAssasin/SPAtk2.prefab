@@ -76,8 +76,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.15
+  _PauseFlyTime: 0
   _UpSpeed: 2
   _UpTime: 0.1
+  _IsBorder: 1
 --- !u!65 &8678263233709853314
 BoxCollider:
   m_ObjectHideFlags: 0

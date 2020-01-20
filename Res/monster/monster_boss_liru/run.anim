@@ -37,6 +37,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: c4d98556ddd49eb46b6204e9d0776559, type: 3}
     - time: 0.8
       value: {fileID: 21300000, guid: d840e4e7bc300bf45ad3a51db826f3e3, type: 3}
+    - time: 0.9
+      value: {fileID: 21300000, guid: d840e4e7bc300bf45ad3a51db826f3e3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -65,12 +67,13 @@ AnimationClip:
     - {fileID: 21300000, guid: 13cea5803480f2540ae98cb16f9049ec, type: 3}
     - {fileID: 21300000, guid: c4d98556ddd49eb46b6204e9d0776559, type: 3}
     - {fileID: 21300000, guid: d840e4e7bc300bf45ad3a51db826f3e3, type: 3}
+    - {fileID: 21300000, guid: d840e4e7bc300bf45ad3a51db826f3e3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333334
+    m_StopTime: 0.93333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -89,4 +92,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.23333333
+    functionName: ColliderStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 11
+    messageOptions: 0

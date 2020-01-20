@@ -84,12 +84,24 @@ public class AI_Base2D : AI_Base
 
     private static float _MoveActionIntervalConst = 0.5f;
     private float _MoveActionInterval = 1f;
-    private float _MoveWaitTime = 0;
+    public float MoveActionInterval
+    {
+        get
+        {
+            return _MoveActionInterval;
+        }
+        set
+        {
+            _MoveActionInterval = value;
+        }
+    }
+
+    protected float _MoveWaitTime = 0;
 
     public void ActionUpdate()
     {
 
-        if (IsInCamera())
+        //if (IsInCamera())
         {
             if (StartSkill())
                 return;
@@ -114,8 +126,9 @@ public class AI_Base2D : AI_Base
     #region AIActionMove
 
     public Vector2 _AttackDistanceX;
+    public bool _MoveZ = true;
 
-    private float GetOtherZ()
+    public float GetOtherZ()
     {
         if (Mathf.Abs(_TargetMotion.transform.position.z - FightManager.Instance._CameraFollow._SceneAnimController.SceneZMin) >
             Mathf.Abs(_TargetMotion.transform.position.z - FightManager.Instance._CameraFollow._SceneAnimController.SceneZMax))
@@ -128,12 +141,12 @@ public class AI_Base2D : AI_Base
         }
     }
 
-    private bool IsDiffZ()
+    public bool IsDiffZ()
     {
         return Mathf.Abs(_TargetMotion.transform.position.z - transform.position.z) > 0.3f;
     }
 
-    private bool IsInCamera()
+    public bool IsInCamera()
     {
         if (transform.position.x > FightManager.Instance._CameraFollow.transform.position.x - FightManager.Instance._CameraFollow.MinPosX
             && transform.position.x < FightManager.Instance._CameraFollow.transform.position.x + FightManager.Instance._CameraFollow.MinPosX)
@@ -141,25 +154,109 @@ public class AI_Base2D : AI_Base
         return false;
     }
 
-    public bool ActionMove()
+    public virtual bool ActionMove()
+    {
+        if (_MoveZ)
+            return ActionMoveZ();
+        else
+            return ActionMoveX();
+    }
+
+    public virtual bool ActionMoveX()
+    {
+        float randomPosX = Random.Range(_AttackDistanceX.x, _AttackDistanceX.y);
+        if (transform.position.x < FightManager.Instance._CameraFollow.MainMovePosXMin)
+        {
+            _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMin, transform.position.y, transform.position.z), _TargetMotion.transform);
+        }
+        else if (transform.position.x > FightManager.Instance._CameraFollow.MainMovePosXMax)
+        {
+            _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMax, transform.position.y, transform.position.z), _TargetMotion.transform);
+        }
+
+        if (!IsDiffZ())
+        {
+            float XDistance = _TargetMotion.transform.position.x - transform.position.x;
+            if ((Mathf.Abs(XDistance) > _AttackDistanceX.y || Mathf.Abs(XDistance) < _AttackDistanceX.x))
+            {
+                if (transform.position.x < _TargetMotion.transform.position.x)
+                {
+                    if (_TargetMotion.transform.position.x - randomPosX < FightManager.Instance._CameraFollow.MainMovePosXMin)
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMin, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                    else
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x - randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                }
+                else
+                {
+                    if (_TargetMotion.transform.position.x + randomPosX > FightManager.Instance._CameraFollow.MainMovePosXMax)
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMax, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                    else
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x + randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                }
+            }
+        }
+        else
+        {
+            float XDistance = _TargetMotion.transform.position.x - transform.position.x;
+            if ((Mathf.Abs(XDistance) > _AttackDistanceX.y || Mathf.Abs(XDistance) < _AttackDistanceX.x))
+            {
+                if (transform.position.x < _TargetMotion.transform.position.x)
+                {
+                    if (_TargetMotion.transform.position.x - randomPosX < FightManager.Instance._CameraFollow.MainMovePosXMin)
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x + randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                    else
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x - randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                }
+                else
+                {
+                    if (_TargetMotion.transform.position.x + randomPosX > FightManager.Instance._CameraFollow.MainMovePosXMax)
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x - randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                    else
+                    {
+                        _SelfMotion.StartMoveState(new Vector3(_TargetMotion.transform.position.x + randomPosX, transform.position.y, transform.position.z), _TargetMotion.transform);
+                    }
+                }
+            }
+
+        }
+
+        return true;
+    }
+
+    public virtual bool ActionMoveZ()
     {
         float randomPosZ = Random.Range(-0.2f, 0.2f);
+        float ZDistance = _TargetMotion.transform.position.z - transform.position.z;
+        float XDistance = _TargetMotion.transform.position.x - transform.position.x;
         if (transform.position.x < FightManager.Instance._CameraFollow.MainMovePosXMin - 0.5f
-            && Mathf.Abs( _TargetMotion.transform.position.x - FightManager.Instance._CameraFollow.MainMovePosXMin) < _AttackDistanceX.x)
+            || (_TargetMotion.transform.position.x > transform.position.x && Mathf.Abs(_TargetMotion.transform.position.x - FightManager.Instance._CameraFollow.MainMovePosXMin) < _AttackDistanceX.x) && Mathf.Abs(ZDistance) < 0.3f)
         {
             _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMin, _TargetMotion.transform.position.y, GetOtherZ() + randomPosZ), _TargetMotion.transform);
             _MoveActionInterval = 2;
         }
         else if (transform.position.x > FightManager.Instance._CameraFollow.MainMovePosXMax + 0.5f
-            && Mathf.Abs(_TargetMotion.transform.position.x - FightManager.Instance._CameraFollow.MainMovePosXMax) < _AttackDistanceX.x)
+            || (_TargetMotion.transform.position.x < transform.position.x && Mathf.Abs(_TargetMotion.transform.position.x - FightManager.Instance._CameraFollow.MainMovePosXMax) < _AttackDistanceX.x) && Mathf.Abs(ZDistance) < 0.3f)
         {
             _SelfMotion.StartMoveState(new Vector3(FightManager.Instance._CameraFollow.MainMovePosXMax, _TargetMotion.transform.position.y, GetOtherZ() + randomPosZ), _TargetMotion.transform);
             _MoveActionInterval = 2;
         }
         else
         {
-            float ZDistance = _TargetMotion.transform.position.z - transform.position.z;
-            float XDistance = _TargetMotion.transform.position.x - transform.position.x;
+            
             float randomPosX = Random.Range(_AttackDistanceX.x, _AttackDistanceX.y);
             if (Mathf.Abs(ZDistance) < 0.3f)
             {

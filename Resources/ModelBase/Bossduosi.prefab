@@ -54,6 +54,9 @@ MonoBehaviour:
   _IsBuffNameDirty: 0
   _SkillElement: 5
   _AudioSource: {fileID: 0}
+  _JumpSpeed: 14
+  _JumpTime: 0.2
+  _Gravity: -40
   _CanBeSelectByEnemy: 1
   _ColliderInfo: {x: 0.4, y: 2, z: 0.4}
   _ColliderCenter: {x: 0, y: 1, z: 0}
@@ -83,7 +86,7 @@ MonoBehaviour:
   _AISkills:
   - SkillBase: {fileID: 3583191400061290817, guid: 69cbe22f4f16dd6499f7d0dd2b36eb92,
       type: 3}
-    SkillRange: {x: 1, y: 2}
+    SkillRange: {x: 1, y: 2.3}
     SkillInterval: 3
     ReadyTime: 0
     StartCD: 0
@@ -93,7 +96,7 @@ MonoBehaviour:
     ActDiffZ: 0
   - SkillBase: {fileID: 9161281179412998393, guid: 3559ff362e757bf499dae61067c761b6,
       type: 3}
-    SkillRange: {x: 1, y: 2}
+    SkillRange: {x: 1, y: 2.3}
     SkillInterval: 5
     ReadyTime: 0
     StartCD: 0
@@ -103,7 +106,7 @@ MonoBehaviour:
     ActDiffZ: 0
   - SkillBase: {fileID: 6807300192514227147, guid: ca82bf97909b94a44a7d8ba17bd59700,
       type: 3}
-    SkillRange: {x: 2, y: 5}
+    SkillRange: {x: 2, y: 20}
     SkillInterval: 5
     ReadyTime: 0
     StartCD: 0

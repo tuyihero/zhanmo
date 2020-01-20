@@ -22,7 +22,7 @@ public class ResourcePool : InstanceBase<ResourcePool>
         //if (ResourceManager._ResFromBundle)
         {
             InitEffect();
-            //InitAutio();
+            InitAutio();
             InitConfig();
         }
     }
@@ -716,145 +716,27 @@ public class ResourcePool : InstanceBase<ResourcePool>
             return;
 
         _CommonAudio = new Dictionary<int, AudioClip>();
-        //var audio1 = ResourceManager.Instance.GetAudioClip("common/HitArmor");
-        //_CommonAudio.Add(0, audio1);
-        ResourceManager.Instance.LoadAudio("common/HitArmor", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(0, resData);
-        }, null);
 
-        //var audio2 = ResourceManager.Instance.GetAudioClip("common/HitSwordNone");
-        //_CommonAudio.Add(1,audio2);
-        ResourceManager.Instance.LoadAudio("common/HitSwordNone", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(1, resData);
-        }, null);
-
-        //var audio3 = ResourceManager.Instance.GetAudioClip("common/HitSwordBody");
-        //_CommonAudio.Add(2,audio3);
-        ResourceManager.Instance.LoadAudio("common/HitSwordBody", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(2, resData);
-        }, null);
-
-        //var audio4 = ResourceManager.Instance.GetAudioClip("common/HitSwordSlap");
-        //_CommonAudio.Add(3,audio4);
-        ResourceManager.Instance.LoadAudio("common/HitSwordSlap", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(3, resData);
-        }, null);
-
-        //var audio5 = ResourceManager.Instance.GetAudioClip("common/HitSwordSlap2");
-        //_CommonAudio.Add(4,audio5);
-        ResourceManager.Instance.LoadAudio("common/HitSwordSlap2", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(4, resData);
-        }, null);
-
-        //var audio10 = ResourceManager.Instance.GetAudioClip("common/HitHwNone");
-        //_CommonAudio.Add(10, audio10);
-        ResourceManager.Instance.LoadAudio("common/HitHwNone", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(10, resData);
-        }, null);
-
-        //var audio11 = ResourceManager.Instance.GetAudioClip("common/HitHwBody");
-        //_CommonAudio.Add(11, audio11);
-        ResourceManager.Instance.LoadAudio("common/HitHwBody", (resName, resData, callBackHash) =>
+        ResourceManager.Instance.LoadAudio("Common/zs_atk", (resName, resData, callBackHash) =>
         {
             _CommonAudio.Add(11, resData);
         }, null);
 
-        //var audio12 = ResourceManager.Instance.GetAudioClip("common/HwAtk");
-        //_CommonAudio.Add(12, audio12);
-        ResourceManager.Instance.LoadAudio("common/HwAtk", (resName, resData, callBackHash) =>
+        ResourceManager.Instance.LoadAudio("Common/zs_hit", (resName, resData, callBackHash) =>
         {
             _CommonAudio.Add(12, resData);
         }, null);
 
-        //var audioEle = ResourceManager.Instance.GetAudioClip("common/AtkFire");
-        //_CommonAudio.Add(100, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkFire", (resName, resData, callBackHash) =>
+        ResourceManager.Instance.LoadAudio("Common/ck_atk", (resName, resData, callBackHash) =>
         {
-            _CommonAudio.Add(100, resData);
+            _CommonAudio.Add(21, resData);
         }, null);
 
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/AtkIce");
-        //_CommonAudio.Add(101, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkIce", (resName, resData, callBackHash) =>
+        ResourceManager.Instance.LoadAudio("Common/ck_hit", (resName, resData, callBackHash) =>
         {
-            _CommonAudio.Add(101, resData);
+            _CommonAudio.Add(22, resData);
         }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/AtkLighting");
-        //_CommonAudio.Add(102, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkLighting", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(102, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/AtkStone");
-        //_CommonAudio.Add(103, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkStone", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(103, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/AtkWind");
-        //_CommonAudio.Add(104, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkWind", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(104, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/HitFire");
-        //_CommonAudio.Add(110, audioEle);
-        ResourceManager.Instance.LoadAudio("common/HitFire", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(110, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/HitIce");
-        //_CommonAudio.Add(111, audioEle);
-        ResourceManager.Instance.LoadAudio("common/HitFire", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(111, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/HitLighting");
-        //_CommonAudio.Add(112, audioEle);
-        ResourceManager.Instance.LoadAudio("common/HitLighting", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(112, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/HitStone");
-        //_CommonAudio.Add(113, audioEle);
-        ResourceManager.Instance.LoadAudio("common/HitStone", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(113, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/HitWind");
-        //_CommonAudio.Add(114, audioEle);
-        ResourceManager.Instance.LoadAudio("common/HitWind", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(114, resData);
-        }, null);
-
-        //audioEle = ResourceManager.Instance.GetAudioClip("common/AtkFire2");
-        //_CommonAudio.Add(120, audioEle);
-        ResourceManager.Instance.LoadAudio("common/AtkFire2", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(120, resData);
-        }, null);
-
-        //var audioMon = ResourceManager.Instance.GetAudioClip("common/AtkBow");
-        //_CommonAudio.Add(200, audioMon);
-        ResourceManager.Instance.LoadAudio("common/AtkBow", (resName, resData, callBackHash) =>
-        {
-            _CommonAudio.Add(200, resData);
-        }, null);
+        
     }
 
 

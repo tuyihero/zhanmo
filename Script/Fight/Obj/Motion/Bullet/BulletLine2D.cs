@@ -38,7 +38,7 @@ public class BulletLine2D : BulletBase
         MoveUpdate();
     }
 
-    protected void MoveUpdate()
+    protected virtual void MoveUpdate()
     {
         var motionForward = MotionManager.GetForward2D(transform.rotation.eulerAngles);
         transform.position += motionForward * _Speed * Time.fixedDeltaTime;

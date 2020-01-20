@@ -1750,7 +1750,7 @@ public class MotionManager : MonoBehaviour
 
     #region state mechine
 
-    public bool _HasRiseState = true;
+    public bool _HasRiseState = false;
 
     public string _MotionAnimPath = "";
 

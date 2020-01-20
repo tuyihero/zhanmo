@@ -23,18 +23,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: bf42cffb77ef2e6448703088349124fc, type: 3}
     - time: 0.1
       value: {fileID: 21300000, guid: 5a385a930eaf980458fae49fdb9f2cf5, type: 3}
-    - time: 0.2
-      value: {fileID: 21300000, guid: a8b994cefb24f6943872fbc662652563, type: 3}
-    - time: 0.3
-      value: {fileID: 21300000, guid: 44a75ae1aa80ab54c8ca321bdfab228a, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: 6e3fa8e18a0fe0d4ca834be7c9c5a5bd, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: f8fdb4aec885fb24280a81a07aaa6a79, type: 3}
-    - time: 0.6
-      value: {fileID: 21300000, guid: 06b22da2f8d22c84ebae11c8afc86702, type: 3}
-    - time: 0.7
-      value: {fileID: 21300000, guid: 8e1eaad93982d904db87ab17e4d179df, type: 3}
+    - time: 0.26666668
+      value: {fileID: 21300000, guid: 5a385a930eaf980458fae49fdb9f2cf5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -56,18 +46,13 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: bf42cffb77ef2e6448703088349124fc, type: 3}
     - {fileID: 21300000, guid: 5a385a930eaf980458fae49fdb9f2cf5, type: 3}
-    - {fileID: 21300000, guid: a8b994cefb24f6943872fbc662652563, type: 3}
-    - {fileID: 21300000, guid: 44a75ae1aa80ab54c8ca321bdfab228a, type: 3}
-    - {fileID: 21300000, guid: 6e3fa8e18a0fe0d4ca834be7c9c5a5bd, type: 3}
-    - {fileID: 21300000, guid: f8fdb4aec885fb24280a81a07aaa6a79, type: 3}
-    - {fileID: 21300000, guid: 06b22da2f8d22c84ebae11c8afc86702, type: 3}
-    - {fileID: 21300000, guid: 8e1eaad93982d904db87ab17e4d179df, type: 3}
+    - {fileID: 21300000, guid: 5a385a930eaf980458fae49fdb9f2cf5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.73333335
+    m_StopTime: 0.3
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,4 +71,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.13333334
+    functionName: KeyFrame
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

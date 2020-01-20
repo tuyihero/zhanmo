@@ -16,5 +16,4 @@ public class AI_HeroBase2D : AI_Base2D
 
     }
     
-
 }

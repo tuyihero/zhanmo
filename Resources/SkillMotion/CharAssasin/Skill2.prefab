@@ -181,7 +181,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!114 &1392187854267554134
 MonoBehaviour:
@@ -204,8 +204,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
   _UpSpeed: 8
   _UpTime: 0.2
+  _IsBorder: 1
   _Time: 0.1
   _Speed: 5
 --- !u!65 &2854440733497494757
@@ -339,7 +341,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!114 &1894811945547572442
 MonoBehaviour:
@@ -362,6 +364,7 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
   _Time: 0.1
   _Speed: 3
 --- !u!65 &3126121108934503964
@@ -430,7 +433,7 @@ MonoBehaviour:
   _AudioID: -1
   _ColliderFinishFrame: 
   _SelectLieObj: 0
-  _HittedAudio: -1
+  _HittedAudio: 22
   _NonHittedAudio: -1
 --- !u!114 &1484605737118415134
 MonoBehaviour:
@@ -453,8 +456,10 @@ MonoBehaviour:
   _IsBulletHit: 0
   _ForceHit: 0
   _HitPauseTime: 0.05
+  _PauseFlyTime: 0
   _UpSpeed: 8
   _UpTime: 0.2
+  _IsBorder: 1
   _Time: 0
   _Speed: 0
 --- !u!65 &2468736917962082461
